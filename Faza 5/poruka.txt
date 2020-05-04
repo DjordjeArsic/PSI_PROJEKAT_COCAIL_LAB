@@ -1,0 +1,4 @@
+Poštovani,
+Za izradu modela aplikacije je iskorišćen StarUML3.
+S poštovanjem,
+Đorđe Arsić
