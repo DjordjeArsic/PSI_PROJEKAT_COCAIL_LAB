@@ -12,7 +12,9 @@
        if($i>0) echo ',&nbsp;';
        echo $neobaveznisastojci[$i].' '."($neobaveznisastojci_kolicina[$i])";
     }
+    echo '<br/>';
+    echo '<img  width="300" src="data:image/jpeg;base64,'.base64_encode( $koktel->slika ).'"/>';
 ?>
-<form action="<?= site_url("Usercontroller/brisanjeMogRecepta/{$koktel->idKoktela}")?>");>
+<form action="<?= site_url("Korisnik/brisanjeMogRecepta/{$koktel->idKoktela}")?>");>
     <input value="Obrisi recept" type="submit">
 </form>

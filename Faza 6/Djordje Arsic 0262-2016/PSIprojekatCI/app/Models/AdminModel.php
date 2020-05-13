@@ -6,7 +6,6 @@ class AdminModel extends Model
     protected $primaryKey = 'idAdmina';
 
     protected $returnType     = 'object';
-    protected $useSoftDeletes = true;
 
 }
 

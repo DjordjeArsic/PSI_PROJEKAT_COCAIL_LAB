@@ -6,7 +6,7 @@
         <table>
             <tr>
                 <td  style='padding-left: 8px; padding-right: 8px;'>
-                    <?=anchor("USercontroller/mojiKokteli", "Moji recepti")?>
+                    <?=anchor("Korisnik/mojiKokteli", "Moji recepti")?>
                 </td>
                 <td  style='padding-left: 8px; padding-right: 8px;'>
                     <?=anchor("#", "Postavljanje koktela")?>

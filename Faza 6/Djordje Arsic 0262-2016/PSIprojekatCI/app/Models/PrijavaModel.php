@@ -8,6 +8,6 @@ class PrijavaModel extends Model
 
     protected $returnType     = 'object';
 
-    protected $allowedFields = ['idKoktela', 'idKorisnika', 'datum', 'obrisanaPrijava'];
+    protected $allowedFields = ['idKoktela', 'idRegistrovanog', 'datum', 'obrisanaPrijava'];
 }
 

@@ -7,6 +7,6 @@ class RazloziPrijaveModel extends Model
     protected $table      = 'razloziprijave';
 
     protected $returnType     = 'object';
-    protected $allowedFields = ['idKoktela', 'idKorisnika', 'idRazloga', 'duplikat'];
+    protected $allowedFields = ['idKoktela', 'idRegistrovanog', 'idRazloga', 'duplikat'];
 }
 
