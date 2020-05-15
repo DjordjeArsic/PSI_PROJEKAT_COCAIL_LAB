@@ -8,5 +8,5 @@ class RegistrovaniModel extends Model
 
     protected $returnType     = 'object';
 
-    protected $allowedFields = ['obrisanNalog'];
+    protected $allowedFields = ['id Registrovanog', 'obrisanNalog'];
 }
