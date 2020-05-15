@@ -1,8 +1,11 @@
-<?php
+<?php namespace App\Controllers;
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+class Admin extends Korisnik
+{
+    
+    public function index(){
+            $korisnik = $this->session->get('korisnik');
+            return $this->prikaz("loggedIn", ['korisnickoIme'=>$korisnik->username]);
+    }
 
+}

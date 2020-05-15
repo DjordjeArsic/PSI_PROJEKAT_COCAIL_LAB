@@ -11,13 +11,17 @@ class Nalog extends BaseController
     }
            
     public function loginSubmit(){
-                
+        $poruka="";
         if(!$this->validate(['korime'=>'required'])){
-            return $this->login('Niste uneli korisnicko ime.');
+            $poruka.='Niste uneli korisnicko ime.<br>';
         }
         if(!$this->validate(['lozinka'=>'required'])){
-            return $this->login('Niste uneli lozinku.');
+            $poruka.="Niste uneli lozinku.";
         }
+        if($poruka!="") {
+            return $this->login($poruka);
+        }
+        
         $korisnikModel=new KorisnikModel();
         $korisnik=$korisnikModel->dohvatiKorisnikaPoImenu($this->request->getPost('korime'));
         if($korisnik==null || $korisnik->password!=$this->request->getPost('lozinka'))

@@ -9,4 +9,4 @@
 echo '<br>header_gost ';
 echo '<a href='.site_url("Nalog/login").' id="login">Log in</a>';
 echo ' <a href='.site_url("Nalog/register").' id="register">Registracija</a>';
-echo '<br>';
+echo '<br><br>';

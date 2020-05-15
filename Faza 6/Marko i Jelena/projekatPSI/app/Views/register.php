@@ -8,19 +8,19 @@
 <form name="registrationform" action="<?= site_url("Nalog/registerSubmit") ?>" method="post">
 <table>
     <tr>
-        <td>Korisnicko ime:</td>
+        <td>Korisnicko ime:*</td>
         <td><input type="text" name="korime" value=""/></td>
     </tr>
     <tr>
-        <td>Email:</td>
+        <td>Email:*</td>
         <td><input type="text" name="email" value=""/></td>
     </tr>
     <tr>
-        <td>Lozinka:</td>
+        <td>Lozinka:*</td>
         <td><input type="password" name="lozinka"/></td>
     </tr>
     <tr>
-        <td>Ponovljena lozinka:</td>
+        <td>Ponovljena lozinka:*</td>
         <td><input type="password" name="ponovljenaLozinka"/></td>
     </tr>
     <tr>
