@@ -140,6 +140,8 @@ class Korisnik extends BaseController
     
     public function reportovanjeTudjegRecepta($idKoktela, $idRegistrovanog){
             $razlogModel = new RazlogModel();
+			$prijavaModel = new PrijavaModel();
+			$postoji_prijava = $prijavaModel->where('idRegistrovanog',$idRegistrovanog)->where('idKoktela',$idKoktela)->findall();
             $razlozi = $razlogModel->findall();
             $razloziprijave = array();
             $razlog_duplikat = 0;
@@ -170,16 +172,20 @@ class Korisnik extends BaseController
                 $this->prikaz1('sablon/header_korisnik', 'stranice/tudjirecept', ['koktel' => $koktel,'razlozi' => $razlozi, 'registrovani'=>$registrovani, 'poruka'=>$poruka_prijave]);
             }
             else{
-                $prijavaModel = new PrijavaModel();
                 $razloziPrijaveModel = new RazloziPrijaveModel();
-                $prijavaModel->insert(['idKoktela' => $idKoktela, 'idRegistrovanog' => $idRegistrovanog, 'datum' => date('Y-m-d'), 'obrisanaPrijava'=>0]);
+                if($postoji_prijava==null){
+                    $prijavaModel->save(['idKoktela' => $idKoktela, 'idRegistrovanog' => $idRegistrovanog, 'datum' => date('Y-m-d'), 'obrisanaPrijava'=>0]);
+                }
                 foreach($razloziprijave as $razlogprijave){
-                    if($razlogprijave==3){
+					$postoji_razlog = $razloziPrijaveModel->where('idRegistrovanog',$idRegistrovanog)->where('idKoktela',$idKoktela)->where('idRazloga',$razlogprijave)->findall();
+                    if($postoji_razlog==null){
+						if($razlogprijave==3){
                         $razloziPrijaveModel->insert(['idKoktela' => $idKoktela, 'idRegistrovanog' => $idRegistrovanog, 'idRazloga' => $razlogprijave, 'duplikat'=> $duplikat]);
-                    }
-                    else{
+						}
+						else{
                         $razloziPrijaveModel->insert(['idKoktela' => $idKoktela, 'idRegistrovanog' => $idRegistrovanog, 'idRazloga' => $razlogprijave]);
-                    }
+						}
+					}
                 }
                 echo view('sablon/header_korisnik');
                 echo view('sablon/footer');
