@@ -1,0 +1,59 @@
+<!doctype html>
+<!-- Autor: Marko Stanković – 2017/0331 -->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Home page</title>
+		<link rel="stylesheet" href="style.css">
+		<style>
+			.glavni {
+				width: 700px;
+				margin:auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="float:right">
+			<a href="index.html">Log Out</a><br>
+			<a href="reportovaniKokteli.html">Prijavljeni recepti</a><br/>
+			<a href="postavljanjeReceptaAdmin.html">Postavljanje recepta</a><br/>
+			<a href="adminoviRecepti.html">Moji recepti</a><br/>
+		</div>
+		<div class="glavni">
+			<h1>
+				Početna stranica
+			</h1>
+			<h2>
+				Admin
+			</h2>
+			<form>
+				<p>
+					Pomorandža:
+					<input type="checkbox" id="sastojak1">
+				</p>
+				<p>
+					Votka:
+					<input type="checkbox" id="sastojak2">
+				</p>
+				<p>
+					<input type="button" value="Pretraži" onclick="f()">
+				</p>
+			</form>
+		</div>
+		<script>
+			function f(){
+				sastojak1 = document.getElementById("sastojak1");
+				sastojak2 = document.getElementById("sastojak2");
+				if(sastojak1.checked){
+					window.open("imaKoktelaAdmin.html","_self");
+				}
+				else if(sastojak2.checked){
+					window.open("nemaKoktelaAdmin.html","_self");
+				}
+				else {
+					alert("Nije označen nijedan sastojak!");
+				}
+			}
+		</script>
+	</body>
+</html>

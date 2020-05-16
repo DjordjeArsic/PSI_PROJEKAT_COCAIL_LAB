@@ -8,5 +8,5 @@ use App\Models\KorisnikModel;
  */
 
 //$korisnik = $this->session->get('korisnik');
-echo "Dobrodosli, $korisnickoIme";
+var_dump($korisnik);
 echo "<br>";

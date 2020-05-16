@@ -55,4 +55,6 @@ class BaseController extends Controller
             echo view("$page", $data);
             echo view('sablon/footer');
         }
+        
+
 }

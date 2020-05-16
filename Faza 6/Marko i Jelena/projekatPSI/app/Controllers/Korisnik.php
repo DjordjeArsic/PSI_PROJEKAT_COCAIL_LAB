@@ -6,16 +6,15 @@ use App\Models\ObavezniModel;
 use App\Models\NeobavezniModel;
 
 class Korisnik extends BaseController
-{
-    
+{    
     public function index(){
         $korisnik = $this->session->get('korisnik');
-        return $this->prikaz("indexUlogovani", ['korisnickoIme'=>$korisnik->username]);
+        return $this->prikaz("indexUlogovani", ['korisnik'=>$korisnik]);
     }
 
     public function postaviRecept($poruka = null, $naziv = "", $opis="") {   
         $sastojakModel=new SastojakModel();
-        $sastojci = $sastojakModel->dohvatiSastojke();
+        $sastojci = $sastojakModel->dohvatiImenaSastojaka();
         return $this->prikaz("postaviRecept", ['sastojci'=> $sastojci, 'poruka'=>$poruka, 'naziv'=>$naziv, 'opis'=>$opis]);
     }
     
@@ -35,9 +34,9 @@ class Korisnik extends BaseController
         }
         
         $sastojakModel = new SastojakModel();
-        $sastojciBaza = $sastojakModel->dohvatiSastojke();
+        $sastojciBaza = $sastojakModel->dohvatiImenaSastojaka();
         $kolicine = $this->request->getPost('kolicine'); // sastojci iz forme
-        $neobavezniForma = $this->request->getPost('neobavezni');
+        $neobavezniForma = $this->request->getPost('neobavezni'); 
         $flagObavezni=0; // oznacen bar 1 obavezan sastojak
 
         
@@ -51,6 +50,8 @@ class Korisnik extends BaseController
         if($flagObavezni==0) {
             $poruka.="Niste uneli nijedan obavezan sastojak.";
         }
+        
+        
         if($poruka!="") {
             return $this->postaviRecept($poruka, $naziv, $opis);
         }
@@ -75,10 +76,10 @@ class Korisnik extends BaseController
         $neobavezniModel = new NeobavezniModel();
         
         foreach($sastojciBaza as $sastojak) {   
-            if($kolicine[$sastojak] > 0) {
+            if($kolicine[$sastojak]!=="") {
                 $data = [
                     'idKoktela' => $idKoktela,
-                    'idSastojka'  => $sastojakModel->dohvatiId($sastojak),
+                    'idSastojka'  => $sastojakModel->dohvatiIdPoNazivu($sastojak),
                     'kolicina'  => $kolicine[$sastojak]
                 ];
                 if($neobavezniForma!=0 && in_array($sastojak, $neobavezniForma)) {

@@ -11,11 +11,19 @@ class SastojakModel extends Model
     
         protected $allowedFields = [ 'idSastojka', 'naziv'];
         
-        public function dohvatiSastojke() {
+        public function dohvatiImenaSastojaka() {
             return $this->findColumn('naziv');
         }
         
-        public function dohvatiId($naziv) {
+        public function dohvatiSveId() {
+            return $this->findColumn('idSastojka');
+        }
+        
+        public function dohvatiIdPoNazivu($naziv) {
             return $this->where('naziv', $naziv)->first()->idSastojka;
+        }
+        
+        public function dohvatiSastojke() {
+            return $this->findAll();
         }
 }

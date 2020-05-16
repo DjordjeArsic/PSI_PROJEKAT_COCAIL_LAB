@@ -2,6 +2,7 @@
 
 use App\Models\KorisnikModel;
 use App\Models\RegistrovaniModel;
+use App\Models\AdminModel;
 
 class Nalog extends BaseController
 {
@@ -24,10 +25,16 @@ class Nalog extends BaseController
         
         $korisnikModel=new KorisnikModel();
         $korisnik=$korisnikModel->dohvatiKorisnikaPoImenu($this->request->getPost('korime'));
-        if($korisnik==null || $korisnik->password!=$this->request->getPost('lozinka'))
+        if($korisnik==null || $korisnik->password!=$this->request->getPost('lozinka')) {
             return $this->login('Pogresno korisnicko ime i/ili lozinka. Molimo pokusajte ponovo.');
-           
-        $this->session->set('korisnik', $korisnik);
+        }
+        
+        // pamtimo idKorisnika, username i da li je admin
+        $adminModel = new AdminModel();
+        $isAdmin=$adminModel->proveraDaLiJeAdmin($korisnik->idKorisnika);
+        $this->session->set('korisnik', ['idKorisnika'=>$korisnik->idKorisnika,
+                                         'username'=>$korisnik->username,
+                                         'isAdmin'=>$isAdmin]);
         
         return redirect()->to(site_url('Korisnik'));
     }

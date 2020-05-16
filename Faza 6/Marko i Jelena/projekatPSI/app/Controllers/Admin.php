@@ -7,5 +7,5 @@ class Admin extends Korisnik
             $korisnik = $this->session->get('korisnik');
             return $this->prikaz("loggedIn", ['korisnickoIme'=>$korisnik->username]);
     }
-
+   
 }
