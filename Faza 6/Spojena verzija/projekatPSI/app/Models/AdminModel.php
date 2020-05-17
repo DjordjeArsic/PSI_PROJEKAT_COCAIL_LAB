@@ -2,8 +2,7 @@
 
 use CodeIgniter\Model;
 
-class AdminModel extends Model
-{
+class AdminModel extends Model {
         protected $table      = 'admin';
         protected $primaryKey = 'idAdmina';
         protected $returnType = 'object';

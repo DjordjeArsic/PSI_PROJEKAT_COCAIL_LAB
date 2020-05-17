@@ -3,8 +3,7 @@
 
 use CodeIgniter\Model;
 
-class KoktelModel extends Model
-{
+class KoktelModel extends Model {
         protected $table      = 'koktel';
         protected $primaryKey = 'idKoktela';
         protected $returnType = 'object';

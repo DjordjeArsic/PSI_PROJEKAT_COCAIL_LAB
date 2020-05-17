@@ -16,8 +16,7 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 
-class BaseController extends Controller
-{
+class BaseController extends Controller {
 
 	/**
 	 * An array of helpers to be loaded automatically upon
@@ -45,16 +44,25 @@ class BaseController extends Controller
                 $this->session = session();
 	}
 
-        protected function prikaz($page, $data) {
+        protected function prikaz($page, $data) {            
             $data['controller']='BaseController';
-            if (null != $this->session->get('korisnik')) {
-               echo view('sablon/header_korisnik');
+            $korisnik = $this->session->get('korisnik');
+  
+            //prikaz headera
+            if (null != $korisnik) {
+                if ($korisnik->isAdmin) {
+                  echo view('sablon/header_admin');
+                } else {
+                  echo view('sablon/header_korisnik');  
+                }
             } else {
-               echo view('sablon/header_gost');
+                  echo view('sablon/header_gost');
             }
+            
+            //prikaz sadrzaja stranice
             echo view("$page", $data);
+            
+            //prikaz footera
             echo view('sablon/footer');
         }
-        
-
 }

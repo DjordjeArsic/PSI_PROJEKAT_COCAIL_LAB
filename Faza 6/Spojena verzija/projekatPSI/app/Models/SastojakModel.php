@@ -3,8 +3,7 @@
 
 use CodeIgniter\Model;
 
-class SastojakModel extends Model
-{
+class SastojakModel extends Model {
         protected $table      = 'sastojak';
         protected $primaryKey = 'idSastojka';
         protected $returnType = 'object';

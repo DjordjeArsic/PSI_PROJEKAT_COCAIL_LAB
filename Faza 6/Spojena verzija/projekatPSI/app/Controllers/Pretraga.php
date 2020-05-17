@@ -2,6 +2,7 @@
 
 use App\Models\SastojakModel;
 use App\Models\ObavezniModel;
+use App\Models\NeobavezniModel;
 use App\Models\KoktelModel;
 
 class Pretraga extends BaseController {
@@ -13,7 +14,7 @@ class Pretraga extends BaseController {
     
     public function pretragaSubmit() {  
         $sastojci = $this->request->getPost('sastojci');
-        if($sastojci==null){
+        if($sastojci==null) {
             $poruka='Niste uneli nijedan sastojak!';
             return $this->index($poruka);
         }
@@ -25,6 +26,7 @@ class Pretraga extends BaseController {
         $kokteliZaIspis=[];
         $formaNiz = [1,2];
         $sastojciKoktela = [];
+        
         // ova petlja pravi matricu gde vrste odgovaraju idKoktela, a kolone idSastojka
         foreach($obavezni as $value) {
             if (!array_key_exists($value->idKoktela, $sastojciKoktela)) {
@@ -32,6 +34,7 @@ class Pretraga extends BaseController {
             }
             array_push($sastojciKoktela[$value->idKoktela], $value->idSastojka);
         }
+        
         // ova pretlja za svaki koktel provera da li su uneti svi obavezni sastojci
         $koktelModel = new KoktelModel();
         foreach($sastojciKoktela as $koktelId => $nizSastojaka) {
@@ -49,8 +52,33 @@ class Pretraga extends BaseController {
     }
     
     public function koktel($idKoktela) {
-        //todo: dohavti info o koktelu na osnovu id, i prosledi stranici za prikaz koktela
-        //todo: uloge imaju razlicite dugmice
-        echo $idKoktela;
+        
+        $koktelModel = new KoktelModel();
+        $sadrziObaveznoModel = new ObavezniModel();
+        $sadrziNeobaveznoModel = new NeobavezniModel();
+        $sastojakModel= new SastojakModel();
+        
+        $sadrziObavezno = $sadrziObaveznoModel->where('idKoktela',$idKoktela)->findall();
+        $sadrziNeobavezno = $sadrziNeobaveznoModel->where('idKoktela',$idKoktela)->findall();
+        $obavezniSastojci = []; // sadrzi naziv sastojka i kolicinu
+        $neobavezniSastojci = []; // sadrzi naziv sastojka i kolicinu
+                 
+        foreach($sadrziObavezno as $so){
+            $sastojak = $sastojakModel->find($so->idSastojka);
+            $obavezniSastojci[]= (object)['naziv' => $sastojak->naziv,
+                                          'kolicina' => $so->kolicina];
+        }
+        foreach($sadrziNeobavezno as $sno){
+            $sastojak = $sastojakModel->find($so->idSastojka);
+            $neobavezniSastojci[]= (object)['naziv' => $sastojak->naziv,
+                                        'kolicina' => $sno->kolicina];
+        }
+        $koktel = $koktelModel->find($idKoktela);
+        return $this->prikaz("koktel", ['koktelInfo' =>
+                                        (object)['koktel'=> $koktel,
+                                                 'obavezniSastojci'=> $obavezniSastojci,
+                                                 'neobavezniSastojci'=> $neobavezniSastojci
+                                                ],
+                                        'korisnik' => $this->session->get('korisnik')]);
     }
 }

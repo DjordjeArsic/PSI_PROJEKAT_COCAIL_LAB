@@ -10,12 +10,14 @@ class Nalog extends BaseController {
     }
            
     public function loginSubmit(){
-        $poruka="";
-        if(!$this->validate(['korime'=>'required'])){
+        $poruka = "";
+        $korime = $this->request->getPost('korime');
+        $lozinka = $this->request->getPost('lozinka');
+        if($korime===""){
             $poruka.='Niste uneli korisnicko ime.<br>';
         }
-        if(!$this->validate(['lozinka'=>'required'])){
-            $poruka.="Niste uneli lozinku.";
+        if($lozinka===""){
+            $poruka.="Niste uneli lozinku.<br>";
         }
         
         if($poruka!="") {
@@ -23,19 +25,33 @@ class Nalog extends BaseController {
         }
         
         $korisnikModel=new KorisnikModel();
-        $korisnik=$korisnikModel->dohvatiKorisnikaPoImenu($this->request->getPost('korime'));
-        if($korisnik==null || $korisnik->password!=$this->request->getPost('lozinka')) {
-            return $this->login('Pogresno korisnicko ime i/ili lozinka. Molimo pokusajte ponovo.');
+        $korisnik=$korisnikModel->dohvatiKorisnikaPoImenu($korime);
+        if($korisnik==null || $korisnik->password!=$lozinka) {
+            return $this->login('Pogresno korisnicko ime i/ili lozinka. Molimo pokusajte ponovo.<br>');
+        }
+             
+        $adminModel = new AdminModel();
+        $isAdmin=$adminModel->proveraDaLiJeAdmin($korisnik->idKorisnika);
+        
+        if (!$isAdmin) {
+            $registrovaniModel=new RegistrovaniModel();
+            if($registrovaniModel->isObrisan($korisnik->idKorisnika)) {
+                return $this->login('Ovaj nalog je obrisan.<br>');
+            }
         }
         
         // pamtimo idKorisnika, username i da li je admin
-        $adminModel = new AdminModel();
-        $isAdmin=$adminModel->proveraDaLiJeAdmin($korisnik->idKorisnika);
-        $this->session->set('korisnik', ['idKorisnika'=>$korisnik->idKorisnika,
+        
+        $this->session->set('korisnik', (object)['idKorisnika'=>$korisnik->idKorisnika,
                                          'username'=>$korisnik->username,
                                          'isAdmin'=>$isAdmin]);
         
-        return redirect()->to(site_url('Korisnik'));
+        if ($isAdmin) {
+            return redirect()->to(site_url('Admin'));
+        } else {      
+            return redirect()->to(site_url('Korisnik'));
+        }
+
     }
     
     public function logOut() {
@@ -52,9 +68,14 @@ class Nalog extends BaseController {
         $data['username'] = $this->request->getPost('korime');
         $data['password'] = $this->request->getPost('lozinka');
         $data['email'] = $this->request->getPost('email');
+                
+        //todo: proveri e-mail, username, sifru, da li se sifre slazu
+        //da li vec postoji korisnik sa tim imenom
+        //da li vec postoji korisnik sa tim e-mailom
         
         $korisnikModel=new KorisnikModel();
-        $data2['idRegistrovanog'] = $korisnikModel->dodajNovogKorisnika($data);
+        $idKorisnika = $korisnikModel->dodajNovogKorisnika($data);        
+        $data2['idRegistrovanog'] = $idKorisnika;
         $data2['obrisanNalog'] = 0;
         $registrovaniModel=new RegistrovaniModel();
         $registrovaniModel->insert($data2);

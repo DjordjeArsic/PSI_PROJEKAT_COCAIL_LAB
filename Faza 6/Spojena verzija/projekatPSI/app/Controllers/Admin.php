@@ -1,11 +1,7 @@
 <?php namespace App\Controllers;
 
-class Admin extends Korisnik
-{
-    
+class Admin extends Korisnik {   
     public function index(){
-            $korisnik = $this->session->get('korisnik');
-            return $this->prikaz("loggedIn", ['korisnickoIme'=>$korisnik->username]);
-    }
-   
+        return redirect()->to(site_url('Pretraga'));
+    } 
 }

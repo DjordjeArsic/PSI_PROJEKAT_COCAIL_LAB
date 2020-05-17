@@ -1,4 +1,12 @@
+<script>
+  document.getElementById("mojiRecepti").innerHTML = "";
+</script>
 <?php
+
+    if (count($kokteli)==0) {
+        echo "Nemate ni jedan koktel.";
+    }
+
     foreach($kokteli as $koktel){
         if($koktel->slika!=NULL){
             echo '<img  width="200" src="data:image/jpeg;base64,'.base64_encode( $koktel->slika ).'"/>';

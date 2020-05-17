@@ -6,10 +6,13 @@
         <table>
             <tr>
                 <td>
-                    <?php echo ' <a href='.site_url("Korisnik/index").' id="pretraga">Home</a>';?>
+                    <?php echo ' <a href='.site_url("Admin/index").' id="pretraga">Home</a>';?>
                 </td>
                 <td>
-                    <?php echo ' <a href='.site_url("Korisnik/mojiKokteli").' id="mojiRecepti">MojiRecepti</a>';?>
+                    <?php echo ' <a href='.site_url("Admin/reportovaniRecepti").' id="reportovaniRecepti">ReportovaniRecepti</a>';?>
+                </td>
+                <td>
+                    <?php echo ' <a href='.site_url("Admin/mojiKokteli").' id="mojiRecepti">MojiRecepti</a>';?>
                 </td>
                 <td>
                     <?=anchor('Nalog/logOut', 'Log out');?>

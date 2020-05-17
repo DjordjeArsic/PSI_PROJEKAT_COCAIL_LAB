@@ -2,8 +2,7 @@
 namespace App\Models;
 use CodeIgniter\Model;
 
-class RazloziPrijaveModel extends Model
-{
+class RazloziPrijaveModel extends Model {
     protected $table      = 'razloziprijave';
 
     protected $returnType     = 'object';

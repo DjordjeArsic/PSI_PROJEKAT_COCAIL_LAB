@@ -1,3 +1,7 @@
+<script>
+  document.getElementById("pretraga").innerHTML = "";
+</script>
+
 <form name="pretragaRecepata" action="<?= site_url("Pretraga/pretragaSubmit") ?>" method="post">   
     <?php   
         // ako postoji neka poruka tj. greska ispisujemo je ovde

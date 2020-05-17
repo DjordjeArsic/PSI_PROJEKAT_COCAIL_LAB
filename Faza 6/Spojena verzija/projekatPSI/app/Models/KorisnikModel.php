@@ -2,8 +2,7 @@
 
 use CodeIgniter\Model;
 
-class KorisnikModel extends Model
-{
+class KorisnikModel extends Model {
         protected $table      = 'korisnik';
         protected $primaryKey = 'idKorisnika';
         protected $returnType = 'object';

@@ -5,7 +5,7 @@
 </script>
 
 
-<form name="postavljanjeforma" action="<?= site_url("Korisnik/receptSubmit") ?>" method="post">
+<form name="postavljanjeforma" action="<?= site_url("Korisnik/receptSubmit") ?>" method="post" enctype="multipart/form-data">
 <table>
     <tr>
         <td>Naziv:*</td>
@@ -29,9 +29,9 @@
         ?>
    
     <tr>
-        <td colspan="2"><br>Okači fotografiju: <input type="file"></td>
+        <td colspan="2"><br>Okači fotografiju: <input type="file" accept="image/*" name="fotografija"></td>
     </tr>
-    <tr><td colspan="2"><br>Okači video: <input type="file"></td>
+    <tr><td colspan="2"><br>Okači video: <input type="file" accept="video/*" name="video"></td>
     </tr>
     
     <tr>

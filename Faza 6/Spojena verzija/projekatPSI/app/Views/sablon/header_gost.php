@@ -7,6 +7,7 @@
  */
 
 echo '<br>header_gost ';
-echo '<a href='.site_url("Nalog/login").' id="login">Log in</a>';
-echo ' <a href='.site_url("Nalog/register").' id="register">Registracija</a>';
+echo '<a href='.site_url("Pretraga/index").' id="pretraga">Home</a> ';
+echo '<a href='.site_url("Nalog/login").' id="login">Log in</a> ';
+echo ' <a href='.site_url("Nalog/register").' id="register">Registracija</a> ';
 echo '<br><br>';
