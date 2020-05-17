@@ -14,12 +14,12 @@
         echo '<td><iframe width="700" height="400" src='.$koktel->video.'></iframe></td>';
     }
     echo '</tr></table>';
-    echo '<p style="color:red"><b>'.$poruka.'</b></p>';
+    if($registrovani !=null){
+        echo '<p style="color:red"><b>'.$poruka.'</b></p>';
+    }
 ?>
-<form method='post' action="<?= site_url("Korisnik/reportovanjeTudjegRecepta")?>" method='post';>
+<form method='post' action="<?= site_url("Korisnik/reportovanjeTudjegRecepta/{$koktel->idKoktela}/{$registrovani->idRegistrovanog}")?>" method='post';>
 <?php
-    echo '<input type="hidden" name="idKoktela" value="'.$koktel->idKoktela.'">';
-    echo '<input type="hidden" name="idRegistrovanog" value="'.$registrovani->idRegistrovanog.'">';
     foreach($razlozi as $razlog){
         echo '<input type="checkbox" name="r['.$razlog->opisRazloga.']"'."value={$razlog->idRazloga}".'>'.$razlog->opisRazloga;
         if($razlog->idRazloga==3) echo " Original: <input type='text' name='original'><br/>";

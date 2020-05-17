@@ -35,12 +35,14 @@ class Korisnik extends BaseController{
     
     public function mojiKokteli(){
         $koktelModel = new KoktelModel();
-        $korisnik = $this->session->get('korisnik');
-        $kokteli=$koktelModel->receptiKorisnika($session->get($korisnik->idKorisnika));
+        //$korisnik = $this->session->get('korisnik');
+        //$kokteli=$koktelModel->receptiKorisnika($session->get($korisnik->idKorisnika));
+        $kokteli=$koktelModel->receptiKorisnika(2);
         $this->prikaz('sablon/header_user','stranice/mojirecepti', ['kokteli'=>$kokteli]);
     }
     
-    public function brisanjeMogRecepta($idKoktela){
+    public function brisanjeMogRecepta(){
+        $idKoktela = $this->request->getPost('idKoktela');
         $koktelModel = new KoktelModel();
         $koktelModel->set("obrisan",1)->where('idKoktela',$idKoktela)->update();
         $this->mojiKokteli();
@@ -49,7 +51,7 @@ class Korisnik extends BaseController{
     public function test(){
         $poruka='';
         $registrovaniModel = new RegistrovaniModel();
-        $registrovani = $registrovaniModel->find(2);
+        $registrovani = $registrovaniModel->find(3);
         $koktelModel = new KoktelModel();
         $koktel = $koktelModel->find(2);
         $razlogModel = new RazlogModel();
@@ -57,7 +59,9 @@ class Korisnik extends BaseController{
         $this->prikaz('sablon/header_user', 'stranice/tudjirecept', ['koktel' => $koktel,'razlozi' => $razlozi, 'registrovani'=>$registrovani, 'poruka'=>$poruka]);
     }
     
-    public function reportovanjeTudjegRecepta($idKoktela, $idRegistrovanog){
+    public function reportovanjeTudjegRecepta(){
+            $idKoktela = $this->request->getPost('idKoktela');
+            $idRegistrovanog = $this->request->getPost('idRegistrovanog');
             $razlogModel = new RazlogModel();
             $prijavaModel = new PrijavaModel();
             $postoji_prijava = $prijavaModel->where('idRegistrovanog',$idRegistrovanog)->where('idKoktela',$idKoktela)->findall();

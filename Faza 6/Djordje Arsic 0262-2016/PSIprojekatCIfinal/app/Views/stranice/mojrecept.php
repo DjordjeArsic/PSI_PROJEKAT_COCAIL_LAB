@@ -29,9 +29,6 @@
     echo '</tr></table>';
 
 ?>
-<form action="<?= site_url("Korisnik/brisanjeMogRecepta")?> "method="POST");>
-    <?php
-    echo '<input type="hidden" name="idKoktela" value="'.$koktel->idKoktela.'">';
-    ?>
+<form action="<?= site_url("Korisnik/brisanjeMogRecepta/{$koktel->idKoktela}")?>");>
     <input value="Obrisi recept" type="submit">
 </form>
