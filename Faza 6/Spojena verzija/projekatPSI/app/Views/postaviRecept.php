@@ -1,7 +1,7 @@
 <?php if(isset($poruka)) echo "<font color='red'>$poruka</font><br>"; ?>
 
 <script>
-  document.getElementById("postaviRecept").innerHTML = "";
+  document.getElementById('postaviRecept').classList.add("active");
 </script>
 
 

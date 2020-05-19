@@ -12,7 +12,7 @@ use App\Models\RegistrovaniModel;
 
 class Korisnik extends BaseController { 
     public function index(){
-        return redirect()->to(site_url('Pretraga'));
+       return redirect()->to(site_url('Pretraga'));
     }
 
     public function postaviRecept($poruka = null, $naziv = "", $opis="") {   
@@ -102,14 +102,15 @@ class Korisnik extends BaseController {
         $this->prikaz('stranice/mojirecepti', ['kokteli'=>$kokteli]);
     }
     
-    public function brisanjeMogRecepta($idKoktela){
+    public function brisanjeMogRecepta(){
+        $idKoktela = $this->request->getPost('idKoktela');
         $koktelModel = new KoktelModel();
         $korisnikId = $koktelModel->find($idKoktela)->idKorisnika;
-        
         if($korisnikId==$this->session->get('korisnik')->idKorisnika){
             $koktelModel->set("obrisan",1)->where('idKoktela',$idKoktela)->update();
-            $this->mojiKokteli();
         }
+        
+        return redirect()->to(site_url('Korisnik/mojiKokteli'));
     }
     
 //    public function test(){
@@ -123,8 +124,13 @@ class Korisnik extends BaseController {
 //        $this->prikaz1('sablon/header_korisnik', 'stranice/tudjirecept', ['koktel' => $koktel,'razlozi' => $razlozi, 'registrovani'=>$registrovani, 'poruka'=>$poruka]);
 //    }
     
-    public function reportovanjeTudjegRecepta($idKoktela, $idRegistrovanog){
+    public function reportovanjeTudjegRecepta(){
+            $idKoktela = $this->request->getPost('idKoktela');
+            $idRegistrovanog = $this->session->get("korisnik")->idKorisnika;
+            
             $razlogModel = new RazlogModel();
+            $prijavaModel = new PrijavaModel();
+            $postoji_prijava = $prijavaModel->where('idRegistrovanog',$idRegistrovanog)->where('idKoktela',$idKoktela)->findall();
             $razlozi = $razlogModel->findall();
             $razloziprijave = array();
             $razlog_duplikat = 0;
@@ -137,38 +143,24 @@ class Korisnik extends BaseController {
                     $razloziprijave[]=$razlog->idRazloga;
                     if($razlog->idRazloga==3) $razlog_duplikat = 1;
                 }
+            }                                   
+            $razloziPrijaveModel = new RazloziPrijaveModel();
+            if($postoji_prijava==null){
+                $prijavaModel->save(['idKoktela' => $idKoktela, 'idRegistrovanog' => $idRegistrovanog, 'datum' => date('Y-m-d'), 'obrisanaPrijava'=>0]);
             }
-            $poruka_prijave = '';
-            if(empty($razloziprijave)){
-                $poruka_prijave = $poruka_prijave.'Morate uneti razlog prijave!<br/>';
-                $greska=1;
-            }
-            if(($duplikat==NULL)&&($razlog_duplikat == 1)){
-                $poruka_prijave = $poruka_prijave.'Morate uneti originalni recept ako tvrite da je ovaj recept duplikat!<br/>';
-                $greska=1; 
-            }
-            if($greska == 1) {
-                $registrovaniModel = new RegistrovaniModel();
-                $koktelModel = new KoktelModel();
-                $registrovani = $registrovaniModel->find($idRegistrovanog);
-                $koktel = $koktelModel->find($idKoktela);
-                $this->prikaz1('sablon/header_korisnik', 'stranice/tudjirecept', ['koktel' => $koktel,'razlozi' => $razlozi, 'registrovani'=>$registrovani, 'poruka'=>$poruka_prijave]);
-            }
-            else {
-                $prijavaModel = new PrijavaModel();
-                $razloziPrijaveModel = new RazloziPrijaveModel();
-                $prijavaModel->insert(['idKoktela' => $idKoktela, 'idRegistrovanog' => $idRegistrovanog, 'datum' => date('Y-m-d'), 'obrisanaPrijava'=>0]);
-                foreach($razloziprijave as $razlogprijave){
-                    if($razlogprijave == 3){
-                        $razloziPrijaveModel->insert(['idKoktela' => $idKoktela, 'idRegistrovanog' => $idRegistrovanog, 'idRazloga' => $razlogprijave, 'duplikat'=> $duplikat]);
+            foreach($razloziprijave as $razlogprijave){
+                $postoji_razlog = $razloziPrijaveModel->where('idRegistrovanog',$idRegistrovanog)->where('idKoktela',$idKoktela)->where('idRazloga',$razlogprijave)->findall();
+                if($postoji_razlog==null){
+                    if($razlogprijave==3){
+                        $razloziPrijaveModel->save(['idKoktela' => $idKoktela, 'idRegistrovanog' => $idRegistrovanog, 'idRazloga' => $razlogprijave, 'duplikat'=> $duplikat]);
                     }
                     else{
-                        $razloziPrijaveModel->insert(['idKoktela' => $idKoktela, 'idRegistrovanog' => $idRegistrovanog, 'idRazloga' => $razlogprijave]);
+                        $razloziPrijaveModel->save(['idKoktela' => $idKoktela, 'idRegistrovanog' => $idRegistrovanog, 'idRazloga' => $razlogprijave]);
                     }
                 }
-                echo view('sablon/header_korisnik');
-                echo view('sablon/footer');
             }
+            
+            return redirect()->to(site_url('Pretraga/koktel/'.$idKoktela));
     }
     
     public function mojKoktel($idKoktela){

@@ -4,8 +4,10 @@ use App\Models\SastojakModel;
 use App\Models\ObavezniModel;
 use App\Models\NeobavezniModel;
 use App\Models\KoktelModel;
+use App\Models\RazlogModel;
 
 class Pretraga extends BaseController {
+        
     public function index($poruka=null, $recepti=null) {
         $sastojakModel = new SastojakModel();
         $sastojci = $sastojakModel->dohvatiSastojke();
@@ -14,29 +16,33 @@ class Pretraga extends BaseController {
     
     public function pretragaSubmit() {  
         $sastojci = $this->request->getPost('sastojci');
+        
+        //var_dump($sastojci);
+        
         if($sastojci==null) {
             $poruka='Niste uneli nijedan sastojak!';
             return $this->index($poruka);
         }
         
         $obavezniModel = new ObavezniModel();
+        $koktelModel = new KoktelModel();
         $obavezni = $obavezniModel->orderBy('idKoktela')->findAll();
-        
-        
+               
         $kokteliZaIspis=[];
-        $formaNiz = [1,2];
         $sastojciKoktela = [];
         
         // ova petlja pravi matricu gde vrste odgovaraju idKoktela, a kolone idSastojka
         foreach($obavezni as $value) {
+            if ($koktelModel->find($value->idKoktela)->obrisan==1) continue;
+            
             if (!array_key_exists($value->idKoktela, $sastojciKoktela)) {
                 $sastojciKoktela[$value->idKoktela] = [];  
             }
             array_push($sastojciKoktela[$value->idKoktela], $value->idSastojka);
         }
         
+        
         // ova pretlja za svaki koktel provera da li su uneti svi obavezni sastojci
-        $koktelModel = new KoktelModel();
         foreach($sastojciKoktela as $koktelId => $nizSastojaka) {
             if (!array_diff($nizSastojaka, $sastojci)) {
                 array_push($kokteliZaIspis, $koktelModel->find($koktelId));
@@ -74,11 +80,15 @@ class Pretraga extends BaseController {
                                         'kolicina' => $sno->kolicina];
         }
         $koktel = $koktelModel->find($idKoktela);
+        $razlogModel = new RazlogModel();
+        $razlozi = $razlogModel->findAll();
+        
         return $this->prikaz("koktel", ['koktelInfo' =>
                                         (object)['koktel'=> $koktel,
                                                  'obavezniSastojci'=> $obavezniSastojci,
                                                  'neobavezniSastojci'=> $neobavezniSastojci
                                                 ],
-                                        'korisnik' => $this->session->get('korisnik')]);
+                                        'korisnik' => $this->session->get('korisnik'),
+                                        'razlozi' => $razlozi]);
     }
 }

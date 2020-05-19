@@ -1,5 +1,4 @@
-<?php
-    
+<?php 
     if ($koktelInfo->koktel == null) {
         echo "Izabrali ste nepostojeći koktel.";
         return;
@@ -45,20 +44,32 @@
     }
     
     // admin
-    if ($korisnik->isAdmin) {
-        echo "(ovde ide dugme za brisanje koktela)<br>";
-        echo "(ovde ide dugme za brisanje naloga)";
+    if ($korisnik->isAdmin) {       
+        echo '<form action="'.site_url("Admin/brisanjeRecepta/".$koktelInfo->koktel->idKoktela).'" method="post">';
+        echo '<input value="Ukloni recept" type="submit"></form>';
+
+        echo '<form action="'.site_url("Admin/brisanjeKorisnika/".$koktelInfo->koktel->idKorisnika).'" method="post">';
+        echo '<input value="Ukloni korisnika" type="submit"></form>';
     }
     else {   
         // korisnik
         if ($korisnik->idKorisnika==$koktelInfo->koktel->idKorisnika) {
             //echo "(ovde ide dugme za brisanje sopstvenog koktela)";
-            echo "<form action='".site_url("Korisnik/brisanjeMogRecepta/{$koktelInfo->koktel->idKoktela}")."'>";
+            echo "<form action='".site_url("Korisnik/brisanjeMogRecepta")."' method ='POST'>";
+            echo '<input type="hidden" name="idKoktela" value="'.$koktelInfo->koktel->idKoktela.'">';
             echo "<input value='Obrisi recept' type='submit'>";
             echo "</form>";
         } 
         else {
-            echo "(ovde ide dugme za reportovanje tudjeg koktela)";
+            echo '<form method="post" action="'.site_url("Korisnik/reportovanjeTudjegRecepta").'" method="post";>';
+            echo '<input type="hidden" name="idKoktela" value="'.$koktelInfo->koktel->idKoktela.'">';
+            foreach($razlozi as $razlog){
+                echo '<input type="checkbox" name="r['.$razlog->opisRazloga.']"'."value={$razlog->idRazloga}".'>'.$razlog->opisRazloga;
+                if($razlog->idRazloga==3) echo " Original: <input type='text' name='original'><br/>";
+                else echo "<br/>";
+            }
+            echo '<input value="Reportuj recept" type="submit">';
+            echo '</form>';
         }   
     }
 ?>
