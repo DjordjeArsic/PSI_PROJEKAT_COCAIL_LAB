@@ -48,6 +48,7 @@ class Admin extends Korisnik {
     public function brisanjePrijave($idKoktela, $idRegistrovanog) {
         $prijavaModel = new PrijavaModel();
         $prijavaModel->set("obrisanaPrijava", 1)->where('idKoktela', $idKoktela)->where('idRegistrovanog', $idRegistrovanog)->update(); 
+        return redirect()->to(site_url('Admin/reportovaniRecepti')); 
     }
     
     public function reportovaniRecepti()
