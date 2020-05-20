@@ -49,14 +49,13 @@ class Korisnik extends BaseController{
     }
     
     public function test(){
-        $poruka='';
         $registrovaniModel = new RegistrovaniModel();
         $registrovani = $registrovaniModel->find(3);
         $koktelModel = new KoktelModel();
         $koktel = $koktelModel->find(2);
         $razlogModel = new RazlogModel();
         $razlozi = $razlogModel->findall();
-        $this->prikaz('sablon/header_user', 'stranice/tudjirecept', ['koktel' => $koktel,'razlozi' => $razlozi, 'registrovani'=>$registrovani, 'poruka'=>$poruka]);
+        $this->prikaz('sablon/header_user', 'stranice/tudjirecept', ['koktel' => $koktel,'razlozi' => $razlozi, 'registrovani'=>$registrovani]);
     }
     
     public function reportovanjeTudjegRecepta(){
@@ -78,23 +77,6 @@ class Korisnik extends BaseController{
                     if($razlog->idRazloga==3) $razlog_duplikat =1;
                 }
             }
-            $poruka_prijave='';
-            if(empty($razloziprijave)){
-                $poruka_prijave= $poruka_prijave.'Morate uneti razlog prijave!<br/>';
-                $greska=1;
-            }
-            if(($duplikat==NULL)&&($razlog_duplikat ==1)){
-                $poruka_prijave= $poruka_prijave.'Morate uneti originalni recept ako tvrite da je ovaj recept duplikat!<br/>';
-                $greska=1; 
-            }
-            if($greska==1){
-                $registrovaniModel = new RegistrovaniModel();
-                $koktelModel = new KoktelModel();
-                $registrovani = $registrovaniModel->find($idRegistrovanog);
-                $koktel = $koktelModel->find($idKoktela);
-                $this->prikaz('sablon/header_user', 'stranice/tudjirecept', ['koktel' => $koktel,'razlozi' => $razlozi, 'registrovani'=>$registrovani, 'poruka'=>$poruka_prijave]);
-            }
-            else{
                 $razloziPrijaveModel = new RazloziPrijaveModel();
                 if($postoji_prijava==null){
                     $prijavaModel->save(['idKoktela' => $idKoktela, 'idRegistrovanog' => $idRegistrovanog, 'datum' => date('Y-m-d'), 'obrisanaPrijava'=>0]);
@@ -111,8 +93,7 @@ class Korisnik extends BaseController{
                     }
                 }
                 echo view('sablon/header_user');
-                echo view('sablon/footer');
-            }
+                echo view('sablon/footer');      
     }
     
     public function mojKoktel($idKoktela){
