@@ -53,26 +53,31 @@ class Korisnik extends BaseController {
         if($flagObavezni==0) {
             $poruka.="Niste uneli nijedan obavezan sastojak.";
         }
-                
+        
+        $slika = $this->request->getFile('fotografija');
+        $video = $this->request->getFile('video');
+        
         if($poruka!="") {
             return $this->postaviRecept($poruka, $naziv, $opis);
         }
-        
-        
+               
         // nema gresaka => napravi novi koktel    
         $idKorisnika = $this->session->get('korisnik')->idKorisnika;    
         $koktelData = [
             'idKorisnika' => $idKorisnika,
             'naziv' => $naziv,
             'opis' => $opis,
-            'slika' => null,
-            'video' => null,
+            'slika' => $slika->getName(),
+            'video' => $video->getName(),
             'obrisan' => 0,
             'datum' => "".date("Y-m-d").""
         ];
 
         $koktelModel = new KoktelModel();
         $idKoktela = $koktelModel->napraviNoviKoktel($koktelData);
+        
+        $slika->move(ROOTPATH.'/public/uploads/'.$idKoktela.'/');
+        $video->move(ROOTPATH.'/public/uploads/'.$idKoktela.'/');
         
         $obavezniModel = new ObavezniModel();
         $neobavezniModel = new NeobavezniModel();

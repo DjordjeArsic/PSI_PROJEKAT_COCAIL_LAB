@@ -1,9 +1,8 @@
 <?php if(isset($poruka)) echo "<font color='red'>$poruka</font><br>"; ?>
 
 <script>
-  document.getElementById('postaviRecept').classList.add("active");
+  document.getElementById("postaviRecept").parentElement.classList.add("active");
 </script>
-
 
 <form name="postavljanjeforma" action="<?= site_url("Korisnik/receptSubmit") ?>" method="post" enctype="multipart/form-data">
 <table>

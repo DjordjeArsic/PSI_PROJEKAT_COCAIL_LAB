@@ -1,3 +1,7 @@
+<script>
+  document.getElementById("reportovaniRecepti").parentElement.classList.add("active");
+</script>
+
 <?php
 
 echo "<br><br>";

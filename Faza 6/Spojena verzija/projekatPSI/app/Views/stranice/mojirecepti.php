@@ -1,5 +1,5 @@
 <script>
-  document.getElementById('mojiRecepti').classList.add("active");
+  document.getElementById("mojiRecepti").parentElement.classList.add("active");
 </script>
 <?php
 
@@ -9,7 +9,8 @@
 
     foreach($kokteli as $koktel){
         if($koktel->slika!=NULL){
-            echo '<img  width="200" src="data:image/jpeg;base64,'.base64_encode( $koktel->slika ).'"/>';
+            //echo '<img  width="200" src="data:image/jpeg;base64,'.base64_encode( $koktel->slika ).'"/>';
+            echo '<img  width="200" src="'.base_url("/uploads/".$koktel->idKoktela."/".$koktel->slika).'"/>';
         }
         else{
            echo '<img  width="200" src="'.base_url('images/glass.jpg').'"/>'; 

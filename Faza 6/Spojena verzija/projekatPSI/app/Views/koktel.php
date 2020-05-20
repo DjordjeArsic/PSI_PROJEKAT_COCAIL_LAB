@@ -27,14 +27,20 @@
     echo '<br/>';
     echo '<table><tr><td>';
     if($koktelInfo->koktel->slika!=NULL){
-        echo '<img  width="400" src="data:image/jpeg;base64,'.base64_encode( $koktelInfo->koktel->slika ).'"/>';
+        //echo '<img  width="400" src="data:image/jpeg;base64,'.base64_encode( $koktelInfo->koktel->slika ).'"/>';
+        echo '<img  width="400" src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->slika).'"/>';
     }
     else{
         echo '<img  width="400" src="'.base_url('images/glass.jpg').'"/>';
     }
     echo '</td>';
     if($koktelInfo->koktel->video!=NULL){
-        echo '<td><iframe width="700" height="400" src='.$koktelInfo->koktel->video.'></iframe></td>';
+        echo '<video width="320" height="240" controls>
+                <source src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->video).'" type="video/mp4">
+                <source src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->video).'" type="video/ogg">
+                <source src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->video).'" type="video/webm">
+                Vaš pretraživač ne podržava video klipove. Ažurirajte verziju Vašeg pretraživača.
+              </video>';
     }
     echo '</tr></table>';
    

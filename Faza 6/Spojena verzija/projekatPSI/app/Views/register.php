@@ -1,7 +1,7 @@
 <?php if(isset($poruka)) echo "<font color='red'>$poruka</font><br>"; ?>
 
 <script>
-  document.getElementById('register').classList.add("active");
+  document.getElementById("register").parentElement.classList.add("active");
 </script>
 
 

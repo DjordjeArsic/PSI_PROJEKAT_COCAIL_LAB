@@ -68,12 +68,42 @@ class Nalog extends BaseController {
         $data['username'] = $this->request->getPost('korime');
         $data['password'] = $this->request->getPost('lozinka');
         $data['email'] = $this->request->getPost('email');
-                
-        //todo: proveri e-mail, username, sifru, da li se sifre slazu
-        //da li vec postoji korisnik sa tim imenom
-        //da li vec postoji korisnik sa tim e-mailom
-        
+           
+        $poruka = "";
         $korisnikModel=new KorisnikModel();
+        
+        if(! preg_match('/^[a-z0-9_-]{3,16}$/i', $data['username'])) {
+            $poruka .= "Korisničko ime nije u dozvoljenom formatu.<br>";
+        }
+        else {
+            if ($korisnikModel->dohvatiKorisnikaPoImenu($data['username'])) {
+                $poruka .= "Već postoji registrovani korisnik sa tim korisničkim imenom.<br>";
+            }
+        }
+
+        if(! filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+            $poruka .= "E-mail nije u dozvoljenom formatu.<br>";
+        }
+        else {    
+            if($korisnikModel->where('email', $data['email'])->first()) {
+                $poruka .= "Već postoji registrovani korisnik sa tom e-mail adresom.<br>";
+            }
+        }
+        
+        if(! preg_match('/^[a-z0-9_-]{3,16}$/', $data['password'])) {
+            $poruka .= "Lozinka nije u dozvoljenom formatu.<br>";
+        }
+        
+        if ($data['password'] !== $this->request->getPost('ponovljenaLozinka')) {
+            $poruka .= "Lozinka se ne slaže sa potvrdom lozinke.<br>";
+        }       
+        
+        if($poruka!="") {
+            return $this->register($poruka);
+        }
+        
+        return $this->register("Nema greske.");
+        
         $idKorisnika = $korisnikModel->dodajNovogKorisnika($data);        
         $data2['idRegistrovanog'] = $idKorisnika;
         $data2['obrisanNalog'] = 0;

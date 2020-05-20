@@ -1,8 +1,8 @@
 <script>
-  document.getElementById('pretraga').classList.add("active");
+  document.getElementById("pretraga").parentElement.classList.add("active");
 </script>
 
-<div class="container text-center align-items-center" style="height: 400px;">
+<div class="container text-center align-items-center">
     <h2>Unesite sastojke koje imate kod sebe</h2>
 
     <!--Make sure the form has the autocomplete function switched off:-->
@@ -14,7 +14,7 @@
             echo "<font color='red'>".$poruka."</font><br>";
         }
         ?>
-      <div class="autocomplete" style="width:300px;">
+      <div class="autocomplete">
         <input id="myInput" type="text" name="sastojak" placeholder="">
       </div>
       <div id="unos"></div>
@@ -70,7 +70,7 @@ function autocomplete(inp, arr) {
               if(button) {           
                   inp.value="";
                   
-                  button.setAttribute("style", "border: 3px solid red;");
+                  button.setAttribute("style", "border: 2px solid red;");
                   setTimeout(function() {
                       button.removeAttribute("style");
                   }, 700);
@@ -80,7 +80,7 @@ function autocomplete(inp, arr) {
               /* ispisi uneti sastojak i izbrisi input */
               var noviSastojak = document.createElement("button");
               noviSastojak.setAttribute("id", "id"+this.getElementsByTagName("input")[0].id);
-              noviSastojak.setAttribute("class", "btn btn-outline-primary btn-sm mr-2");
+              noviSastojak.setAttribute("class", "btn btn-outline-primary btn-sm mr-2 mt-2");
               //noviSastojak.setAttribute("onClick", ukloniSastojak());
               noviSastojak.addEventListener("click", function() {
                 document.getElementsByClassName("class"+this.id)[0].remove();
