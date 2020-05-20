@@ -1,5 +1,4 @@
-<?php
-    
+<?php 
     if ($koktelInfo->koktel == null) {
         echo "Izabrali ste nepostojeći koktel.";
         return;
@@ -45,9 +44,12 @@
     }
     
     // admin
-    if ($korisnik->isAdmin) {
-        echo "(ovde ide dugme za brisanje koktela)<br>";
-        echo "(ovde ide dugme za brisanje naloga)";
+    if ($korisnik->isAdmin) {       
+        echo '<form action="'.site_url("Admin/brisanjeRecepta/".$koktelInfo->koktel->idKoktela).'" method="post">';
+        echo '<input value="Ukloni recept" type="submit"></form>';
+
+        echo '<form action="'.site_url("Admin/brisanjeKorisnika/".$koktelInfo->koktel->idKorisnika).'" method="post">';
+        echo '<input value="Ukloni korisnika" type="submit"></form>';
     }
     else {   
         // korisnik
@@ -59,16 +61,63 @@
             echo "</form>";
         } 
         else {
-    echo '<form method="post" action="'.site_url("Korisnik/reportovanjeTudjegRecepta").'" method="post";>';
-    echo '<input type="hidden" name="idKoktela" value="'.$koktelInfo->koktel->idKoktela.'">';
-    //echo '<input type="hidden" name="idRegistrovanog" value="'.$registrovani->idRegistrovanog.'">';
-   // foreach($razlozi as $razlog){
-       // echo '<input type="checkbox" name="r['.$razlog->opisRazloga.']"'."value={$razlog->idRazloga}".'>'.$razlog->opisRazloga;
-       // if($razlog->idRazloga==3) echo " Original: <input type='text' name='original'><br/>";
-       // else echo "<br/>";
-   // }
-    echo '<input value="Reportuj recept" type="submit">';
-    echo '</form>';
+            echo '<form method="post" action="'.site_url("Korisnik/reportovanjeTudjegRecepta").'" method="post" onsubmit="return validanUnos()">';
+            echo '<span id="poruka"></span>';
+            echo '<input type="hidden" name="idKoktela" value="'.$koktelInfo->koktel->idKoktela.'">';
+            $ind = 1;
+            foreach($razlozi as $razlog){
+                echo '<input type="checkbox" id="'.'razlog'.$ind.'" onclick="prikaziPoljeZaOriginal()" name="r['.$razlog->opisRazloga.']"'."value={$razlog->idRazloga}".'>'.$razlog->opisRazloga;
+                if($razlog->idRazloga==3) echo "<span id='unosOriginala'></span><br/>";
+                else echo "<br/>";
+                $ind++;
+            }
+            echo '<input value="Reportuj recept" type="submit">';
+            echo '</form>';
         }   
     }
 ?>
+<script type="text/javascript">
+    function validanUnos($imeForme){
+        var datRazlog = false;
+        var razlogDuplikat = false;
+        var datOriginal = false;
+        var original;
+        var poruka;
+        var ind = 1;
+        while(document.getElementById("razlog"+ind)!=null){
+            if (document.getElementById("razlog"+ind).checked == true){
+                datRazlog = true;
+                if(ind==3){
+                    razlogDuplikat=true;
+                    original = document.getElementById("original").value;
+                    if((original!="")&&(original!=null)){
+                        datOriginal= true;
+                    }
+                }
+            }
+            ind++;
+        }
+        if( datRazlog == false){
+            poruka = document.getElementById("poruka");
+            poruka.innerHTML="<b><font color='red'>Morate uneti razlog prijave recepta!</font></b><br/>"
+            return false;
+        }
+        if(razlogDuplikat==true && datOriginal==false){
+            poruka = document.getElementById("poruka");
+            poruka.innerHTML="<b><font color='red'>Morate navesti originalni recept ako tvrdite da je ovaj recept duplikat!</font></b><br/>"
+            return false;
+        }
+        return true;
+    }
+    function prikaziPoljeZaOriginal(){
+        if(document.getElementById("razlog3").checked==true){
+           var vidljiv = document.getElementById('unosOriginala');
+           vidljiv.innerHTML=" Original: <input  type='text' name='original' id='original'>";
+        }
+        else{
+           var vidljiv = document.getElementById('unosOriginala');
+           vidljiv.innerHTML="";
+        }
+        
+    }
+</script>
