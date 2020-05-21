@@ -1,5 +1,14 @@
 * { box-sizing: border-box; }
 
+.parentAll {
+  position: relative;
+}
+.childMain {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 body  {
   background-color: #fff;
 }

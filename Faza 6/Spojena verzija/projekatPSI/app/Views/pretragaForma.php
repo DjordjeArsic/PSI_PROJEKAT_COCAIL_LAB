@@ -19,16 +19,45 @@
       </div>
       <div id="unos"></div>
       <div id="unetiSastojci" class="mt-2"></div>
-      <input type="submit" class="mt-3 btn btn-primary" value="Pretraga">
-      <?php
+      <input type="submit" class="mt-3 btn btn-primary" value="Pretraga">     
+    </form>   
+    <?php
         // ispis rezultata
         if($recepti!=null) { 
             foreach($recepti as $rezultat) {
-                echo "<div><a href='".site_url('Pretraga/koktel/'.$rezultat->idKoktela)."'>".$rezultat->naziv."</a></div>";
+                
+                echo '<div class="row bg-light mt-4">';
+                echo '<div class="col-sm-12 col-md-6">';
+                echo '<img src="restorani/r2/jela/s1.jpg" class="img-fluid" alt="Fotografija koktela">';
+                echo '</div>';
+                  
+                echo '<div class="col-sm-12 col-md-6 text-md-left">';
+                echo '<h2 class="mt-3">'
+                .'<a href="'.site_url('Pretraga/koktel/'.$rezultat->koktel->idKoktela).'">'.$rezultat->koktel->naziv.'</a></h2>';
+                echo '<p>Obavezni sastojci: ';
+                
+                $obavezni = $rezultat->obavezniSastojci;
+                foreach($obavezni as $key=>$sastojak) {
+                    if($key!=0) echo ', ';
+                    echo $sastojak->naziv.' '.$sastojak->kolicina;
+                }               
+                
+                
+                
+                $neobavezni = $rezultat->neobavezniSastojci;
+                if($neobavezni!=null) {
+                    echo '</p><p>Neobavezni sastojci: ';
+                    foreach($neobavezni as $key=>$sastojak) {
+                        if($key!=0) echo ', ';
+                        echo $sastojak->naziv.' '.$sastojak->kolicina;
+                    } 
+                }
+                
+                echo '</p></div></div>';
             }
         }
-      ?>     
-    </form>   
+       
+      ?>
 </div>
 
 <script>
@@ -181,29 +210,3 @@ var sastojci = <?php echo json_encode($sastojciZaPretragu); ?>;
 autocomplete(document.getElementById("myInput"), sastojci);
 
 </script>
-
-
-<!--<form name="pretragaRecepata" action="<?= site_url("Pretraga/pretragaSubmit") ?>" method="post">   
-    <?php   
-        // ako postoji neka poruka tj. greska ispisujemo je ovde
-        if($poruka!=null) {
-            //var_dump($poruka);
-            echo "<font color='red'>".$poruka."</font><br>";
-        }
-        // dohvati i ispisi sastojke iz baze
-        foreach($sastojci as $value) {
-            echo "<input type='checkbox' name='sastojci[]' value='$value->idSastojka'>".$value->naziv;
-        }
-    ?>
-    <br><br>
-    <input type="submit" value="Pretraga">
-    <?php
-        // ispis rezultata
-        if($recepti!=null) { 
-            foreach($recepti as $rezultat) {
-                echo "<div><a href='".site_url('Pretraga/koktel/'.$rezultat->idKoktela)."'>".$rezultat->naziv."</a></div>";
-            }
-        }
-    ?>
-</form>
--->

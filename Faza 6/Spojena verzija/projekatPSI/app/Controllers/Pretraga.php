@@ -14,6 +14,34 @@ class Pretraga extends BaseController {
         return $this->prikaz("pretragaForma", ['sastojci'=>$sastojci, 'recepti'=>$recepti, 'poruka'=>$poruka]);
     }
     
+    private function dohvKoktelsaSastojcima($idKoktela) {
+        $koktelModel = new KoktelModel();
+        $sadrziObaveznoModel = new ObavezniModel();
+        $sadrziNeobaveznoModel = new NeobavezniModel();
+        $sastojakModel= new SastojakModel();
+        
+        $sadrziObavezno = $sadrziObaveznoModel->where('idKoktela',$idKoktela)->findall();
+        $sadrziNeobavezno = $sadrziNeobaveznoModel->where('idKoktela',$idKoktela)->findall();
+        $obavezniSastojci = []; // sadrzi naziv sastojka i kolicinu
+        $neobavezniSastojci = []; // sadrzi naziv sastojka i kolicinu
+                 
+        foreach($sadrziObavezno as $so){
+            $sastojak = $sastojakModel->find($so->idSastojka);
+            $obavezniSastojci[]= (object)['naziv' => $sastojak->naziv,
+                                          'kolicina' => $so->kolicina];
+        }
+        foreach($sadrziNeobavezno as $sno){
+            $sastojak = $sastojakModel->find($so->idSastojka);
+            $neobavezniSastojci[]= (object)['naziv' => $sastojak->naziv,
+                                        'kolicina' => $sno->kolicina];
+        }
+        $koktel = $koktelModel->find($idKoktela);
+        
+        return (object)['koktel'=> $koktel,
+                        'obavezniSastojci'=> $obavezniSastojci,
+                        'neobavezniSastojci'=> $neobavezniSastojci];
+    }
+    
     public function pretragaSubmit() {  
         $sastojci = $this->request->getPost('sastojci');
         
@@ -45,7 +73,7 @@ class Pretraga extends BaseController {
         // ova pretlja za svaki koktel provera da li su uneti svi obavezni sastojci
         foreach($sastojciKoktela as $koktelId => $nizSastojaka) {
             if (!array_diff($nizSastojaka, $sastojci)) {
-                array_push($kokteliZaIspis, $koktelModel->find($koktelId));
+                array_push($kokteliZaIspis, $this->dohvKoktelsaSastojcima($koktelId));
             }
         }
         
@@ -56,6 +84,7 @@ class Pretraga extends BaseController {
         
         return $this->index(null, $kokteliZaIspis);
     }
+    
     
     public function koktel($idKoktela) {
         
@@ -75,7 +104,7 @@ class Pretraga extends BaseController {
                                           'kolicina' => $so->kolicina];
         }
         foreach($sadrziNeobavezno as $sno){
-            $sastojak = $sastojakModel->find($so->idSastojka);
+            $sastojak = $sastojakModel->find($sno->idSastojka);
             $neobavezniSastojci[]= (object)['naziv' => $sastojak->naziv,
                                         'kolicina' => $sno->kolicina];
         }

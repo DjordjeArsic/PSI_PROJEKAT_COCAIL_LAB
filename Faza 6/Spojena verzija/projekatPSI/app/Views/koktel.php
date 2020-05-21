@@ -46,6 +46,7 @@
    
     // gost
     if ($korisnik == null) {
+        echo '</div>';
         return;
     }
     
@@ -78,4 +79,5 @@
             echo '</form>';
         }   
     }
+    echo '</div>';
 ?>

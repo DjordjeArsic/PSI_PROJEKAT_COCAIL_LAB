@@ -1,16 +1,3 @@
-<?php
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-//echo '<br>header_gost ';
-//echo '<a href='.site_url("Pretraga/index").' id="pretraga">Home</a> ';
-//echo '<a href='.site_url("Nalog/login").' id="login">Log in</a> ';
-//echo ' <a href='.site_url("Nalog/register").' id="register">Registracija</a> ';
-//echo '<br><br>';
-?>
 <!DOCTYPE html>
 <html lang="sr-RS">
 <head>
@@ -18,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <!-- linkovi za bootstrap 4 -->
+  <!-- linkovi za bootstrap 4, stilove, fontove i ikonice -->
   
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,300,400,700,900" rel="stylesheet">
   <link rel="stylesheet" href="http://localhost:8080/fonts/icomoon/style.css">
@@ -29,14 +16,16 @@
   <link rel="stylesheet" href="http://localhost:8080/css/style.css">
   <link rel="stylesheet" href="http://localhost:8080/css/nasCSS.css">
   
-  <link rel="stylesheet" type="text/css" href="http://localhost:8080/css/style2.css">
   <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-  
   <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+  
+  <!-- ukljucuje jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 
 <body>
+<div style="min-height: 100vh;">
 <!-- pocetak header-a -->
     <header>
       <nav class=" px-4 navbar navbar-expand-lg navbar-dark bg-primary mb-4">

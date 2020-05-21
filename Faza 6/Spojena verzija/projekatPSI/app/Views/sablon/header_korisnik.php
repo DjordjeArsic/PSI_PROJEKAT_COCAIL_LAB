@@ -14,13 +14,15 @@
   <link rel="stylesheet" href="http://localhost:8080/css/bootstrap-datetimepicker.css">
   <link rel="stylesheet" href="http://localhost:8080/css/style.css">
   <link rel="stylesheet" href="http://localhost:8080/css/nasCSS.css">
-  <link rel="stylesheet" type="text/css" href="http://localhost:8080/css/style2.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
   
   <script src="https://kit.fontawesome.com/a81368914c.js"></script>
 </head>
 <body>
-<!-- pocetak header-a -->
+<div style="min-height: 100vh;">
+    <!-- pocetak header-a -->
     <header>
       <nav class=" px-4 navbar navbar-expand-lg navbar-dark bg-primary mb-4">
           <?php echo "<a class='navbar-brand' href='".site_url("Pretraga/index")."'>COCKTAIL LAB</a>"; ?>
