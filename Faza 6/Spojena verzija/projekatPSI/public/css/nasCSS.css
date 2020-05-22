@@ -1,29 +1,20 @@
 * { box-sizing: border-box; }
 
-.parentAll {
-  position: relative;
-}
-.childMain {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
 body  {
-  background-color: #fff;
+  background-color: #fefefe;
+  font-family: 'Poppins', sans-serif;
 }
 
 body a {
-  font: 15px Tahoma;
+  font-size: 15px;
+  font-family: Tahoma, sans-serif;
   font-weight: bold;
+  text-align: right;
 }
+
 footer {
     font: 14px Tahoma;
     font-weight: bold;
-}
-h2 {
-    font: 24px Tahoma;
-    font-weight: 500;
 }
 
 .autocomplete {
@@ -31,20 +22,31 @@ h2 {
   position: relative;
   display: inline-block;
 }
+
 input {
   border: 1px solid transparent;
   background-color: #f1f1f1;
   padding: 10px;
   font-size: 16px;
 }
+
 input[type=text] {
-  background-color: #f1f1f1;
+  border-radius: 10px;
+  background-color: #efefef;
+  color: #3c3c3c;
   width: 100%;
 }
+
+input[type=text]:focus {
+    border-radius: 0;
+}
+
 input[type=submit] {
   background-color: DodgerBlue;
   color: #fff;
+  border-radius: 10px;
 }
+
 .autocomplete-items {
   position: absolute;
   border: 1px solid #d4d4d4;
@@ -56,18 +58,46 @@ input[type=submit] {
   left: 0;
   right: 0;
 }
+
 .autocomplete-items div {
   padding: 10px;
   cursor: pointer;
   background-color: #fff;
   border-bottom: 1px solid #d4d4d4;
+  font-family: "Poppins", sans-serif;
 }
+
+.autocomplete-items div strong {
+  font-family: "Poppins", sans-serif;
+  color: #3c3c3c;
+}
+
 .autocomplete-items div:hover {
   /*when hovering an item:*/
   background-color: #e9e9e9;
 }
+
 .autocomplete-active {
   /*when navigating through the items using the arrow keys:*/
   background-color: DodgerBlue !important;
   color: #ffffff;
+}
+
+.fotografija-pocetna {
+    height: 150px;
+}
+
+.logo-fotografija {
+    width: 125px;
+    height: 65px;
+}
+
+.border-radius {
+    border-radius: 10px;
+}
+
+.fotografija-koktela {
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%)
 }

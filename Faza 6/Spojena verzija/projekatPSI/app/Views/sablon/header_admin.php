@@ -20,11 +20,11 @@
     <script src="https://kit.fontawesome.com/a81368914c.js"></script>
 </head>
 <body>
-<div style="min-height: 100vh;" class="parentAll">
+<div style="min-height: 100vh;">
     <!-- pocetak header-a -->
     <header>
       <nav class=" px-4 navbar navbar-expand-lg navbar-dark bg-primary mb-4">
-          <?php echo "<a class='navbar-brand' href='".site_url("Pretraga/index")."'>COCKTAIL LAB</a>"; ?>
+          <?php echo "<a class='navbar-brand' href='".site_url("Pretraga/index")."'><img src='http://localhost:8080/img/logo.png' alt='Logo' class='logo-fotografija'></a>"; ?>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown4" aria-controls="navbarNavDropdown4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

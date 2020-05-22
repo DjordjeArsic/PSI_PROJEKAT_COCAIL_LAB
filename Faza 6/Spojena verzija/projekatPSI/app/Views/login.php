@@ -1,14 +1,6 @@
 <script>
   document.getElementById("login").parentElement.classList.add("active");
-  // Create new link element
-const link = document.createElement('link');
-link.setAttribute('rel', 'stylesheet');
-link.setAttribute('href', 'http://localhost:8080/css/style2.css');
-
-// Append to the `head` element
-document.head.appendChild(link);
 </script>
-
 
 <main>
     <img class="wave" src="http://localhost:8080/img/wave.png" alt="wave">

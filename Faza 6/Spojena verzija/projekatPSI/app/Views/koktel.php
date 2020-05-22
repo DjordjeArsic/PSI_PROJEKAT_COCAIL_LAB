@@ -35,7 +35,7 @@
     }
     echo '</td>';
     if($koktelInfo->koktel->video!=NULL){
-        echo '<video width="320" height="240" controls>
+        echo '<video controls width="320" height="240">
                 <source src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->video).'" type="video/mp4">
                 <source src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->video).'" type="video/ogg">
                 <source src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->video).'" type="video/webm">

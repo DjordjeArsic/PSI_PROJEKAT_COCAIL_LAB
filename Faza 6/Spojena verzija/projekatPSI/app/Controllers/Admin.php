@@ -7,13 +7,18 @@ use App\Models\RazloziPrijaveModel;
 
 class Admin extends Korisnik {   
     
-    protected function prikazi($header, $page, $data){
-        echo view("$header");
-        echo view("$page", $data);
-        echo view("sablon/footer");
+    private function provera() {
+        if (!$this->session->get('korisnik')) {
+            return redirect()->to(site_url('Pretraga'));
+        }
+        if (!$this->session->get('korisnik')->isAdmin) {
+            return redirect()->to(site_url('Pretraga'));
+        }
     }
     
     public function brisanjeRecepta($idKoktela){
+        provera();
+        
         //Obrisi koktel
         $koktelModel = new KoktelModel();
         $koktelModel->set("obrisan",1)->where('idKoktela',$idKoktela)->update();
@@ -26,6 +31,8 @@ class Admin extends Korisnik {
     }
     
     public function brisanjeKorisnika($idRegistrovanog){ 
+        provera();
+        
         //Admin ne sme da se obrise
         if($idRegistrovanog == 1){ return redirect()->to(site_url('Admin/reportovaniRecepti')); }
         
@@ -45,13 +52,16 @@ class Admin extends Korisnik {
     }
     
     public function brisanjePrijave($idKoktela, $idRegistrovanog) {
+        provera();
+        
         $prijavaModel = new PrijavaModel();
         $prijavaModel->set("obrisanaPrijava", 1)->where('idKoktela', $idKoktela)->where('idRegistrovanog', $idRegistrovanog)->update(); 
         return redirect()->to(site_url('Admin/reportovaniRecepti')); 
     }
     
-    public function reportovaniRecepti()
-    {
+    public function reportovaniRecepti() {
+        provera();
+        
         //Dohvati sve prijave
         $prijavaModel = new PrijavaModel();
         $prijave = $prijavaModel->findAll();

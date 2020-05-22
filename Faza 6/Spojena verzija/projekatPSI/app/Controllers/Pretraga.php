@@ -9,9 +9,10 @@ use App\Models\RazlogModel;
 class Pretraga extends BaseController {
         
     public function index($poruka=null, $recepti=null) {
+        $sastojciIzSesije = $this->session->get('sastojci');
         $sastojakModel = new SastojakModel();
         $sastojci = $sastojakModel->dohvatiSastojke();
-        return $this->prikaz("pretragaForma", ['sastojci'=>$sastojci, 'recepti'=>$recepti, 'poruka'=>$poruka]);
+        return $this->prikaz("pretragaForma", ['sastojci'=>$sastojci, 'recepti'=>$recepti, 'poruka'=>$poruka, 'sastojciIzSesije' => $sastojciIzSesije]);
     }
     
     private function dohvKoktelsaSastojcima($idKoktela) {
@@ -31,7 +32,7 @@ class Pretraga extends BaseController {
                                           'kolicina' => $so->kolicina];
         }
         foreach($sadrziNeobavezno as $sno){
-            $sastojak = $sastojakModel->find($so->idSastojka);
+            $sastojak = $sastojakModel->find($sno->idSastojka);
             $neobavezniSastojci[]= (object)['naziv' => $sastojak->naziv,
                                         'kolicina' => $sno->kolicina];
         }
@@ -43,12 +44,12 @@ class Pretraga extends BaseController {
     }
     
     public function pretragaSubmit() {  
-        $sastojci = $this->request->getPost('sastojci');
-        
+        $sastojci = $this->request->getPost('sastojci');   
+        $this->session->set('sastojci', $sastojci);
         //var_dump($sastojci);
         
-        if($sastojci==null) {
-            $poruka='Niste uneli nijedan sastojak!';
+        if($sastojci == NULL) {
+            $poruka = 'Niste uneli nijedan sastojak!';
             return $this->index($poruka);
         }
         
@@ -56,7 +57,7 @@ class Pretraga extends BaseController {
         $koktelModel = new KoktelModel();
         $obavezni = $obavezniModel->orderBy('idKoktela')->findAll();
                
-        $kokteliZaIspis=[];
+        $kokteliZaIspis = [];
         $sastojciKoktela = [];
         
         // ova petlja pravi matricu gde vrste odgovaraju idKoktela, a kolone idSastojka

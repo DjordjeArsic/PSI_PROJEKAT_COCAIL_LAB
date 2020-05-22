@@ -1,44 +1,6 @@
-<!--<script>
-  document.getElementById("register").parentElement.classList.add("active");
-</script>
-
-
-<form name="registrationform" action="<?= site_url("Nalog/registerSubmit") ?>" method="post">
-<table>
-    <tr>
-        <td>Korisnicko ime:*</td>
-        <td><input type="text" name="korime" value=""/></td>
-    </tr>
-    <tr>
-        <td>Email:*</td>
-        <td><input type="text" name="email" value=""/></td>
-    </tr>
-    <tr>
-        <td>Lozinka:*</td>
-        <td><input type="password" name="lozinka"/></td>
-    </tr>
-    <tr>
-        <td>Ponovljena lozinka:*</td>
-        <td><input type="password" name="ponovljenaLozinka"/></td>
-    </tr>
-    <tr>
-        <td><input type="submit" value="Registracija"/></td>
-    </tr>
-</table>
-</form>
-
--->
 <script>
 document.getElementById("register").parentElement.classList.add("active");
-  // Create new link element
-const link = document.createElement('link');
-link.setAttribute('rel', 'stylesheet');
-link.setAttribute('href', 'http://localhost:8080/css/style2.css');
-
-// Append to the `head` element
-document.head.appendChild(link);
 </script>
-
 
 <main>
     <img class="wave" src="http://localhost:8080/img/wave.png" alt="wave">

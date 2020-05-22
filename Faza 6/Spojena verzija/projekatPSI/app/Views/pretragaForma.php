@@ -2,8 +2,9 @@
   document.getElementById("pretraga").parentElement.classList.add("active");
 </script>
 
-<div class="container text-center align-items-center">
-    <h2>Unesite sastojke koje imate kod sebe</h2>
+<div class="align-self-center container text-center align-items-center mt-5">
+    <img class="fotografija-pocetna" src="http://localhost:8080/img/refreshing_beverage.svg" alt="Osvežavajuće piće">
+    <h3 class="mt-3 mb-2">Unesite sastojke koje imate kod sebe:</h3>
 
     <!--Make sure the form has the autocomplete function switched off:-->
     <form name="pretragaRecepata" action="<?= site_url("Pretraga/pretragaSubmit") ?>" method="post" autocomplete="off">
@@ -11,28 +12,33 @@
         // ako postoji neka poruka tj. greska ispisujemo je ovde
         if($poruka!=null) {
             //var_dump($poruka);
-            echo "<font color='red'>".$poruka."</font><br>";
+            echo "<span class='text-danger'>$poruka</span><br>";
         }
         ?>
       <div class="autocomplete">
-        <input id="myInput" type="text" name="sastojak" placeholder="">
+        <input id="myInput" type="text" name="sastojak" placeholder="" autofocus>
       </div>
       <div id="unos"></div>
-      <div id="unetiSastojci" class="mt-2"></div>
-      <input type="submit" class="mt-3 btn btn-primary" value="Pretraga">     
+      <div id="unetiSastojci" class="mt-2">
+      </div>
+      <input type="submit" class="mt-3 btn btn-primary btn-lg" id="submitButton" value="Pretraži">     
     </form>   
     <?php
         // ispis rezultata
-        if($recepti!=null) { 
+        if($recepti!=NULL) { 
             foreach($recepti as $rezultat) {
                 
-                echo '<div class="row bg-light mt-4">';
-                echo '<div class="col-sm-12 col-md-6">';
-                echo '<img src="restorani/r2/jela/s1.jpg" class="img-fluid" alt="Fotografija koktela">';
+                echo '<div class="row bg-light mt-3 border-radius">';
+                echo '<div class="col-sm-12 col-md-4">';
+                if($rezultat->koktel->slika==NULL) 
+                    echo '<img src="http://localhost:8080/img/placeholder.svg" class="fotografija-koktela img-fluid" alt="Nema slike koktela">';
+                else 
+                    echo '<img src="'.base_url("/uploads/".$rezultat->koktel->idKoktela."/".$rezultat->koktel->slika).'"'
+                        . ' alt="Fotografija koktela" class="fotografija-koktela img-fluid" />';                   
                 echo '</div>';
                   
-                echo '<div class="col-sm-12 col-md-6 text-md-left">';
-                echo '<h2 class="mt-3">'
+                echo '<div class="col-sm-12 col-md-8 text-md-left">';
+                echo '<h2 class="mt-3 naslov-koktela">'
                 .'<a href="'.site_url('Pretraga/koktel/'.$rezultat->koktel->idKoktela).'">'.$rezultat->koktel->naziv.'</a></h2>';
                 echo '<p>Obavezni sastojci: ';
                 
@@ -42,9 +48,7 @@
                     echo $sastojak->naziv.' '.$sastojak->kolicina;
                 }               
                 
-                
-                
-                $neobavezni = $rezultat->neobavezniSastojci;
+               $neobavezni = $rezultat->neobavezniSastojci;
                 if($neobavezni!=null) {
                     echo '</p><p>Neobavezni sastojci: ';
                     foreach($neobavezni as $key=>$sastojak) {
@@ -61,6 +65,46 @@
 </div>
 
 <script>
+function dodajSastojakUListuIzabranih(sastojakNaziv, sastojakId) {
+    // pravljenje dugmeta sa nazivom sastojk         
+    var button = document.getElementById("id"+sastojakId);
+
+    // ako sastojak vec postoji obavesti korsinika crvenim border-om
+    if(button) {           
+      button.setAttribute("style", "border: 2px solid red;");
+      setTimeout(function() {
+          button.removeAttribute("style");
+      }, 700);
+
+      return;
+    }``
+    /* ispisi uneti sastojak i izbrisi input */
+    var noviSastojak = document.createElement("button");
+    noviSastojak.setAttribute("id", "id"+sastojakId);
+    noviSastojak.setAttribute("class", "btn btn-outline-primary btn-sm mr-2 mt-2");
+    noviSastojak.addEventListener("click", function() {
+        document.getElementsByClassName("class"+this.id)[0].remove();
+        this.remove();
+    });
+    var nazivSastojka = document.createTextNode(sastojakNaziv+" x");
+    noviSastojak.appendChild(nazivSastojka);
+
+    var element = document.getElementById("unetiSastojci");
+    element.appendChild(noviSastojak);
+    // dugme napravljeno
+
+    // pravljenje hidden input-a
+    var divUnos = document.getElementById("unos");
+    var inputHidden = document.createElement("input");
+    inputHidden.type = "hidden";
+    inputHidden.name = "sastojci[]";
+    inputHidden.value = sastojakId;
+    inputHidden.setAttribute("class", "classid"+inputHidden.value);
+    divUnos.appendChild(inputHidden);
+    // hidden input napravljen
+    
+    return;
+}
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
@@ -90,47 +134,23 @@ function autocomplete(inp, arr) {
           /*insert a input field that will hold the current array item's value:*/
           b.innerHTML += "<input type='hidden' id='"+ arr[i].idSastojka +"' value='" + arr[i].naziv + "'>";
           /*execute a function when someone clicks on the item value (DIV element):*/
-          b.addEventListener("click", function(e) {
-              /*insert the value for the autocomplete text field:*/
-              // inp.value = this.getElementsByTagName("input")[0].value;
-              var sastojak = this.getElementsByTagName("input")[0].value; 
+          // var sastojak cuva naziv sastojka, var sastojakId cuva id sastojka kao u BP
+          b.addEventListener("click", function() {
+              /*insert the value for the autocomplete text field:*/            
+              sastojak=this.getElementsByTagName("input")[0].value;             
+              sastojakId=this.getElementsByTagName("input")[0].id;
               
-              var button = document.getElementById("id"+this.getElementsByTagName("input")[0].id);
-              if(button) {           
-                  inp.value="";
-                  
-                  button.setAttribute("style", "border: 2px solid red;");
-                  setTimeout(function() {
-                      button.removeAttribute("style");
-                  }, 700);
-                  
-                  return;
-              }
-              /* ispisi uneti sastojak i izbrisi input */
-              var noviSastojak = document.createElement("button");
-              noviSastojak.setAttribute("id", "id"+this.getElementsByTagName("input")[0].id);
-              noviSastojak.setAttribute("class", "btn btn-outline-primary btn-sm mr-2 mt-2");
-              //noviSastojak.setAttribute("onClick", ukloniSastojak());
-              noviSastojak.addEventListener("click", function() {
-                document.getElementsByClassName("class"+this.id)[0].remove();
-                this.remove();
-              });
-              var nazivSastojka = document.createTextNode(sastojak+" x");
-              noviSastojak.appendChild(nazivSastojka);
-
-              var element = document.getElementById("unetiSastojci");
-              element.appendChild(noviSastojak);
+              dodajSastojakUListuIzabranih(sastojak, sastojakId);
+              
+              
+              
               
               inp.value="";
-              var divUnos = document.getElementById("unos");
-              var inputHidden = document.createElement("input");
-              inputHidden.type = "hidden";
-              inputHidden.name = "sastojci[]";
-              inputHidden.value = this.getElementsByTagName("input")[0].id;
-              inputHidden.setAttribute("class", "classid"+inputHidden.value);
-              divUnos.appendChild(inputHidden);
               
               
+              
+              
+                            
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
@@ -156,14 +176,28 @@ function autocomplete(inp, arr) {
         /*and and make the current item more visible:*/
         addActive(x);
       } else if (e.keyCode == 13) {
-        /*If the ENTER key is pressed, prevent the form from being submitted,*/
-        e.preventDefault();
-        if (currentFocus > -1) {
-          /*and simulate a click on the "active" item:*/
-          if (x) x[currentFocus].click();
+        if(inp.value !== "") {
+            /*If the ENTER key is pressed, prevent the form from being submitted,*/
+            e.preventDefault();
+            if (currentFocus > -1) {
+              /*and simulate a click on the "active" item:*/
+              if (x) x[currentFocus].click();
+            }
+        }
+        else {
+            e.preventDefault();
+            document.getElementById("submitButton").click();
         }
       }
+     
   });
+  
+  document.getElementsByTagName("body")[0].addEventListener("keydown", function(e) {
+      if (e.keyCode == 13 && document.activeElement !== inp) {
+        document.getElementById("submitButton").click();
+      }
+  });
+  
   function addActive(x) {
     /*a function to classify an item as "active":*/
     if (!x) return false;
@@ -205,8 +239,19 @@ function autocomplete(inp, arr) {
         $sastojciZaPretragu[]=$value;
     }
 ?>
+// ovo ubacuje sastojke za autocomplete 
 var sastojci = <?php echo json_encode($sastojciZaPretragu); ?>;
-
 autocomplete(document.getElementById("myInput"), sastojci);
 
+// citanje vec unetih sastojaka iz sesije
+//var sastojciIzSesije = <?php echo json_encode($sastojciIzSesije); ?>;
+//sastojciIzSesije.forEach(function(s) {
+//    dodajSastojakUListuIzabranih(s.naziv, s.idSastojka);
+//});
+//
+//
+//
+//for (var i=0; i<sastojciIzSesije.length; i++) {
+//     dodajSastojakUListuIzabranih(sastojciIzSesije[i].naziv, sastojciIzSesije[i].idSastojka);
+//}
 </script>

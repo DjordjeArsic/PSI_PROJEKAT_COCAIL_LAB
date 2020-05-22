@@ -11,17 +11,29 @@ use App\Models\RegistrovaniModel;
 
 
 class Korisnik extends BaseController { 
-    public function index(){
+    
+    private function provera() {
+        if (!$this->session->get('korisnik')) {
+            return redirect()->to(site_url('Pretraga'));
+        }
+    }
+    
+    public function index(){ 
        return redirect()->to(site_url('Pretraga'));
     }
 
-    public function postaviRecept($poruka = null, $naziv = "", $opis="") {   
+    public function postaviRecept($poruka = null, $naziv = "", $opis="") {
+        provera();
+        
         $sastojakModel=new SastojakModel();
         $sastojci = $sastojakModel->dohvatiImenaSastojaka();
-        return $this->prikaz("postaviRecept", ['sastojci'=> $sastojci, 'poruka'=>$poruka, 'naziv'=>$naziv, 'opis'=>$opis]);
+        return $this->prikaz("postaviRecept", ['sastojci'=> $sastojci,
+            'poruka'=>$poruka, 'naziv'=>$naziv, 'opis'=>$opis]);
     }
     
-    public function receptSubmit() {                
+    public function receptSubmit() {
+        provera();
+        
         $poruka="";
         
         // proverava da li je unet naslov       
@@ -54,21 +66,21 @@ class Korisnik extends BaseController {
             $poruka.="Niste uneli nijedan obavezan sastojak.";
         }
         
-        $slika = $this->request->getFile('fotografija');
-        $video = $this->request->getFile('video');
-        
         if($poruka!="") {
             return $this->postaviRecept($poruka, $naziv, $opis);
         }
-               
+        
+        $slika = $this->request->getFile('fotografija');
+        $video = $this->request->getFile('video');
+        
         // nema gresaka => napravi novi koktel    
         $idKorisnika = $this->session->get('korisnik')->idKorisnika;    
         $koktelData = [
             'idKorisnika' => $idKorisnika,
             'naziv' => $naziv,
             'opis' => $opis,
-            'slika' => $slika->getName(),
-            'video' => $video->getName(),
+            'slika' => $slika->getName()!=="" ? $slika->getName(): NULL,
+            'video' => $video->getName()!=="" ? $video->getName() : NULL,
             'obrisan' => 0,
             'datum' => "".date("Y-m-d").""
         ];
@@ -76,8 +88,8 @@ class Korisnik extends BaseController {
         $koktelModel = new KoktelModel();
         $idKoktela = $koktelModel->napraviNoviKoktel($koktelData);
         
-        $slika->move(ROOTPATH.'/public/uploads/'.$idKoktela.'/');
-        $video->move(ROOTPATH.'/public/uploads/'.$idKoktela.'/');
+        if($slika->getName()!=="") $slika->move(ROOTPATH.'/public/uploads/'.$idKoktela.'/');
+        if ($video->getName()!=="") $video->move(ROOTPATH.'/public/uploads/'.$idKoktela.'/');
         
         $obavezniModel = new ObavezniModel();
         $neobavezniModel = new NeobavezniModel();
@@ -102,12 +114,16 @@ class Korisnik extends BaseController {
     }
                    
     public function mojiKokteli(){
+        provera();
+        
         $koktelModel = new KoktelModel();
         $kokteli=$koktelModel->receptiKorisnika($this->session->get('korisnik')->idKorisnika);
         $this->prikaz('stranice/mojirecepti', ['kokteli'=>$kokteli]);
     }
     
     public function brisanjeMogRecepta(){
+        provera();
+        
         $idKoktela = $this->request->getPost('idKoktela');
         $koktelModel = new KoktelModel();
         $korisnikId = $koktelModel->find($idKoktela)->idKorisnika;
@@ -130,6 +146,8 @@ class Korisnik extends BaseController {
 //    }
     
     public function reportovanjeTudjegRecepta(){
+            provera();
+        
             $idKoktela = $this->request->getPost('idKoktela');
             $idRegistrovanog = $this->session->get("korisnik")->idKorisnika;
             
@@ -169,6 +187,8 @@ class Korisnik extends BaseController {
     }
     
     public function mojKoktel($idKoktela){
+        provera();
+        
         return redirect()->to(site_url('Pretraga/koktel/'.$idKoktela));
     }
 }
