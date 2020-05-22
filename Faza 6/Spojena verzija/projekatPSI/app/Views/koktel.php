@@ -31,7 +31,7 @@
         echo '<img  width="400" src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->slika).'"/>';
     }
     else{
-        echo '<img  width="400" src="'.base_url('images/glass.jpg').'"/>';
+        echo '<img  width="400" src="'.base_url('img/glass.jpg').'"/>';
     }
     echo '</td>';
     if($koktelInfo->koktel->video!=NULL){
