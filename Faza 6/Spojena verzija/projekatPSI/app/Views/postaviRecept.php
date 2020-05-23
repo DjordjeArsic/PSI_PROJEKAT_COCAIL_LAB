@@ -4,7 +4,7 @@
   document.getElementById("postaviRecept").parentElement.classList.add("active");
 </script>
 
-<form name="postavljanjeforma" action="<?= site_url("Korisnik/receptSubmit") ?>" method="post" enctype="multipart/form-data">
+<form class="m-3" name="postavljanjeforma" action="<?= site_url("Korisnik/receptSubmit") ?>" method="post" enctype="multipart/form-data">
 <table>
     <tr>
         <td>Naziv:*</td>

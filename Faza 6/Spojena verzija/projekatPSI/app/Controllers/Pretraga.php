@@ -8,7 +8,8 @@ use App\Models\RazlogModel;
 
 class Pretraga extends BaseController {
         
-    public function index($poruka=null, $recepti=null) {
+    public function index($poruka=null) {
+        $recepti = $this->session->get('kokteliZaIspis');
         $sastojciIzSesije = $this->session->get('sastojci');
         $sastojakModel = new SastojakModel();
         $sastojci = $sastojakModel->dohvatiSastojke();
@@ -43,19 +44,20 @@ class Pretraga extends BaseController {
                         'neobavezniSastojci'=> $neobavezniSastojci];
     }
     
-    public function pretragaSubmit() {  
-        $sastojci = $this->request->getPost('sastojci');   
-        $this->session->set('sastojci', $sastojci);
-        //var_dump($sastojci);
-        
+    public function pretragaSubmit() { 
+                
+        $sastojci = $this->request->getPost('sastojci');
+                   
         if($sastojci == NULL) {
             $poruka = 'Niste uneli nijedan sastojak!';
             return $this->index($poruka);
         }
+             
         
         $obavezniModel = new ObavezniModel();
         $koktelModel = new KoktelModel();
         $obavezni = $obavezniModel->orderBy('idKoktela')->findAll();
+        
                
         $kokteliZaIspis = [];
         $sastojciKoktela = [];
@@ -78,12 +80,15 @@ class Pretraga extends BaseController {
             }
         }
         
+
+        $this->session->set('kokteliZaIspis', $kokteliZaIspis);
+        
         if(count($kokteliZaIspis)==0) {
             $poruka="Nema rezultata pretrage!";
             return $this->index($poruka);
         }
         
-        return $this->index(null, $kokteliZaIspis);
+        return redirect()->to(site_url('Pretraga/index'));
     }
     
     

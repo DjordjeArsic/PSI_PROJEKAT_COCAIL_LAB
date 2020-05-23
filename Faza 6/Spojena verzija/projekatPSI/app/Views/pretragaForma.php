@@ -85,6 +85,16 @@ function dodajSastojakUListuIzabranih(sastojakNaziv, sastojakId) {
     noviSastojak.setAttribute("id", "id"+sastojakId);
     noviSastojak.setAttribute("class", "btn btn-outline-primary btn-sm mr-2 mt-2");
     noviSastojak.addEventListener("click", function() {
+        
+        var sastojciSesija = JSON.parse(sessionStorage.getItem("upamceniSastojci"));       
+        for(var i=0; i<sastojciSesija.length; ++i) {
+            if(sastojciSesija[i].id==this.id.substr(2)) {
+                sastojciSesija.splice(i, 1);
+                break;
+            }    
+        }       
+        sessionStorage.setItem("upamceniSastojci", JSON.stringify(sastojciSesija));
+        
         document.getElementsByClassName("class"+this.id)[0].remove();
         this.remove();
     });
@@ -141,19 +151,30 @@ function autocomplete(inp, arr) {
               /*insert the value for the autocomplete text field:*/            
               sastojak=this.getElementsByTagName("input")[0].value;             
               sastojakId=this.getElementsByTagName("input")[0].id;
+              var novi = {id: sastojakId, naziv: sastojak};
+
+              var sastojciSesija = JSON.parse(sessionStorage.getItem("upamceniSastojci"));
+              
+              if(sastojciSesija===null) {
+                sastojciSesija = [];
+              }
+              
+              var flag = true;
+              for(var i=0; i<sastojciSesija.length; ++i) {
+                  if(sastojciSesija[i].id==sastojakId) {
+                    flag = false;
+                    break;
+                  }
+              }
+              
+              if(flag) sastojciSesija.push(novi);
+              sessionStorage.setItem("upamceniSastojci", JSON.stringify(sastojciSesija));
               
               dodajSastojakUListuIzabranih(sastojak, sastojakId);
-              
-              
-              
-              
+          
               inp.value="";
-              
-              
-              
-              
-                            
-              /*close the list of autocompleted values,
+
+                /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();
           });
@@ -256,14 +277,11 @@ var sastojci = <?php echo json_encode($sastojciZaPretragu); ?>;
 autocomplete(document.getElementById("myInput"), sastojci);
 
 // citanje vec unetih sastojaka iz sesije
-//var sastojciIzSesije = <?php echo json_encode($sastojciIzSesije); ?>;
-//sastojciIzSesije.forEach(function(s) {
-//    dodajSastojakUListuIzabranih(s.naziv, s.idSastojka);
-//});
-//
-//
-//
-//for (var i=0; i<sastojciIzSesije.length; i++) {
-//     dodajSastojakUListuIzabranih(sastojciIzSesije[i].naziv, sastojciIzSesije[i].idSastojka);
-//}
+var sastojciIzSesije = JSON.parse(sessionStorage.getItem("upamceniSastojci"));
+
+if(sastojciIzSesije!==null) {
+    for (var i=0; i<sastojciIzSesije.length; i++) {
+        dodajSastojakUListuIzabranih(sastojciIzSesije[i].naziv, sastojciIzSesije[i].id);
+    }
+}
 </script>
