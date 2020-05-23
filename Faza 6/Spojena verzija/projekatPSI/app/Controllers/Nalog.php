@@ -14,10 +14,10 @@ class Nalog extends BaseController {
         $korime = $this->request->getPost('korime');
         $lozinka = $this->request->getPost('lozinka');
         if($korime===""){
-            $poruka.='Niste uneli korisnicko ime.<br>';
+            $poruka.='Niste uneli korisnicko ime!<br>';
         }
         if($lozinka===""){
-            $poruka.="Niste uneli lozinku.<br>";
+            $poruka.="Niste uneli lozinku!<br>";
         }
         
         if($poruka!="") {
@@ -36,7 +36,7 @@ class Nalog extends BaseController {
         if (!$isAdmin) {
             $registrovaniModel=new RegistrovaniModel();
             if($registrovaniModel->isObrisan($korisnik->idKorisnika)) {
-                return $this->login('Ovaj nalog je obrisan.<br>');
+                return $this->login('Ovaj nalog je obrisan!<br>');
             }
         }
         
@@ -63,47 +63,53 @@ class Nalog extends BaseController {
         $this->prikaz('register', ['poruka'=>$poruka]);
     }
     
-    public function registerSubmit() {
-        
-        $data['username'] = $this->request->getPost('korime');
-        $data['password'] = $this->request->getPost('lozinka');
+    public function registerSubmit() {        
+        $data['username'] = $this->request->getPost('korime');        
         $data['email'] = $this->request->getPost('email');
+        $data['password'] = $this->request->getPost('lozinka');
+        $data['passwordRep'] = $this->request->getPost('ponovljenaLozinka');
            
+        
         $poruka = "";
         $korisnikModel=new KorisnikModel();
         
-        if(! preg_match('/^[a-z0-9_-]{3,16}$/i', $data['username'])) {
-            $poruka .= "Korisničko ime nije u dozvoljenom formatu.<br>";
+        
+        // provera da li je korisnicko ime uneto
+        if($data['username']==="") {
+            $poruka .= "Nije uneto korisničko ime!<br>";
         }
-        else {
-            if ($korisnikModel->dohvatiKorisnikaPoImenu($data['username'])) {
-                $poruka .= "Već postoji registrovani korisnik sa tim korisničkim imenom.<br>";
-            }
+        // ako jeste da li postoji vec registrovani korisnik sa tim imenom
+        else if ($korisnikModel->dohvatiKorisnikaPoImenu($data['username'])) {
+            $poruka .= "Već postoji registrovani korisnik sa tim korisničkim imenom!<br>";
         }
+        
 
-        if(! filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-            $poruka .= "E-mail nije u dozvoljenom formatu.<br>";
-        }
-        else {    
-            if($korisnikModel->where('email', $data['email'])->first()) {
-                $poruka .= "Već postoji registrovani korisnik sa tom e-mail adresom.<br>";
-            }
-        }
-        
-        if(! preg_match('/^[a-z0-9_-]{3,16}$/', $data['password'])) {
-            $poruka .= "Lozinka nije u dozvoljenom formatu.<br>";
+        $re = "/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/";
+        // provera da li e-mail u odgovarajucem formatu
+        if(! preg_match($re, $data['email'])) {
+            $poruka .= "E-mail nije ispravan!<br>";
+        }      
+        // ako jeste da li postoji vec registrovani korisnik sa tim e-mailom
+        else if($korisnikModel->where('email', $data['email'])->first()) {
+            $poruka .= "Već postoji registrovani korisnik sa tom e-mail adresom!<br>";
         }
         
-        if ($data['password'] !== $this->request->getPost('ponovljenaLozinka')) {
-            $poruka .= "Lozinka se ne slaže sa potvrdom lozinke.<br>";
+        
+        // provera da li lozinka ima izmedju 3 i 16 karaktera (bilo koji karakteri dozvoljeni)
+        if(! preg_match('/^(.){3,16}$/', $data['password'])) {
+            $poruka .= "Lozinka mora imati 3-16 karaktera!<br>";
+        }        
+        // ako jeste provera da li se lozinka i potvrda lozinke slazu
+        else if ($data['password'] !== $data['passwordRep']) {
+            $poruka .= "Lozinka se ne slaže sa potvrdom lozinke!<br>";
         }       
         
+        // ako postoji bilo koja greska ispisi je
         if($poruka!="") {
             return $this->register($poruka);
         }
         
-        return $this->register("Nema greske.");
-        
+        // ako ne postoji napravi novog korisnika
         $idKorisnika = $korisnikModel->dodajNovogKorisnika($data);        
         $data2['idRegistrovanog'] = $idKorisnika;
         $data2['obrisanNalog'] = 0;
@@ -111,6 +117,7 @@ class Nalog extends BaseController {
         $registrovaniModel->insert($data2);
         
         $korisnik=$korisnikModel->dohvatiKorisnikaPoImenu($data['username']);
+        $korisnik->isAdmin=false;
         $this->session->set('korisnik', $korisnik);
         
         return redirect()->to(site_url('Korisnik'));

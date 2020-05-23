@@ -17,7 +17,7 @@ class Admin extends Korisnik {
     }
     
     public function brisanjeRecepta($idKoktela){
-        provera();
+        $this->provera();
         
         //Obrisi koktel
         $koktelModel = new KoktelModel();
@@ -31,7 +31,7 @@ class Admin extends Korisnik {
     }
     
     public function brisanjeKorisnika($idRegistrovanog){ 
-        provera();
+        $this->provera();
         
         //Admin ne sme da se obrise
         if($idRegistrovanog == 1){ return redirect()->to(site_url('Admin/reportovaniRecepti')); }
@@ -52,7 +52,7 @@ class Admin extends Korisnik {
     }
     
     public function brisanjePrijave($idKoktela, $idRegistrovanog) {
-        provera();
+        $this->provera();
         
         $prijavaModel = new PrijavaModel();
         $prijavaModel->set("obrisanaPrijava", 1)->where('idKoktela', $idKoktela)->where('idRegistrovanog', $idRegistrovanog)->update(); 
@@ -60,7 +60,7 @@ class Admin extends Korisnik {
     }
     
     public function reportovaniRecepti() {
-        provera();
+        $this->provera();
         
         //Dohvati sve prijave
         $prijavaModel = new PrijavaModel();

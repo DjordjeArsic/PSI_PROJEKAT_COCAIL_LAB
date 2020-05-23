@@ -1,0 +1,48 @@
+<!doctype html>
+<!-- Autor: Đorđe Arsić – 2016/0262 -->
+<html>
+	<head>
+		<title>Moji recepti</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style.css">
+		<style>
+			#glavni {
+				width: 700px;
+				margin:auto;
+			}
+			#slika {
+				width: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="float:right">
+			<a href="index.html">Log Out</a><br/>
+			<a href="indexUlogovani.html">Početna</a><br/>
+			<a href="postavljanjeRecepta.html">Postavljanje recepta</a>
+		</div>
+		<div class="container-fluid" id="glavni">
+			
+		  <h1>Moji Recepti:</h1>
+		  
+		  <div class="row">
+			<div class="col-4">
+			  <img src="djus.jpg" id="slika">
+			</div>
+			<div class="col-8">
+				<h2>
+					<a href="mojKonkretanRecept.html">Ceđena pomorandža</a>
+				</h2>
+				<hr>
+				<p>
+					Sastojci:<br>
+					- pomorandža
+				</p>
+			</div>
+			<div style="float: right;">
+				<button onclick="alert('Recept je izbrisan')">Izbriši</button>
+			</div>
+		  </div>
+		</div>
+	</body>
+</html>

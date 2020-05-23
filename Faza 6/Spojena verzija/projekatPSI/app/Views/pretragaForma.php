@@ -8,13 +8,15 @@
 
     <!--Make sure the form has the autocomplete function switched off:-->
     <form name="pretragaRecepata" action="<?= site_url("Pretraga/pretragaSubmit") ?>" method="post" autocomplete="off">
-        <?php   
+      <div id="porukaDiv">
+      <?php   
         // ako postoji neka poruka tj. greska ispisujemo je ovde
         if($poruka!=null) {
             //var_dump($poruka);
             echo "<span class='text-danger'>$poruka</span><br>";
         }
-        ?>
+      ?>
+      </div>
       <div class="autocomplete">
         <input id="myInput" type="text" name="sastojak" placeholder="" autofocus>
       </div>
@@ -231,6 +233,16 @@ function autocomplete(inp, arr) {
   
   
 }
+
+// ako korisnik klikne da posalje formu prvo proveri da li je uneo barem jedan sastojak
+// ako jeste posalji formu, ako nije ispis poruku o gresci
+$("form").submit(function( event ) {
+    if($('#unos').children().length === 0) {
+        $("#porukaDiv").empty();
+        $("#porukaDiv").append("<span class='text-danger'>Niste uneli nijedan sastojak!</span><br>");
+        event.preventDefault();
+    }
+});
 
 // dohvati sastojke iz baze i prosledi kao niz za sugestije
 <?php

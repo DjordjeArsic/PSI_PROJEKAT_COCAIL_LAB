@@ -7,7 +7,6 @@ use App\Models\NeobavezniModel; //sadrzi
 use App\Models\RazlogModel;
 use App\Models\PrijavaModel;
 use App\Models\RazloziPrijaveModel;
-use App\Models\RegistrovaniModel;
 
 
 class Korisnik extends BaseController { 
@@ -23,7 +22,7 @@ class Korisnik extends BaseController {
     }
 
     public function postaviRecept($poruka = null, $naziv = "", $opis="") {
-        provera();
+        $this->provera();
         
         $sastojakModel=new SastojakModel();
         $sastojci = $sastojakModel->dohvatiImenaSastojaka();
@@ -32,7 +31,7 @@ class Korisnik extends BaseController {
     }
     
     public function receptSubmit() {
-        provera();
+        $this->provera();
         
         $poruka="";
         
@@ -114,7 +113,7 @@ class Korisnik extends BaseController {
     }
                    
     public function mojiKokteli(){
-        provera();
+        $this->provera();
         
         $koktelModel = new KoktelModel();
         $kokteli=$koktelModel->receptiKorisnika($this->session->get('korisnik')->idKorisnika);
@@ -122,7 +121,7 @@ class Korisnik extends BaseController {
     }
     
     public function brisanjeMogRecepta(){
-        provera();
+        $this->provera();
         
         $idKoktela = $this->request->getPost('idKoktela');
         $koktelModel = new KoktelModel();
@@ -146,7 +145,7 @@ class Korisnik extends BaseController {
 //    }
     
     public function reportovanjeTudjegRecepta(){
-            provera();
+            $this->provera();
         
             $idKoktela = $this->request->getPost('idKoktela');
             $idRegistrovanog = $this->session->get("korisnik")->idKorisnika;
@@ -187,7 +186,7 @@ class Korisnik extends BaseController {
     }
     
     public function mojKoktel($idKoktela){
-        provera();
+        $this->provera();
         
         return redirect()->to(site_url('Pretraga/koktel/'.$idKoktela));
     }
