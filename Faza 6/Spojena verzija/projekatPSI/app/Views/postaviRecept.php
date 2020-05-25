@@ -1,41 +1,99 @@
-<?php if(isset($poruka)) echo "<font color='red'>$poruka</font><br>"; ?>
 
 <script>
   document.getElementById("postaviRecept").parentElement.classList.add("active");
+  
+  function toggleVis(checkbox) {
+      var red = document.getElementById(checkbox.value);
+      if (red.style.display === "none") {
+            red.style.display = "flex";
+      }
+      else {
+        red.style.display = "none";
+      }
+      return;
+  }
 </script>
 
-<form class="m-3" name="postavljanjeforma" action="<?= site_url("Korisnik/receptSubmit") ?>" method="post" enctype="multipart/form-data">
-<table>
-    <tr>
-        <td>Naziv:*</td>
-        <td><input type="text" name="naziv" value="<?php echo $naziv ?>" /></td>
-    </tr>
-    <tr>
-        <td>Opis:*</td>
-        <td><textarea name="opis" rows="5" cols="60"><?php echo $opis ?></textarea></td>
-    </tr>
-    <tr>
-        <td colspan="2">Odaberi sastojke:</td>
-    </tr>
-        <?php
-            foreach($sastojci as $value) {
-                echo "<tr>";
-                echo "<td>".$value.":</td>";
-                echo "<td><input type='text' name='kolicine[".$value."]' placeholder='Npr. 100ml ili 1 kasicica'/>";
-                echo "<input type='checkbox' name='neobavezni[]' value='$value'>Neobavezan sastojak</input></td>";
-                echo "</tr>";
-            }
-        ?>
-   
-    <tr>
-        <td colspan="2"><br>Okači fotografiju: <input type="file" accept="image/*" name="fotografija"></td>
-    </tr>
-    <tr><td colspan="2"><br>Okači video: <input type="file" accept="video/*" name="video"></td>
-    </tr>
-    
-    <tr>
-        <td><br><input type="submit" value="Postavi recept"/></td>
-    </tr>
+<form  class="m-2" name="postavljanjeforma" action="<?= site_url("Korisnik/receptSubmit") ?>" method="post" enctype="multipart/form-data">
+<div class="container">
+    <div class="row p-2">
+        <div class="col-7 text-danger" id="porukaDiv"> <?php if(isset($poruka)) echo $poruka ?> </div>
+    </div>
+    <div class="row p-2">
+        <div class="col-xs-5 col-md-2"> Naziv:* </div>
+        <div class="col-xs-10 col-md-7"> <input type="text" name="naziv" value="<?php echo $naziv ?>"/> </div>
+    </div>
+    <div class="row p-2">
+        <div class="col-xs-5 col-md-2"> Opis:* </div>
+        <div class="col-xs-10 col-md-7"> <textarea class="rounded w-100" name="opis" rows="5"><?php echo $opis ?></textarea> </div>
+    </div>
+    <div class="row p-2">
+        <div class="col-xs-5 col-md-2"> Odaberi sastojke:* </div>
+        <div class="col-xs-10 col-md-7">
+            <?php
+                foreach($sastojci as $value) {  
+                    echo "<span class='text-nowrap'><input type='checkbox' value='$value' onclick='toggleVis(this)'></input>";
+                    echo " $value</span>&nbsp&nbsp&nbsp&nbsp";
+                }
+            ?>
+        </div>
+    </div>
+         
+    <?php
+        foreach($sastojci as $value) {
+            echo "<div class='row p-2' id='$value' style='display:none'>";
+            echo "<div class='col-xs-5 col-md-2'>".$value.":</div>";
+            echo "<div class='col-xs-12 col-md-5'><input type='text' name='kolicine[".$value."]' placeholder='(Npr. 100ml ili 1 kasicica)'/></div>";
+            echo "<div class='col-xs-12 col-md-3'><input type='checkbox' name='neobavezni[]' value='$value'> Neobavezan sastojak</input></div>";
+            echo "</div>";
+        }
+    ?>
 
-</table>
+    <div class="row p-2">
+        <div class="ol-xs-5 col-md-2"> Okači fotografiju: </div>
+        <div class="col-xs-10 col-md-7"> <input class="w-100 bg-white" type="file" accept="image/*" name="fotografija"/> </div>
+    </div>
+    
+    <div class="row p-2">
+        <div class="ol-xs-5 col-md-2"> Okači video: </div>
+        <div class="col-xs-10 col-md-7"> <input class="w-100 bg-white" type="file" accept="video/*" name="video"/> </div>
+    </div>
+
+    <div class="row p-4">
+        <div class="col-12"> <input class="w-100" type="submit" value="Postavi recept"/> </div>
+    </div>
+         
+</div>
 </form>
+
+<script>
+$("form").submit(function(event) {
+    
+    var flag = false;
+    var opis = document.getElementsByName('opis')[0];
+    var inputs = document.getElementsByTagName('input');
+    
+    for(var i = 0; i < inputs.length; i++) {
+        if(inputs[i].type.toLowerCase() === 'text') {
+            if (inputs[i].getAttribute("name") !== "naziv" && inputs[i].value !== "") {
+                flag = true;
+                break;
+            }
+        }
+    }
+    
+    if($("input[name='naziv']").val()==="" || opis.value==="" || !flag) {
+        $("#porukaDiv").empty();
+        if($("input[name='naziv']").val()==="") {
+            $("#porukaDiv").append("Niste uneli naziv recepta.<br>");       
+        }
+        if(opis.value==="") {
+            $("#porukaDiv").append("Niste uneli opis recepta.<br>");       
+        }
+        if(!flag) {
+            $("#porukaDiv").append("Niste uneli nijedan obavezan sastojak.<br>");       
+        }
+        event.preventDefault();
+    }
+});
+</script>
