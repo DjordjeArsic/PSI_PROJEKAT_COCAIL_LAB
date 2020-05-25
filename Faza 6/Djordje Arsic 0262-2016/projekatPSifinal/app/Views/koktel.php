@@ -167,6 +167,8 @@
 <style>
     #sakrivena_forma{
         display:none;
+		text-align: center;
+        justify-content: center;
     }
 </style>
 <script type="text/javascript">
