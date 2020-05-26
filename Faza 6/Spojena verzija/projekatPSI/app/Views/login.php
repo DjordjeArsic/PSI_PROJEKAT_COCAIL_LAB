@@ -3,14 +3,14 @@
 </script>
 
 <main>
-    <img class="wave" src="http://localhost:8080/img/wave.png" alt="wave">
+    <img class="wave" src="<?php echo base_url('/img/wave.png'); ?>" alt="wave">
     <div class="container">
         <div class="img">
-            <img src="http://localhost:8080/img/bg.svg" alt="background">
+            <img src="<?php echo base_url('/img/bg.svg'); ?>" alt="background">
         </div>
         <div class="login-content">
             <form name="loginform" action="<?= site_url("Nalog/loginSubmit") ?>" method="post" autocomplete="off">
-                <img src="http://localhost:8080/img/avatar.svg" alt="avatar">
+                <img src="<?php echo base_url('/img/avatar.svg'); ?>" alt="avatar">
                 <h2 class="title font-weight-bold">Prijavite se</h2>
                 <div id="porukaDiv" class="mb-3">
                 <?php if(isset($poruka)) echo "<span class='text-danger'>$poruka</span>"; ?>
@@ -40,7 +40,7 @@
     </div>
 </main>
 
-<script src="http://localhost:8080/js/main2.js"></script>
+<script src="<?php echo base_url('/js/main2.js'); ?>"></script>
 <script>
 $("form").submit(function(event) {
     if($("input[name='korime']").val()==="" || $("input[name='lozinka']").val()==="") {

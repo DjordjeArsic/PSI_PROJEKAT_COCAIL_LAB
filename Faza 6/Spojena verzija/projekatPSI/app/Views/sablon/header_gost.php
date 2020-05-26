@@ -4,26 +4,27 @@
   <title>Gost-Cocktail Lab</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- linkovi za bootstrap 4, stilove, fontove i ikonice -->
   <?php
     $url = $_SERVER['REQUEST_URI'];
     if (strstr($url, "/Nalog/login") || strstr($url, "/Nalog/register")) {
-        echo '<link rel="stylesheet" href="http://localhost:8080/css/style2.css">';
+        echo '<link rel="stylesheet" href="'.base_url('/css/style2.css').'">';
     }
   ?>
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,300,400,700,900" rel="stylesheet">
-  <link rel="stylesheet" href="http://localhost:8080/fonts/icomoon/style.css">
-  <link rel="stylesheet" href="http://localhost:8080/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo base_url('/fonts/icomoon/style.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('/css/bootstrap.min.css'); ?>">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="http://localhost:8080/css/nouislider.min.css">
-  <link rel="stylesheet" href="http://localhost:8080/css/bootstrap-datetimepicker.css">
+  <link rel="stylesheet" href="<?php echo base_url('/css/nouislider.min.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('/css/bootstrap-datetimepicker.css'); ?>">
   
-  <link rel="stylesheet" href="http://localhost:8080/css/style.css">
-  <link rel="stylesheet" href="http://localhost:8080/css/nasCSS.css">
+  <link rel="stylesheet" href="<?php echo base_url('/css/style.css'); ?>">
+  <link rel="stylesheet" href="<?php echo base_url('/css/nasCSS.css'); ?>">
   
   <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+  
   
   <!-- ukljucuje jquery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -35,7 +36,7 @@
 <!-- pocetak header-a -->
     <header>
       <nav class=" px-4 navbar navbar-expand-lg navbar-dark bg-primary mb-4">
-          <?php echo "<a class='navbar-brand' href='".site_url("Pretraga/index")."'><img src='http://localhost:8080/img/logo.png' alt='Logo' class='logo-fotografija'></a>"; ?>
+          <?php echo "<a class='navbar-brand' href='".site_url("Pretraga/index")."'><img src=".base_url('/img/logo.png')." alt='Logo' class='logo-fotografija'></a>"; ?>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown4" aria-controls="navbarNavDropdown4" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

@@ -8,7 +8,9 @@
             <div class="col-sm-12">
                 <h2>Lista prijavljenih recepata:</h2><br>
 
+                
                 <?php
+                $ImaPrijava = 0;
                 $BrPrijave = 1;
                 foreach($prijave as $prijava)
                 {
@@ -21,7 +23,7 @@
                         echo "-Id korisnika: $prijava->idRegistrovanog"; echo"<br>"; 
                         echo "-Datum podnete prijave: $prijava->datum";  echo"<br><br>"; 
 
-                        $BrRazloga = 1;
+                        $BrRazloga = 1; $ImaPrijava = 1;
                         echo "-Razlozi: ";
                         foreach($prijava->razlozi as $razlog)
                         {
@@ -43,16 +45,19 @@
 
                        echo "
                         <form action='". site_url("Admin/brisanjePrijave/$prijava->idKoktela/$prijava->idRegistrovanog")."' method='post'>
-                        <input value='Uklonite prijavu' type='submit'>
+                        <input value='Obrišite prijavu' type='submit'>
                         </form>";
                        
                        echo "</div>";
                     }
                 }
+                
+                if($ImaPrijava == 0)
+                {
+                    echo '<h4><span style="color:red">-Nema prijavljenih recepata!</span></h4>';
+                }
                 ?>
-
-
-            </div>
+           </div>
         </div> 
     </div>
 </body>

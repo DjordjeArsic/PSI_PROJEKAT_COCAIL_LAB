@@ -108,3 +108,15 @@ input[type=submit] {
     color: #3c3c3c;
     width: initial;
 }
+
+.responsive-max-500 {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+#sakrivena_forma{
+    display:none;
+    text-align: center;
+    justify-content: center;
+}

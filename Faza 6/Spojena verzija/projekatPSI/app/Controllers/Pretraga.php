@@ -9,7 +9,7 @@ use App\Models\RazlogModel;
 class Pretraga extends BaseController {
         
     public function index($poruka=null) {
-        $recepti = $this->session->get('kokteliZaIspis');
+        $recepti = $this->session->getFlashData('kokteliZaIspis');
         $sastojciIzSesije = $this->session->get('sastojci');
         $sastojakModel = new SastojakModel();
         $sastojci = $sastojakModel->dohvatiSastojke();
@@ -81,7 +81,7 @@ class Pretraga extends BaseController {
         }
         
 
-        $this->session->set('kokteliZaIspis', $kokteliZaIspis);
+        $this->session->setFlashData('kokteliZaIspis', $kokteliZaIspis);
         
         if(count($kokteliZaIspis)==0) {
             $poruka="Nema rezultata pretrage!";

@@ -112,12 +112,32 @@ class Korisnik extends BaseController {
         return redirect()->to(site_url('Korisnik'));
     }
                    
-    public function mojiKokteli(){
+   public function mojiKokteli(){
         $this->provera();
-        
+        $obavezniModel = new ObavezniModel();
+        $neobavezniModel = new NeobavezniModel();
+        $sastojakModel = new SastojakModel();
         $koktelModel = new KoktelModel();
         $kokteli=$koktelModel->receptiKorisnika($this->session->get('korisnik')->idKorisnika);
-        $this->prikaz('stranice/mojirecepti', ['kokteli'=>$kokteli]);
+        $obavezniSastojciMojihKoktela = [];
+        $neobavezniSastojciMojihKoktela = [];
+        foreach($kokteli as $koktel){
+            $sadrziObavezno = $obavezniModel->where('idKoktela',$koktel->idKoktela)->findall();
+            $sadrziNeobavezno = $neobavezniModel->where('idKoktela',$koktel->idKoktela)->findall();
+            $obaveznisastojci = [];
+            $neobaveznisastojci = [];
+            foreach($sadrziObavezno as $so){
+                $obavezansastojak = $sastojakModel->find($so->idSastojka);
+                $obaveznisastojci[]= $obavezansastojak->naziv.' '.$so->kolicina;
+            }
+            foreach($sadrziNeobavezno as $sno){
+                $neobavezansastojak = $sastojakModel->find($sno->idSastojka);
+                $neobaveznisastojci[]= $neobavezansastojak->naziv.' '.$sno->kolicina;
+            }
+            $obavezniSastojciMojihKoktela[$koktel->idKoktela] = $obaveznisastojci;
+            $neobavezniSastojciMojihKoktela[$koktel->idKoktela] = $neobaveznisastojci;
+        }
+        $this->prikaz('stranice/mojirecepti', ['kokteli'=>$kokteli,'obavezni_sastojci_mojih_koktela'=>$obavezniSastojciMojihKoktela,'neobavezni_sastojci_mojih_koktela'=>$neobavezniSastojciMojihKoktela]);
     }
     
     public function brisanjeMogRecepta(){
@@ -127,6 +147,11 @@ class Korisnik extends BaseController {
         $koktelModel = new KoktelModel();
         $korisnikId = $koktelModel->find($idKoktela)->idKorisnika;
         if($korisnikId==$this->session->get('korisnik')->idKorisnika){
+            $prijavaModel = new PrijavaModel();
+            $prijaveOvogrecepta= $prijavaModel->where("idKoktela",$idKoktela)->findall();
+            foreach($prijaveOvogrecepta as $prijava){
+                $prijavaModel->set("obrisanaPrijava", 1)->where("idKoktela",$idKoktela)->update();
+            }
             $koktelModel->set("obrisan",1)->where('idKoktela',$idKoktela)->update();
         }
         

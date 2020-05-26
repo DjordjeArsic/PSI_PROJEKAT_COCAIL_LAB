@@ -3,14 +3,14 @@ document.getElementById("register").parentElement.classList.add("active");
 </script>
 
 <main>
-    <img class="wave" src="http://localhost:8080/img/wave.png" alt="wave">
+    <img class="wave" src="<?php echo base_url('/img/wave.png'); ?>" alt="wave">
     <div class="container">
         <div class="img">
-            <img src="http://localhost:8080/img/bg.svg" alt="background">
+            <img src="<?php echo base_url('/img/bg.svg'); ?>" alt="background">
         </div>
         <div class="login-content">
             <form name="registrationform" action="<?= site_url("Nalog/registerSubmit") ?>" method="post" autocomplete="off">
-                <img src="http://localhost:8080/img/avatar.svg" alt="avatar">
+                <img src="<?php echo base_url('/img/avatar.svg'); ?>" alt="avatar">
                 <h2 class="title font-weight-bold">Registrujte se</h2>
                 <div id="porukaDiv" class="mb-3">
                 <?php if(isset($poruka)) echo "<span class='text-danger'>$poruka</span>"; ?>
@@ -57,7 +57,7 @@ document.getElementById("register").parentElement.classList.add("active");
     </div>
 </main>
 
-<script src="http://localhost:8080/js/main2.js"></script>
+<script src="<?php echo base_url('/js/main2.js'); ?>"></script>
 
 <script>
 function validateEmail(email) {

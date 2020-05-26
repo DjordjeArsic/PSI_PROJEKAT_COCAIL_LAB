@@ -1,40 +1,119 @@
 <?php 
-    echo "<div class='ml-4'>"; 
-    
+//    if ($koktelInfo->koktel == null) {
+//        echo "Izabrali ste nepostojeći koktel.";
+//        return;
+//    }
+//
+//    if ($koktelInfo->koktel->obrisan) {
+//        echo "Ovaj koktel je obrisan.";
+//        return;
+//    }
+//
+//    echo "<div>";
+//    echo "<h1>{$koktelInfo->koktel->naziv}</h1>";
+//    echo "<p>{$koktelInfo->koktel->opis}</p>";
+//    echo '<b>Obavezni sastojci:&nbsp;</b>';
+//    for($i=0; $i<count($koktelInfo->obavezniSastojci);$i++){
+//        if($i>0) echo ',&nbsp;';
+//        echo $koktelInfo->obavezniSastojci[$i]->naziv.' '.$koktelInfo->obavezniSastojci[$i]->kolicina;
+//    }
+//    if(!empty($koktelInfo->neobavezniSastojci)){
+//        echo '<br/><b>Nebavezni sastojci: </b>';
+//        for($i=0; $i<count($koktelInfo->neobavezniSastojci);$i++){
+//            if($i>0) echo ',&nbsp;';
+//            echo $koktelInfo->neobavezniSastojci[$i]->naziv.' '.$koktelInfo->neobavezniSastojci[$i]->kolicina;
+//        }
+//    }
+//    echo '<br/>';
+//    echo '<table><tr><td>';
+//    if($koktelInfo->koktel->slika!=NULL){        
+//        echo '<img  width="400" src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->slika).'"/>';
+//    }
+//    else{
+//        echo '<img  width="400" src="'.base_url('img/glass.jpg').'"/>';
+//    }
+//    echo '</td>';
+//    if($koktelInfo->koktel->video!=NULL){
+//        echo '
+//         controls width="320" height="240">
+//                <source src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->video).'" type="video/mp4">
+//                <source src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->video).'" type="video/ogg">
+//                <source src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->video).'" type="video/webm">
+//                Vaš pretraživač ne podržava video klipove. Ažurirajte verziju Vašeg pretraživača.
+//              </video>';
+//    }
+//    echo '</tr></table>';
+//   
+//    // gost
+//    if ($korisnik == null) {
+//        echo '</div>';
+//        return;
+//    }
+//    
+//    // admin
+//    if ($korisnik->isAdmin) {       
+//        echo '<form action="'.site_url("Admin/brisanjeRecepta/".$koktelInfo->koktel->idKoktela).'" method="post">';
+//        echo '<input value="Ukloni recept" type="submit"></form>';
+//
+//        echo '<form action="'.site_url("Admin/brisanjeKorisnika/".$koktelInfo->koktel->idKorisnika).'" method="post">';
+//        echo '<input value="Ukloni korisnika" type="submit"></form>';
+//    }
+//    else {   
+//        // korisnik
+//        if ($korisnik->idKorisnika==$koktelInfo->koktel->idKorisnika) {
+//            //echo "(ovde ide dugme za brisanje sopstvenog koktela)";
+//            echo "<form action='".site_url("Korisnik/brisanjeMogRecepta")."' method ='POST'>";
+//            echo '<input type="hidden" name="idKoktela" value="'.$koktelInfo->koktel->idKoktela.'">';
+//            echo "<input value='Obrisi recept' type='submit'>";
+//            echo "</form>";
+//        } 
+//        else {
+//            echo '<form method="post" action="'.site_url("Korisnik/reportovanjeTudjegRecepta").'" method="post";>';
+//            echo '<input type="hidden" name="idKoktela" value="'.$koktelInfo->koktel->idKoktela.'">';
+//            foreach($razlozi as $razlog){
+//                echo '<input type="checkbox" name="r['.$razlog->opisRazloga.']"'."value={$razlog->idRazloga}".'>'.$razlog->opisRazloga;
+//                if($razlog->idRazloga==3) echo " Original: <input type='text' name='original'><br/>";
+//                else echo "<br/>";
+//            }
+//            echo '<input value="Reportuj recept" type="submit">';
+//            echo '</form>';
+//        }   
+//    }
+//    echo '</div>';
+ 
     if ($koktelInfo->koktel == null) {
-        echo "Izabrali ste nepostojeći koktel.";
+        echo "<p class='text-center'>Izabrali ste nepostojeći koktel!</p>";
         return;
     }
 
     if ($koktelInfo->koktel->obrisan) {
-        echo "Ovaj koktel je obrisan.";
+        echo "<p class='text-center'>Ovaj koktel je obrisan!</p>";
         return;
     }
 
-    if($koktelInfo->koktel->slika!=NULL){
-        echo '<img width="400"  src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->slika).'"/>';
-    }
-    else {
-            echo '<img  width="400" src="'.base_url('img/glass.jpg').'"/>';
-    }
-    echo '<br/>';
+    echo "<div class='m-4'>";
     echo "<h1>{$koktelInfo->koktel->naziv}</h1>";
-    echo "<p>{$koktelInfo->koktel->opis}<p>";
-    echo '<b>Obavezni sastojci:&nbsp;</b>';
+    echo "<p>{$koktelInfo->koktel->opis}</p>";
+    echo '<p class="mb-3">Obavezni sastojci: ';
     for($i=0; $i<count($koktelInfo->obavezniSastojci);$i++){
-        if($i>0) echo ',&nbsp;';
+        if($i>0) { echo ', '; }
         echo $koktelInfo->obavezniSastojci[$i]->naziv.' '.$koktelInfo->obavezniSastojci[$i]->kolicina;
     }
     if(!empty($koktelInfo->neobavezniSastojci)){
-        echo '<br/><b>Nebavezni sastojci: </b>';
+        echo '<br/>Nebavezni sastojci: ';
         for($i=0; $i<count($koktelInfo->neobavezniSastojci);$i++){
-            if($i>0) echo ',&nbsp;';
+            if($i>0) { echo ', '; }
             echo $koktelInfo->neobavezniSastojci[$i]->naziv.' '.$koktelInfo->neobavezniSastojci[$i]->kolicina;
         }
     }
-    echo '<br>';
+    echo '</p>';
+    if($koktelInfo->koktel->slika!=NULL){        
+        echo '<img src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->slika).'" '
+                . 'alt="Fotografija koktela" class="responsive-max-500 mb-2"><br>';
+    }
+    
     if($koktelInfo->koktel->video!=NULL){
-        echo '<video controls width="640" height="480">
+        echo '<video controls class="responsive-max-500">
                 <source src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->video).'" type="video/mp4">
                 <source src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->video).'" type="video/ogg">
                 <source src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->video).'" type="video/webm">
@@ -50,49 +129,40 @@
     
     // admin
     if ($korisnik->isAdmin) {       
-        echo '<form action="'.site_url("Admin/brisanjeRecepta/".$koktelInfo->koktel->idKoktela).'" method="post" onsubmit="return potvrdiBrisanje()">';
-        echo '<input value="Uklonite recept" type="submit"></form>';
-        echo "</div>";
+        echo '<form class="mt-2" action="'.site_url("Admin/brisanjeRecepta/".$koktelInfo->koktel->idKoktela).'" method="post" onsubmit="return potvrdiBrisanje()">';
+        echo '<input value="Obrišite recept" type="submit"></form>';
     }
     else {   
         // korisnik
         if ($korisnik->idKorisnika==$koktelInfo->koktel->idKorisnika) {
             //echo "(ovde ide dugme za brisanje sopstvenog koktela)";
-            echo "<form action='".site_url("Korisnik/brisanjeMogRecepta")."' method ='POST' onsubmit='return potvrdiBrisanje()'>";
+            echo "<form class='mt-2' action='".site_url("Korisnik/brisanjeMogRecepta")."' method ='POST' onsubmit='return potvrdiBrisanje()'>";
             echo '<input type="hidden" name="idKoktela" value="'.$koktelInfo->koktel->idKoktela.'">';
             echo "<input value='Obrišite recept' type='submit'>";
             echo "</form>";
-            echo "</div>";
         } 
         else {
-            echo '<form>';
             echo '<input type="button" onclick="prikaziFormuZaPrijavu()" class="btn btn-primary" style="margin-bottom: 10px;" value="Prijavite recept"><br/>';
-            echo '</form>';
             echo '<div id="sakrivena_forma">';
-            echo '<form action="'.site_url("Korisnik/reportovanjeTudjegRecepta").'" method="post" onsubmit="return validanUnos()">';
+            echo '<form class="mt-2" action="'.site_url("Korisnik/reportovanjeTudjegRecepta").'" method="post" onsubmit="return validanUnos()">';
             echo '<span id="poruka"></span>';
             echo '<input type="hidden" name="idKoktela" value="'.$koktelInfo->koktel->idKoktela.'">';
             $ind = 1;
             foreach($razlozi as $razlog){
-               echo '<input type="checkbox" id="'.'razlog'.$ind.'" onclick="prikaziPoljeZaOriginal()" name="r['.$razlog->opisRazloga.']"'." value={$razlog->idRazloga}".'> '.$razlog->opisRazloga.'<br>';
-               if($razlog->idRazloga==3) echo "<span id='unosOriginala'></span><br/>";
-               $ind++;
+                echo '<input type="checkbox" id="'.'razlog'.$ind.'" onclick="prikaziPoljeZaOriginal()" name="r['.$razlog->opisRazloga.']"'." value={$razlog->idRazloga}".'>'.$razlog->opisRazloga.'<br>';
+                if($razlog->idRazloga==3) echo "<span id='unosOriginala'></span><br/>";
+                $ind++;
             }
             echo '<input value="Prijavite recept" type="submit">';
             echo '</form>';
             echo '</div>';
-            echo '</div>';
-        } 
+        }   
     }
-
+    echo "</div>";
 ?>
-<style>
-    #sakrivena_forma{
-        display:none;
-    }
-</style>
-<script type="text/javascript">
-    function validanUnos($imeForme){
+
+<script>
+    function validanUnos(){
         var datRazlog = false;
         var razlogDuplikat = false;
         var datOriginal = false;
@@ -122,7 +192,7 @@
             poruka.innerHTML="<b><font color='red'>Morate navesti originalni recept ako tvrdite da je ovaj recept duplikat!</font></b><br/>"
             return false;
         }
-        var potvrda = confirm("Da li ste sigurni da želite da reportujete ovaj recept?");
+        var potvrda = confirm("Da li ste sigurni da želite da prijavite ovaj recept?");
         if(potvrda == true){
             return true;
         }

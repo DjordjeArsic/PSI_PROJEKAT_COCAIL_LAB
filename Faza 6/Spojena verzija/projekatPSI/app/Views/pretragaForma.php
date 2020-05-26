@@ -3,7 +3,7 @@
 </script>
 
 <div class="align-self-center container text-center align-items-center mt-5">
-    <img class="fotografija-pocetna" src="http://localhost:8080/img/refreshing_beverage.svg" alt="Osvežavajuće piće">
+    <img class="fotografija-pocetna" src="<?php echo base_url('/img/refreshing_beverage.svg'); ?>" alt="Osvežavajuće piće">
     <h3 class="mt-3 mb-2">Unesite sastojke koje imate kod sebe:</h3>
 
     <!--Make sure the form has the autocomplete function switched off:-->
@@ -32,11 +32,13 @@
                 
                 echo '<div class="row bg-light mt-3 border-radius">';
                 echo '<div class="col-sm-12 col-md-4">';
-                if($rezultat->koktel->slika==NULL) 
-                    echo '<img src="http://localhost:8080/img/placeholder.svg" class="fotografija-koktela img-fluid" alt="Nema slike koktela">';
-                else 
+                if($rezultat->koktel->slika==NULL) {
+                    echo '<img src="'.base_url('/img/placeholder.svg').'" class="fotografija-koktela img-fluid" alt="Nema slike koktela">';
+                }
+                else {
                     echo '<img src="'.base_url("/uploads/".$rezultat->koktel->idKoktela."/".$rezultat->koktel->slika).'"'
-                        . ' alt="Fotografija koktela" class="fotografija-koktela img-fluid" />';                   
+                        . ' alt="Fotografija koktela" class="fotografija-koktela img-fluid" />';      
+                }
                 echo '</div>';
                   
                 echo '<div class="col-sm-12 col-md-8 text-md-left">';
@@ -46,7 +48,7 @@
                 
                 $obavezni = $rezultat->obavezniSastojci;
                 foreach($obavezni as $key=>$sastojak) {
-                    if($key!=0) echo ', ';
+                    if($key!=0) { echo ', '; }
                     echo $sastojak->naziv.' '.$sastojak->kolicina;
                 }               
                 
@@ -79,7 +81,7 @@ function dodajSastojakUListuIzabranih(sastojakNaziv, sastojakId) {
       }, 700);
 
       return;
-    }``
+    }
     /* ispisi uneti sastojak i izbrisi input */
     var noviSastojak = document.createElement("button");
     noviSastojak.setAttribute("id", "id"+sastojakId);
@@ -97,6 +99,8 @@ function dodajSastojakUListuIzabranih(sastojakNaziv, sastojakId) {
         
         document.getElementsByClassName("class"+this.id)[0].remove();
         this.remove();
+        
+        $('form').submit();
     });
     var nazivSastojka = document.createTextNode(sastojakNaziv+" x");
     noviSastojak.appendChild(nazivSastojka);
@@ -167,13 +171,16 @@ function autocomplete(inp, arr) {
                   }
               }
               
-              if(flag) sastojciSesija.push(novi);
+              if(flag) {
+                  sastojciSesija.push(novi);
+              }
               sessionStorage.setItem("upamceniSastojci", JSON.stringify(sastojciSesija));
               
               dodajSastojakUListuIzabranih(sastojak, sastojakId);
-          
+              
               inp.value="";
-
+              
+              //if(flag) $('form').submit();
                 /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
               closeAllLists();

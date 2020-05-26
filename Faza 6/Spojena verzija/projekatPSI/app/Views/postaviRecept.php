@@ -5,10 +5,13 @@
   function toggleVis(checkbox) {
       var red = document.getElementById(checkbox.value);
       if (red.style.display === "none") {
-            red.style.display = "flex";
+        red.style.display = "flex";
       }
       else {
         red.style.display = "none";
+        
+        red.getElementsByTagName("input")[0].value = "";
+        red.getElementsByTagName("input")[1].checked = false;
       }
       return;
   }
@@ -16,9 +19,6 @@
 
 <form  class="m-2" name="postavljanjeforma" action="<?= site_url("Korisnik/receptSubmit") ?>" method="post" enctype="multipart/form-data">
 <div class="container">
-    <div class="row p-2">
-        <div class="col-7 text-danger" id="porukaDiv"> <?php if(isset($poruka)) echo $poruka ?> </div>
-    </div>
     <div class="row p-2">
         <div class="col-xs-5 col-md-2"> Naziv:* </div>
         <div class="col-xs-10 col-md-7"> <input type="text" name="naziv" value="<?php echo $naziv ?>"/> </div>
@@ -57,6 +57,10 @@
     <div class="row p-2">
         <div class="ol-xs-5 col-md-2"> Okači video: </div>
         <div class="col-xs-10 col-md-7"> <input class="w-100 bg-white" type="file" accept="video/*" name="video"/> </div>
+    </div>
+    
+    <div class="row p-2">
+        <div class="col-7 text-danger" id="porukaDiv"> <?php if(isset($poruka)) echo $poruka ?> </div>
     </div>
 
     <div class="row p-4">
