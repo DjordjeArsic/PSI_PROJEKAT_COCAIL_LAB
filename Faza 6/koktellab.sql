@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3308
--- Generation Time: May 25, 2020 at 07:47 AM
+-- Generation Time: May 26, 2020 at 03:02 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.3.12
 
@@ -53,15 +53,15 @@ DROP TABLE IF EXISTS `koktel`;
 CREATE TABLE IF NOT EXISTS `koktel` (
   `idKoktela` int(11) NOT NULL AUTO_INCREMENT,
   `idKorisnika` int(11) NOT NULL,
-  `naziv` varchar(50) NOT NULL,
+  `naziv` text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `opis` text NOT NULL,
-  `slika` varchar(456) DEFAULT NULL,
-  `video` varchar(100) DEFAULT NULL,
+  `slika` varchar(512) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `video` varchar(512) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `obrisan` tinyint(4) NOT NULL,
   `datum` date NOT NULL,
   PRIMARY KEY (`idKoktela`),
   KEY `R_1` (`idKorisnika`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `koktel`
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `korisnik` (
   PRIMARY KEY (`idKorisnika`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `korisnik`
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `korisnik` (
 INSERT INTO `korisnik` (`idKorisnika`, `username`, `password`, `email`) VALUES
 (1, 'admin', 'Admin123', 'admin@gmail.com'),
 (2, 'PetarPet', 'peraABCD', 'petar@gmail.com'),
-(3, 'AcaA', 'acaaca', 'aca@gmaill.com'),
+(3, 'AcaA', 'acaaca', 'aca@gmail.com'),
 (4, 'MajaMaj', 'majaMaj', 'maja@gmail.com');
 
 -- --------------------------------------------------------
@@ -125,8 +125,9 @@ CREATE TABLE IF NOT EXISTS `prijava` (
 INSERT INTO `prijava` (`idKoktela`, `datum`, `idRegistrovanog`, `obrisanaPrijava`) VALUES
 (1, '2020-05-19', 2, 0),
 (1, '2020-05-19', 3, 0),
-(3, '2020-05-13', 3, 0),
-(3, '2020-05-13', 4, 0);
+(1, '2020-05-25', 4, 0),
+(3, '2020-05-13', 4, 0),
+(5, '2020-05-25', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -172,7 +173,11 @@ CREATE TABLE IF NOT EXISTS `razloziprijave` (
 
 INSERT INTO `razloziprijave` (`idRazloga`, `idKoktela`, `idRegistrovanog`, `duplikat`) VALUES
 (1, 1, 2, NULL),
-(1, 1, 3, NULL);
+(1, 1, 3, NULL),
+(1, 1, 4, NULL),
+(1, 3, 4, NULL),
+(1, 5, 3, NULL),
+(2, 1, 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -278,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `sastojak` (
 --
 
 INSERT INTO `sastojak` (`idSastojka`, `naziv`) VALUES
-(11, 'coca cola'),
+(11, 'coca-cola'),
 (1, 'džin'),
 (9, 'kokosovo mleko'),
 (12, 'liker od kafe'),
@@ -293,9 +298,9 @@ INSERT INTO `sastojak` (`idSastojka`, `naziv`) VALUES
 (10, 'sok od ananasa'),
 (6, 'sok od limete'),
 (4, 'tekila'),
-(2, 'vermouth'),
-(18, 'vodka'),
-(16, 'žuti šečer');
+(2, 'vermut'),
+(18, 'votka'),
+(16, 'žuti šećer');
 
 --
 -- Constraints for dumped tables

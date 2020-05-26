@@ -17,7 +17,7 @@ class Pretraga extends BaseController {
         $sastojciIzSesije = $this->session->get('sastojci');
         $sastojakModel = new SastojakModel();
         $sastojci = $sastojakModel->dohvatiSastojke();
-        return $this->prikaz("pretragaForma", ['sastojci'=>$sastojci, 'recepti'=>$recepti, 'poruka'=>$poruka, 'sastojciIzSesije' => $sastojciIzSesije]);
+        return $this->prikaz("pretraga", ['sastojci'=>$sastojci, 'recepti'=>$recepti, 'poruka'=>$poruka, 'sastojciIzSesije' => $sastojciIzSesije]);
     }
     
     // na osnovu idKoktela vraca se objekat koktela sa svim sastojcima
