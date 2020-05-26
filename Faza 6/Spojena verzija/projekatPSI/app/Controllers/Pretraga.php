@@ -6,16 +6,21 @@ use App\Models\NeobavezniModel;
 use App\Models\KoktelModel;
 use App\Models\RazlogModel;
 
+// Pretraga kontroler - klasa za upravljanje akcijama pretrage koktela
+// Autor: Jelena Dragojevic - 2017/0440, Marko Stankovic - 2017/0331
+// @verzija 1.0
 class Pretraga extends BaseController {
-        
+    
+    // rezultat: prikaz pocetne stranice pretrage
     public function index($poruka=null) {
-        $recepti = $this->session->getFlashData('kokteliZaIspis');
+        $recepti = $this->session->get('kokteliZaIspis');
         $sastojciIzSesije = $this->session->get('sastojci');
         $sastojakModel = new SastojakModel();
         $sastojci = $sastojakModel->dohvatiSastojke();
         return $this->prikaz("pretragaForma", ['sastojci'=>$sastojci, 'recepti'=>$recepti, 'poruka'=>$poruka, 'sastojciIzSesije' => $sastojciIzSesije]);
     }
     
+    // na osnovu idKoktela vraca se objekat koktela sa svim sastojcima
     private function dohvKoktelsaSastojcima($idKoktela) {
         $koktelModel = new KoktelModel();
         $sadrziObaveznoModel = new ObavezniModel();
@@ -44,6 +49,8 @@ class Pretraga extends BaseController {
                         'neobavezniSastojci'=> $neobavezniSastojci];
     }
     
+    // obrada zahteva za pretragu za unete sastojke
+    // rezultat: pocetna stranica sa rezultatima pretrage
     public function pretragaSubmit() { 
                 
         $sastojci = $this->request->getPost('sastojci');
@@ -81,7 +88,7 @@ class Pretraga extends BaseController {
         }
         
 
-        $this->session->setFlashData('kokteliZaIspis', $kokteliZaIspis);
+        $this->session->set('kokteliZaIspis', $kokteliZaIspis);
         
         if(count($kokteliZaIspis)==0) {
             $poruka="Nema rezultata pretrage!";
@@ -91,7 +98,7 @@ class Pretraga extends BaseController {
         return redirect()->to(site_url('Pretraga/index'));
     }
     
-    
+    // rezultat: prikaz stranice konkretnog koktela
     public function koktel($idKoktela) {
         
         $koktelModel = new KoktelModel();

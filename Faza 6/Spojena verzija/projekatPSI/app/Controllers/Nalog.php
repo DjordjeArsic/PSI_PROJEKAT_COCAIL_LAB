@@ -4,11 +4,20 @@ use App\Models\KorisnikModel;
 use App\Models\RegistrovaniModel;
 use App\Models\AdminModel;
 
+
+// Nalog kontroler - klasa za upravljanje akcijama kao sto su login, logout i registracija
+// Autor: Jelena Dragojevic - 2017/0440, Marko Stankovic - 2017/0331
+// @verzija 1.0
 class Nalog extends BaseController {
+    
+    // rezultat: prikaz stranice za login
     public function login($poruka=null){
         $this->prikaz('login', ['poruka'=>$poruka]);
     }
            
+    // obrada zahteva za login
+    // rezultat: redirect na stranicu korisnika (uspesan login) ili
+    // ispis greske
     public function loginSubmit(){
         $poruka = "";
         $korime = $this->request->getPost('korime');
@@ -54,15 +63,20 @@ class Nalog extends BaseController {
 
     }
     
+    // logout - brisu se sacuvane sesije i redirectuje se na pocetnu stranicu gosta
     public function logOut() {
         $this->session->destroy();
         return redirect()->to(site_url('/'));
     }
     
+    // rezultat: prikaz stranice za registraciju
     public function register($poruka=null) {
         $this->prikaz('register', ['poruka'=>$poruka]);
     }
     
+    // obrada zahteva za registraciju
+    // rezultat: redirect na pocetnu stranicu korisnika ili
+    // ispis greske 
     public function registerSubmit() {        
         $data['username'] = $this->request->getPost('korime');        
         $data['email'] = $this->request->getPost('email');

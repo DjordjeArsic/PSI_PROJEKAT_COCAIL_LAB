@@ -3,24 +3,29 @@
 use App\Models\SastojakModel;
 use App\Models\KoktelModel;
 use App\Models\ObavezniModel;
-use App\Models\NeobavezniModel; //sadrzi
+use App\Models\NeobavezniModel;
 use App\Models\RazlogModel;
 use App\Models\PrijavaModel;
 use App\Models\RazloziPrijaveModel;
 
-
+// Korisnik kontroler - klasa za upravljanje akcijama koje su namenjene ulogovanom korisniku
+// Autori: Djordje Arsic - 2016/0262 i Marko Stankovic - 2017/0331
+// @verzija 1.0
 class Korisnik extends BaseController { 
-    
+    // provera da li je u pitanju zaista ulogovani korisnik
+    // rezultat: redirect na stranicu za pretragu ako nije
     private function provera() {
         if (!$this->session->get('korisnik')) {
             return redirect()->to(site_url('Pretraga'));
         }
     }
     
+    // rezultat: redirect na stranicu za pretragu
     public function index(){ 
        return redirect()->to(site_url('Pretraga'));
     }
 
+    // rezultat: prikazuje stranicu za dodavanje novog recepta
     public function postaviRecept($poruka = null, $naziv = "", $opis="") {
         $this->provera();
         
@@ -30,6 +35,9 @@ class Korisnik extends BaseController {
             'poruka'=>$poruka, 'naziv'=>$naziv, 'opis'=>$opis]);
     }
     
+    // metoda koja se poziva kada se klikne na postavljanje recepta
+    // rezultat: u slucaju greske ispisuje se poruka, inace se dodaje novi koktel u BP i
+    // redirectuje se na stranicu Moji Recepti
     public function receptSubmit() {
         $this->provera();
         
@@ -81,7 +89,7 @@ class Korisnik extends BaseController {
             'slika' => $slika->getName()!=="" ? $slika->getName(): NULL,
             'video' => $video->getName()!=="" ? $video->getName() : NULL,
             'obrisan' => 0,
-            'datum' => "".date("Y-m-d").""
+            'datum' => date('Y-m-d')
         ];
 
         $koktelModel = new KoktelModel();
@@ -137,9 +145,12 @@ class Korisnik extends BaseController {
             $obavezniSastojciMojihKoktela[$koktel->idKoktela] = $obaveznisastojci;
             $neobavezniSastojciMojihKoktela[$koktel->idKoktela] = $neobaveznisastojci;
         }
-        $this->prikaz('stranice/mojirecepti', ['kokteli'=>$kokteli,'obavezni_sastojci_mojih_koktela'=>$obavezniSastojciMojihKoktela,'neobavezni_sastojci_mojih_koktela'=>$neobavezniSastojciMojihKoktela]);
+        $this->prikaz('mojirecepti', ['kokteli'=>$kokteli,'obavezni_sastojci_mojih_koktela'=>$obavezniSastojciMojihKoktela,'neobavezni_sastojci_mojih_koktela'=>$neobavezniSastojciMojihKoktela]);
     }
     
+    // funkcija koja postavlja indikator obrisan na 1 u bp za recept
+    // takodje brisu se sve prijave za taj recept
+    // rezultat: redirect na stranicu Moji Kokteli
     public function brisanjeMogRecepta(){
         $this->provera();
         
@@ -158,17 +169,9 @@ class Korisnik extends BaseController {
         return redirect()->to(site_url('Korisnik/mojiKokteli'));
     }
     
-//    public function test(){
-//        $poruka='';
-//        $registrovaniModel = new RegistrovaniModel();
-//        $registrovani = $registrovaniModel->find(2);
-//        $koktelModel = new KoktelModel();
-//        $koktel = $koktelModel->find(2);
-//        $razlogModel = new RazlogModel();
-//        $razlozi = $razlogModel->findall();
-//        $this->prikaz1('sablon/header_korisnik', 'stranice/tudjirecept', ['koktel' => $koktel,'razlozi' => $razlozi, 'registrovani'=>$registrovani, 'poruka'=>$poruka]);
-//    }
-    
+    // metoda za prijavu tudjeg recepta, dodaje se u bp nova prijava za dati recept
+    // kao i poslati razlozi prijave
+    // rezultat: redirect na stranicu recepta za koji je podneta prijava
     public function reportovanjeTudjegRecepta(){
             $this->provera();
         
@@ -210,9 +213,4 @@ class Korisnik extends BaseController {
             return redirect()->to(site_url('Pretraga/koktel/'.$idKoktela));
     }
     
-    public function mojKoktel($idKoktela){
-        $this->provera();
-        
-        return redirect()->to(site_url('Pretraga/koktel/'.$idKoktela));
-    }
 }

@@ -14,8 +14,12 @@ namespace App\Controllers;
  * @package CodeIgniter
  */
 
+
 use CodeIgniter\Controller;
 
+// Base kontroler - klasa iz koje su izvedeni svi ostali kontroleri (tj. klasa za zajednicke akcije)
+// Autor: Jelena Dragojevic - 2017/0440
+// @verzija 1.0
 class BaseController extends Controller {
 
 	/**
@@ -28,7 +32,7 @@ class BaseController extends Controller {
 	protected $helpers = ['form', 'url', 'html'];
 
 	/**
-	 * Constructor.
+	 * Constructor - inicijalizacija sesija
 	 */
 	public function initController(\CodeIgniter\HTTP\RequestInterface $request, \CodeIgniter\HTTP\ResponseInterface $response, \Psr\Log\LoggerInterface $logger)
 	{
@@ -43,7 +47,10 @@ class BaseController extends Controller {
                 
                 $this->session = session();
 	}
-
+        
+        // metoda koja proverava tip korisnika i u zavisnosti od toga prikazuje header
+        // ostatak stranice prikazuje na osnovu $page, a potrebne podatka iz $data argumenta
+        // prikaz footer-a
         protected function prikaz($page, $data) {            
             $data['controller']='BaseController';
             $korisnik = $this->session->get('korisnik');

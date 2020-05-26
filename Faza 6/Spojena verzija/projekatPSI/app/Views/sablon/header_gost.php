@@ -23,6 +23,8 @@
   <link rel="stylesheet" href="<?php echo base_url('/css/nasCSS.css'); ?>">
   
   <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+  <link rel="icon" href="<?php echo base_url('/img/favicon.png'); ?>" type="image/x-icon">
+  
   <script src="https://kit.fontawesome.com/a81368914c.js"></script>
   
   

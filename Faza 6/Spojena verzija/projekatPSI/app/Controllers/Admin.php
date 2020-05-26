@@ -5,8 +5,12 @@ use App\Models\PrijavaModel;
 use App\Models\RazlogModel;
 use App\Models\RazloziPrijaveModel;
 
+// Admin kontroler - klasa za upravljanje akcijama koje su namenjene adminu
+// Autor: Stefan Radenkovic - 2017/0573
+// @verzija 1.0
 class Admin extends Korisnik {   
-    
+    // proverava da li je korisnik ulogovan i da li je admin
+    // rezultat redirect na odgovarajucu stranicu u slucaju da nije admin
     private function provera() {
         if (!$this->session->get('korisnik')) {
             return redirect()->to(site_url('Pretraga'));
@@ -16,6 +20,9 @@ class Admin extends Korisnik {
         }
     }
     
+    // postavlja indikator obrisan na 1 u bazi podataka za dati recept
+    // takodje brise sve prijave vezane za ovaj koktel
+    // rezultat redirect na reportovane recepte
     public function brisanjeRecepta($idKoktela){
         $this->provera();
         
@@ -30,6 +37,9 @@ class Admin extends Korisnik {
         return redirect()->to(site_url('Admin/reportovaniRecepti'));
     }
     
+    // postavlja indikator obrisan na 1 u bazi podataka za datog korisnika
+    // takodje brise sve njegove koktele i prijave za te koktele
+    // rezultat redirect na reportovane recepte
     public function brisanjeKorisnika($idRegistrovanog){ 
         $this->provera();
         
@@ -51,14 +61,18 @@ class Admin extends Korisnik {
         return redirect()->to(site_url('Admin/reportovaniRecepti')); 
     }
     
-    public function brisanjePrijave($idKoktela, $idRegistrovanog) {
+    // postavlja indikator obrisan na 1 u bazi podataka za datu prijavu
+    // rezultat redirect na reportovane recepte
+    public function brisanjePrijave($idKoktela, $idRegistrovanog, $datum) {
         $this->provera();
-        
         $prijavaModel = new PrijavaModel();
-        $prijavaModel->set("obrisanaPrijava", 1)->where('idKoktela', $idKoktela)->where('idRegistrovanog', $idRegistrovanog)->update(); 
+        $prijavaModel->set("obrisanaPrijava", 1)->where('idKoktela', $idKoktela)
+                ->where('idRegistrovanog', $idRegistrovanog)->update(); 
         return redirect()->to(site_url('Admin/reportovaniRecepti')); 
     }
     
+    // salje view-u sve prijavljene recepte
+    // rezultat prikaz stranice prijavljeni recepti
     public function reportovaniRecepti() {
         $this->provera();
         
@@ -86,6 +100,6 @@ class Admin extends Korisnik {
             $prijave[$key] = $prijava;
         }
         
-        $this->prikaz('stranice/prijavljenirecepti' ,['prijave'=>$prijave, 'razlozi'=>$opisiRazloga]); 
+        $this->prikaz('prijavljenirecepti' ,['prijave'=>$prijave, 'razlozi'=>$opisiRazloga]); 
     }
 }
