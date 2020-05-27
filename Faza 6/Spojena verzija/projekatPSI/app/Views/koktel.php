@@ -11,6 +11,7 @@
 
     echo "<div class='m-4'>";
     echo "<h1>{$koktelInfo->koktel->naziv}</h1>";
+    echo "<p>Datum: {$koktelInfo->koktel->datum}</p>";
     echo "<p>{$koktelInfo->koktel->opis}</p>";
     echo '<p class="mb-3">Obavezni sastojci: ';
     for($i=0; $i<count($koktelInfo->obavezniSastojci);$i++){
@@ -36,7 +37,7 @@
                 <source src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->video).'" type="video/ogg">
                 <source src="'.base_url("/uploads/".$koktelInfo->koktel->idKoktela."/".$koktelInfo->koktel->video).'" type="video/webm">
                 Vaš pretraživač ne podržava video klipove. Ažurirajte verziju Vašeg pretraživača.
-              </video>';
+              </video><br>';
     }
    
     // gost
