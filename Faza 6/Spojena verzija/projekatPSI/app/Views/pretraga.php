@@ -98,9 +98,7 @@ function dodajSastojakUListuIzabranih(sastojakNaziv, sastojakId) {
         sessionStorage.setItem("upamceniSastojci", JSON.stringify(sastojciSesija));
         
         document.getElementsByClassName("class"+this.id)[0].remove();
-        this.remove();
-        
-        $('form').submit();
+        this.remove();       
     });
     var nazivSastojka = document.createTextNode(sastojakNaziv+" x");
     noviSastojak.appendChild(nazivSastojka);

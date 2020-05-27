@@ -32,8 +32,8 @@
         <div class="col-xs-10 col-md-7">
             <?php
                 foreach($sastojci as $value) {  
-                    echo "<span class='text-nowrap'><input type='checkbox' value='$value' onclick='toggleVis(this)'></input>";
-                    echo " $value</span>&nbsp&nbsp&nbsp&nbsp";
+                    echo "<span class='ml-2'><label><input type='checkbox' value='$value' onclick='toggleVis(this)'></input>";
+                    echo " $value</label></span>";
                 }
             ?>
         </div>

@@ -7,9 +7,10 @@ use App\Models\NeobavezniModel;
 use App\Models\RazlogModel;
 use App\Models\PrijavaModel;
 use App\Models\RazloziPrijaveModel;
+use App\Models\KorisnikModel;
 
 // Korisnik kontroler - klasa za upravljanje akcijama koje su namenjene ulogovanom korisniku
-// Autori: Djordje Arsic - 2016/0262 i Marko Stankovic - 2017/0331
+// Autori: Djordje Arsic - 2016/0262 i Marko Stankovic - 2017/0331, Stefan Radenkovic 2017/0573
 // @verzija 1.0
 class Korisnik extends BaseController { 
     // provera da li je u pitanju zaista ulogovani korisnik
@@ -213,4 +214,47 @@ class Korisnik extends BaseController {
             return redirect()->to(site_url('Pretraga/koktel/'.$idKoktela));
     }
     
+    // metod koji proverava da li uneti email vec postoji u bazi (AJAX)
+    public function ProveriEmail()
+   {
+        $email= $_POST['email'];
+        
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+        {
+            echo 2; return; // los oblim email-a
+        }
+        
+        $korisnikModel = new KorisnikModel();
+
+        $where = "email REGEXP BINARY '$email'";
+        
+        $result = $korisnikModel->where($where)->where('email', $email)->findall();
+        if(count($result) != 0)
+        {
+            echo  1;	// email vec postoji
+        }
+        else
+        {
+            echo  0;	// email ne postoji
+        }
+    }
+    
+    // metod koji proverava da li uneti username vec postoji u bazi (AJAX)
+    public function ProveriUsername()
+   {
+        $username= $_POST['username'];
+        $korisnikModel = new KorisnikModel();
+
+        $where = "username REGEXP BINARY '$username'";
+        
+        $result = $korisnikModel->where($where)->where('username', $username)->findall();
+        if(count($result) != 0)
+        {
+            echo  1;	// username vec postoji
+        }
+        else
+        {
+            echo  0;	// username ne postoji
+        }
+    }
 }

@@ -20,8 +20,8 @@ document.getElementById("register").parentElement.classList.add("active");
                         <i class="fas fa-user"></i>
                    </div>
                    <div class="div">
-                        <h5>Korisničko ime</h5>
-                        <input type="text" name="korime" value="" class="input">
+                        <h5 id="username_result">Korisničko ime</h5>
+                        <input type="text" id="kor_ime" name="korime" value="" class="input">
                    </div>
                 </div>
                 <div class="input-div one">
@@ -29,8 +29,8 @@ document.getElementById("register").parentElement.classList.add("active");
                         <i class="fas fa-envelope"></i>
                    </div>
                    <div class="div">
-                        <h5>E-mail</h5>
-                        <input type="text" name="email" value="" class="input">
+                        <h5 id="email_result">E-mail</h5>
+                        <input type="text" id="mejl"  name="email" value="" class="input">
                    </div>
                 </div>
                 <div class="input-div pass">
@@ -56,6 +56,86 @@ document.getElementById("register").parentElement.classList.add("active");
         </div>
     </div>
 </main>
+  
+
+<script>
+// AJAX provere
+
+// Provera email
+$(document).ready(function(){  
+    $('#mejl').change(function(){  
+         var email = $('#mejl').val();  
+         if(email != '')  
+         {  
+              jQuery.ajax({
+              type: "POST",
+              url: "<?php echo base_url('index.php/Korisnik/ProveriEmail'); ?>",
+              dataType: 'html',
+              data: {email: email},
+              success: function(res) 
+              {
+                      if(res==1)
+                      {
+                          $("#email_result").html("<span style='color:red'>Korisnik sa ovim e-mailom već postoji.</span>");
+                      }
+                      else if (res == 0)
+                      {
+                          $("#email_result").html("<span style='color:green'>Email dostupan!</span>");	
+                      }
+                      else
+                      {
+                          $("#email_result").html("<span style='color:red'>Email je u neispravnom formatu!</span>");
+                      }
+
+              },
+              error:function()
+              {
+                  alert('AJAX greška: email');	
+              }
+              });
+         }
+         else
+         {
+          $("#email_result").html("E-mail");
+         }
+    });  
+
+    // Provera username
+    $('#kor_ime').change(function(){  
+         var username = $('#kor_ime').val();  
+         if(username != '')  
+         {  
+              jQuery.ajax({
+              type: "POST",
+              url: "<?php echo base_url('index.php/Korisnik/ProveriUsername'); ?>",
+              dataType: 'html',
+              data: {username: username},
+              success: function(res) 
+              {
+                      if(res==1)
+                      {
+                          $("#username_result").html("<span style='color:red'>Korisnik sa ovim imenom već postoji.</span>");
+                      }
+                      else
+                      {
+                          $("#username_result").html("<span style='color:green'>Korisničko ime dostupno!</span>");	
+                      }
+
+              },
+              error:function()
+              {
+                  alert('AJAX greška: username');	
+              }
+              });
+         }
+         else
+         {
+          $("#username_result").html("Korisničko ime");
+         }
+    });
+ });   
+</script>
+
 
 <script src="<?php echo base_url('/js/main2.js'); ?>"></script>
 
