@@ -2399,6 +2399,86 @@
       ],
       "value": ""
     }]
+  }, {
+    "id": "2bc3c21e-ba42-4e87-b7a0-3e19a4dfe6f6",
+    "name": "testiranje komponente 'pretraga' (sastojak ne postoji)",
+    "commands": [{
+      "id": "7c9dc189-a383-4ea8-9168-917a1bc906e6",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/pretraga",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ad5f597f-a0b2-4357-b51f-e8e048e38824",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "02902f46-8fad-4df3-af9c-b179e7950db7",
+      "comment": "",
+      "command": "click",
+      "target": "id=myInput",
+      "targets": [
+        ["id=myInput", "id"],
+        ["name=sastojak", "name"],
+        ["css=#myInput", "css:finder"],
+        ["xpath=//input[@id='myInput']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2c037932-a1d3-4a81-ab41-ac7b7f35b5a6",
+      "comment": "",
+      "command": "type",
+      "target": "id=myInput",
+      "targets": [
+        ["id=myInput", "id"],
+        ["name=sastojak", "name"],
+        ["css=#myInput", "css:finder"],
+        ["xpath=//input[@id='myInput']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "belo vino"
+    }, {
+      "id": "58f276c3-1e63-456e-b6e7-af9a6063f3b9",
+      "comment": "",
+      "command": "click",
+      "target": "id=submitButton",
+      "targets": [
+        ["id=submitButton", "id"],
+        ["css=#submitButton", "css:finder"],
+        ["xpath=//input[@id='submitButton']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "cede8256-3a00-4f1b-98ca-436c509d8d21",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=submitButton",
+      "targets": [
+        ["id=submitButton", "id"],
+        ["css=#submitButton", "css:finder"],
+        ["xpath=//input[@id='submitButton']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8f23eaa3-adfa-4f74-8a22-90a650896bc9",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "id=submitButton",
+      "targets": [
+        ["id=submitButton", "id"],
+        ["css=#submitButton", "css:finder"],
+        ["xpath=//input[@id='submitButton']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "cef6cbe2-a82b-442b-8b71-6e0b23ac1d49",
