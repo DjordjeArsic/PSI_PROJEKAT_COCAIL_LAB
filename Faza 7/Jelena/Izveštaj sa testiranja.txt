@@ -1,0 +1,6 @@
+Jelena Dragojević testirala SSU funkcionalnosti Đorđa Arsića.
+
+Nisu uočeni nikakvi bagovi u samoj aplikaciji. Ispravljen je detalj da dugme za brisanje sopstvenog recepta
+može da se klikne i na stranici "Moji recepti" (SSU-Brisanje-sopstvenog-recepta.docx).
+
+Dodatni ručni testovi su rađeni za sve ono što nije moglo da se testira alatom Selenium IDE.

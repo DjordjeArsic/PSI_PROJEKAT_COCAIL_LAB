@@ -1,0 +1,3 @@
+Stefan Radenković je testirao SSU-ove Jelene Dragojević.
+
+Nikakvi bugovi nisu uočeni. Manje nesaglasnoti SSU-ova i same aplikacije rešeni su manjim promenama SSU dokumenata.

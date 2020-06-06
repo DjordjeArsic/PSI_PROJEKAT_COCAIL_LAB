@@ -1,0 +1,1041 @@
+{
+  "id": "d7209a72-a849-47c0-8401-c79a0f33cda9",
+  "version": "2.0",
+  "name": "Postavljanje Recepta Testovi",
+  "url": "http://localhost:8080/index.php/Pretraga",
+  "tests": [{
+    "id": "01baca38-b041-4343-9fa9-e8048b661e91",
+    "name": "Postavljanje Recepta Test 1",
+    "commands": [{
+      "id": "60560989-5e24-4b0c-a665-bf17af46315a",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/index.php/Pretraga",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "51fc159b-ec24-43db-b741-928203935bfd",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1453x920",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "df186a7a-4bcc-44b9-8ea1-44b1c1fbeca1",
+      "comment": "",
+      "command": "click",
+      "target": "css=#login > span",
+      "targets": [
+        ["css=#login > span", "css:finder"],
+        ["xpath=//a[@id='login']/span", "xpath:idRelative"],
+        ["xpath=//li[2]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Ulogujte se')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "4cf1c0dc-220d-4f30-8c3b-d48c449b4045",
+      "comment": "",
+      "command": "click",
+      "target": "name=korime",
+      "targets": [
+        ["name=korime", "name"],
+        ["css=.one .input", "css:finder"],
+        ["xpath=//input[@name='korime']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d4dc114c-8e06-45a3-a90c-2f9c3c92437d",
+      "comment": "",
+      "command": "type",
+      "target": "name=korime",
+      "targets": [
+        ["name=korime", "name"],
+        ["css=.one .input", "css:finder"],
+        ["xpath=//input[@name='korime']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "admin"
+    }, {
+      "id": "ea1d1034-fb3a-41ee-9050-053f71efdc9b",
+      "comment": "",
+      "command": "type",
+      "target": "name=lozinka",
+      "targets": [
+        ["name=lozinka", "name"],
+        ["css=.pass .input", "css:finder"],
+        ["xpath=//input[@name='lozinka']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Admin123"
+    }, {
+      "id": "82dcdd8c-8e83-4f06-bdfc-84a36dc7f0a8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Prijavite se']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4483f6f8-e8f9-4985-b13f-b39f4bce31db",
+      "comment": "",
+      "command": "click",
+      "target": "css=#postaviRecept > span",
+      "targets": [
+        ["css=#postaviRecept > span", "css:finder"],
+        ["xpath=//a[@id='postaviRecept']/span", "xpath:idRelative"],
+        ["xpath=//li[3]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Objavite recept')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3cd0b120-cb77-4e08-a11b-d51b11960dde",
+      "comment": "",
+      "command": "click",
+      "target": "name=naziv",
+      "targets": [
+        ["name=naziv", "name"],
+        ["css=.row:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='naziv']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "add63931-5dac-41bb-88c8-ee0fa18568b0",
+      "comment": "",
+      "command": "type",
+      "target": "name=naziv",
+      "targets": [
+        ["name=naziv", "name"],
+        ["css=.row:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='naziv']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Koktel"
+    }, {
+      "id": "067c12c9-e8f0-47df-92c5-693a16522287",
+      "comment": "",
+      "command": "click",
+      "target": "name=opis",
+      "targets": [
+        ["name=opis", "name"],
+        ["css=.rounded", "css:finder"],
+        ["xpath=//textarea[@name='opis']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "05a570c9-4498-454c-9577-894710635519",
+      "comment": "",
+      "command": "type",
+      "target": "name=opis",
+      "targets": [
+        ["name=opis", "name"],
+        ["css=.rounded", "css:finder"],
+        ["xpath=//textarea[@name='opis']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Opis"
+    }, {
+      "id": "6aa021df-c144-4fca-815b-aa389781de3e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ml-2:nth-child(1) input",
+      "targets": [
+        ["css=.ml-2:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@value='coca-cola']", "xpath:attributes"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b1d397e5-7dd4-4102-a64f-d2f25cb4b606",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ml-2:nth-child(7) input",
+      "targets": [
+        ["css=.ml-2:nth-child(7) input", "css:finder"],
+        ["xpath=//input[@value='masline']", "xpath:attributes"],
+        ["xpath=//span[7]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d4007925-a459-489c-9e68-eac4c71e6b0d",
+      "comment": "",
+      "command": "click",
+      "target": "name=kolicine[coca-cola]",
+      "targets": [
+        ["name=kolicine[coca-cola]", "name"],
+        ["css=#coca-cola > .col-xs-12 > input", "css:finder"],
+        ["xpath=//input[@name='kolicine[coca-cola]']", "xpath:attributes"],
+        ["xpath=//div[@id='coca-cola']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "aacaf327-41ba-4499-b089-cc37114ad8a6",
+      "comment": "",
+      "command": "type",
+      "target": "name=kolicine[coca-cola]",
+      "targets": [
+        ["name=kolicine[coca-cola]", "name"],
+        ["css=#coca-cola > .col-xs-12 > input", "css:finder"],
+        ["xpath=//input[@name='kolicine[coca-cola]']", "xpath:attributes"],
+        ["xpath=//div[@id='coca-cola']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/input", "xpath:position"]
+      ],
+      "value": "100"
+    }, {
+      "id": "aac23f58-83a9-40a8-babf-96901185956c",
+      "comment": "",
+      "command": "click",
+      "target": "name=kolicine[masline]",
+      "targets": [
+        ["name=kolicine[masline]", "name"],
+        ["css=#masline > .col-xs-12 > input", "css:finder"],
+        ["xpath=//input[@name='kolicine[masline]']", "xpath:attributes"],
+        ["xpath=//div[@id='masline']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[10]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "eab88c9e-15d8-4db2-b227-53050c7cf443",
+      "comment": "",
+      "command": "type",
+      "target": "name=kolicine[masline]",
+      "targets": [
+        ["name=kolicine[masline]", "name"],
+        ["css=#masline > .col-xs-12 > input", "css:finder"],
+        ["xpath=//input[@name='kolicine[masline]']", "xpath:attributes"],
+        ["xpath=//div[@id='masline']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[10]/div[2]/input", "xpath:position"]
+      ],
+      "value": "200"
+    }, {
+      "id": "20d330b2-ad55-4cef-b733-bdb3d9c4d9dc",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-12 > .w-100",
+      "targets": [
+        ["css=.col-12 > .w-100", "css:finder"],
+        ["xpath=//input[@value='Postavi recept']", "xpath:attributes"],
+        ["xpath=//div[25]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e82e9ba7-1002-4c71-a841-34dd00a163e6",
+      "comment": "",
+      "command": "click",
+      "target": "css=#mojiRecepti > span",
+      "targets": [
+        ["css=#mojiRecepti > span", "css:finder"],
+        ["xpath=//a[@id='mojiRecepti']/span", "xpath:idRelative"],
+        ["xpath=//li[4]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Moji recepti')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e2e32b82-c007-4601-bbdb-a9d06679fca7",
+      "comment": "",
+      "command": "assertText",
+      "target": "linkText=Koktel",
+      "targets": [
+        ["linkText=Koktel", "linkText"],
+        ["css=.row:nth-child(2) a", "css:finder"],
+        ["xpath=//a[contains(text(),'Koktel')]", "xpath:link"],
+        ["xpath=//a[@href='http://localhost:8080/index.php/Pretraga/koktel/21']", "xpath:href"],
+        ["xpath=//div[2]/div[2]/h2/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Koktel')]", "xpath:innerText"]
+      ],
+      "value": "Koktel"
+    }, {
+      "id": "2b6dbf6f-1037-4b4c-b66c-403b3c5d4fe6",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(5) span",
+      "targets": [
+        ["css=.nav-item:nth-child(5) span", "css:finder"],
+        ["xpath=//div[@id='navbarNavDropdown4']/ul/li[5]/a/span", "xpath:idRelative"],
+        ["xpath=//li[5]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Odjavite se')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "58b27dad-8428-4f85-8e86-a18a8e64be4f",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "ebd49dec-9c01-4d3c-be2a-45fe2b3d65dc",
+    "name": "Postavljanje Recepta Test 2",
+    "commands": [{
+      "id": "24c661b3-6dc5-40fb-bb20-e37a3dec30a3",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/index.php/Pretraga",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "80c6cc40-9a05-4ea7-9f25-47284c7f4690",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1453x920",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b72ac518-d60b-4a9b-9091-e4306e3d6b0d",
+      "comment": "",
+      "command": "click",
+      "target": "css=#login > span",
+      "targets": [
+        ["css=#login > span", "css:finder"],
+        ["xpath=//a[@id='login']/span", "xpath:idRelative"],
+        ["xpath=//li[2]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Ulogujte se')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "98c85578-0fdb-4ec3-b4a1-5864b686f54e",
+      "comment": "",
+      "command": "click",
+      "target": "name=korime",
+      "targets": [
+        ["name=korime", "name"],
+        ["css=.one .input", "css:finder"],
+        ["xpath=//input[@name='korime']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ec68e955-c361-46ab-88f4-234e5578c17e",
+      "comment": "",
+      "command": "type",
+      "target": "name=korime",
+      "targets": [
+        ["name=korime", "name"],
+        ["css=.one .input", "css:finder"],
+        ["xpath=//input[@name='korime']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "admin"
+    }, {
+      "id": "82d15526-f5c9-4139-a06e-1cd478b0c10c",
+      "comment": "",
+      "command": "type",
+      "target": "name=lozinka",
+      "targets": [
+        ["name=lozinka", "name"],
+        ["css=.pass .input", "css:finder"],
+        ["xpath=//input[@name='lozinka']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Admin123"
+    }, {
+      "id": "1c95d647-36df-4463-a846-7bed32b494d9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Prijavite se']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4bdf9b1d-4410-43d7-8876-daaad9b628ac",
+      "comment": "",
+      "command": "click",
+      "target": "css=#postaviRecept > span",
+      "targets": [
+        ["css=#postaviRecept > span", "css:finder"],
+        ["xpath=//a[@id='postaviRecept']/span", "xpath:idRelative"],
+        ["xpath=//li[3]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Objavite recept')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9d2db13f-bc38-483f-b840-d1951cf9ee4d",
+      "comment": "",
+      "command": "click",
+      "target": "name=naziv",
+      "targets": [
+        ["name=naziv", "name"],
+        ["css=.row:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='naziv']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "43968f6e-f0e0-45eb-9941-3c172eb84769",
+      "comment": "",
+      "command": "type",
+      "target": "name=naziv",
+      "targets": [
+        ["name=naziv", "name"],
+        ["css=.row:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='naziv']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "KoktelOpcioni"
+    }, {
+      "id": "e735cbd1-385e-4e5a-ada6-7484ddd3a381",
+      "comment": "",
+      "command": "click",
+      "target": "name=opis",
+      "targets": [
+        ["name=opis", "name"],
+        ["css=.rounded", "css:finder"],
+        ["xpath=//textarea[@name='opis']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1156769a-b5a6-48f5-923c-ae3ac05d9f77",
+      "comment": "",
+      "command": "type",
+      "target": "name=opis",
+      "targets": [
+        ["name=opis", "name"],
+        ["css=.rounded", "css:finder"],
+        ["xpath=//textarea[@name='opis']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Opcioni"
+    }, {
+      "id": "897bd9b2-b565-4137-8432-9e5a0babe25a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ml-2:nth-child(2) input",
+      "targets": [
+        ["css=.ml-2:nth-child(2) input", "css:finder"],
+        ["xpath=//input[@value='džin']", "xpath:attributes"],
+        ["xpath=//span[2]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "fedaefab-dfd1-4bdd-8696-e3a4287d970a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ml-2:nth-child(8) input",
+      "targets": [
+        ["css=.ml-2:nth-child(8) input", "css:finder"],
+        ["xpath=//input[@value='mineralna voda']", "xpath:attributes"],
+        ["xpath=//span[8]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1b44ad5c-977e-4bea-a2ae-bfebe7fbd0dc",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ml-2:nth-child(12) input",
+      "targets": [
+        ["css=.ml-2:nth-child(12) input", "css:finder"],
+        ["xpath=//input[@value='so']", "xpath:attributes"],
+        ["xpath=//span[12]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "52173690-426b-46ae-8625-4fcf991c2649",
+      "comment": "",
+      "command": "click",
+      "target": "name=kolicine[džin]",
+      "targets": [
+        ["name=kolicine[džin]", "name"],
+        ["css=#d\\17Ein > .col-xs-12 > input", "css:finder"],
+        ["xpath=//input[@name='kolicine[džin]']", "xpath:attributes"],
+        ["xpath=//div[@id='džin']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "58356385-9c72-4398-ab5d-bf26602dc707",
+      "comment": "",
+      "command": "type",
+      "target": "name=kolicine[džin]",
+      "targets": [
+        ["name=kolicine[džin]", "name"],
+        ["css=#d\\17Ein > .col-xs-12 > input", "css:finder"],
+        ["xpath=//input[@name='kolicine[džin]']", "xpath:attributes"],
+        ["xpath=//div[@id='džin']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/div[2]/input", "xpath:position"]
+      ],
+      "value": "22"
+    }, {
+      "id": "d5c7bb74-64f9-4a62-a91a-9491f5806d44",
+      "comment": "",
+      "command": "click",
+      "target": "name=kolicine[mineralna voda]",
+      "targets": [
+        ["name=kolicine[mineralna voda]", "name"],
+        ["css=#mineralna\\ voda > .col-xs-12 > input", "css:finder"],
+        ["xpath=//input[@name='kolicine[mineralna voda]']", "xpath:attributes"],
+        ["xpath=//div[@id='mineralna voda']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[11]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c01ab56a-6584-477a-ac1d-e9b118dd75df",
+      "comment": "",
+      "command": "type",
+      "target": "name=kolicine[mineralna voda]",
+      "targets": [
+        ["name=kolicine[mineralna voda]", "name"],
+        ["css=#mineralna\\ voda > .col-xs-12 > input", "css:finder"],
+        ["xpath=//input[@name='kolicine[mineralna voda]']", "xpath:attributes"],
+        ["xpath=//div[@id='mineralna voda']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[11]/div[2]/input", "xpath:position"]
+      ],
+      "value": "142"
+    }, {
+      "id": "dea2b2fd-cc94-4f9c-a4ff-b346964e9c1a",
+      "comment": "",
+      "command": "click",
+      "target": "name=kolicine[so]",
+      "targets": [
+        ["name=kolicine[so]", "name"],
+        ["css=#so > .col-xs-12 > input", "css:finder"],
+        ["xpath=//input[@name='kolicine[so]']", "xpath:attributes"],
+        ["xpath=//div[@id='so']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[15]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8671e96d-9f25-4fe0-9678-f038169ae3a2",
+      "comment": "",
+      "command": "type",
+      "target": "name=kolicine[so]",
+      "targets": [
+        ["name=kolicine[so]", "name"],
+        ["css=#so > .col-xs-12 > input", "css:finder"],
+        ["xpath=//input[@name='kolicine[so]']", "xpath:attributes"],
+        ["xpath=//div[@id='so']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[15]/div[2]/input", "xpath:position"]
+      ],
+      "value": "50"
+    }, {
+      "id": "bc8de09b-f2e9-46e2-b0a6-7d447c8c7e49",
+      "comment": "",
+      "command": "click",
+      "target": "css=#so label > input",
+      "targets": [
+        ["css=#so label > input", "css:finder"],
+        ["xpath=(//input[@name='neobavezni[]'])[12]", "xpath:attributes"],
+        ["xpath=//div[@id='so']/div[3]/label/input", "xpath:idRelative"],
+        ["xpath=//div[15]/div[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "13f2ec9f-1233-423f-aa35-d1733a5d8fda",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-12 > .w-100",
+      "targets": [
+        ["css=.col-12 > .w-100", "css:finder"],
+        ["xpath=//input[@value='Postavi recept']", "xpath:attributes"],
+        ["xpath=//div[25]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ac710068-21d1-4bc0-87e5-8a46c349242b",
+      "comment": "",
+      "command": "click",
+      "target": "css=#mojiRecepti > span",
+      "targets": [
+        ["css=#mojiRecepti > span", "css:finder"],
+        ["xpath=//a[@id='mojiRecepti']/span", "xpath:idRelative"],
+        ["xpath=//li[4]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Moji recepti')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0f605db3-17fd-4b9c-8db1-e54ab1d20bfc",
+      "comment": "",
+      "command": "assertText",
+      "target": "linkText=KoktelOpcioni",
+      "targets": [
+        ["linkText=KoktelOpcioni", "linkText"],
+        ["css=.row:nth-child(3) a", "css:finder"],
+        ["xpath=//a[contains(text(),'KoktelOpcioni')]", "xpath:link"],
+        ["xpath=//a[@href='http://localhost:8080/index.php/Pretraga/koktel/25']", "xpath:href"],
+        ["xpath=//div[3]/div[2]/h2/a", "xpath:position"],
+        ["xpath=//a[contains(.,'KoktelOpcioni')]", "xpath:innerText"]
+      ],
+      "value": "KoktelOpcioni"
+    }, {
+      "id": "4c42ed03-a71e-4851-b7a6-2ef25a512013",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Odjavite se",
+      "targets": [
+        ["linkText=Odjavite se", "linkText"],
+        ["css=.nav-item:nth-child(5) > .nav-link", "css:finder"],
+        ["xpath=//div[@id='navbarNavDropdown4']/ul/li[5]/a", "xpath:idRelative"],
+        ["xpath=//a[@href='http://localhost:8080/index.php/Nalog/logOut']", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,' Odjavite se')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "48e2bbb3-86ca-4a67-b5b9-960c055cfebe",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "3f3281d1-326b-412a-ad7d-a97c4a83d1c4",
+    "name": "Postavljanje Recepta Test 3",
+    "commands": [{
+      "id": "d39bc1c2-3775-42c1-95e3-722975c616a8",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/index.php/Pretraga",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a6327009-c80c-4be8-a043-d1e4d4d99a72",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1453x920",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0a2aa913-a9bc-42fc-970b-61462f94f568",
+      "comment": "",
+      "command": "click",
+      "target": "css=#login > span",
+      "targets": [
+        ["css=#login > span", "css:finder"],
+        ["xpath=//a[@id='login']/span", "xpath:idRelative"],
+        ["xpath=//li[2]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Ulogujte se')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6b650c8e-5f19-4d07-ab81-e37eb6649faa",
+      "comment": "",
+      "command": "click",
+      "target": "name=korime",
+      "targets": [
+        ["name=korime", "name"],
+        ["css=.one .input", "css:finder"],
+        ["xpath=//input[@name='korime']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4135ab78-2a33-4f2c-8fea-fa6e4dbc838f",
+      "comment": "",
+      "command": "type",
+      "target": "name=korime",
+      "targets": [
+        ["name=korime", "name"],
+        ["css=.one .input", "css:finder"],
+        ["xpath=//input[@name='korime']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "admin"
+    }, {
+      "id": "db6581b1-96cf-4210-9a09-6846679a2077",
+      "comment": "",
+      "command": "type",
+      "target": "name=lozinka",
+      "targets": [
+        ["name=lozinka", "name"],
+        ["css=.pass .input", "css:finder"],
+        ["xpath=//input[@name='lozinka']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "Admin123"
+    }, {
+      "id": "63811b7f-b1e5-4285-b39a-275db6237cd0",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "name=lozinka",
+      "targets": [
+        ["name=lozinka", "name"],
+        ["css=.pass .input", "css:finder"],
+        ["xpath=//input[@name='lozinka']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "e4b4e621-03f3-45fc-a8fe-9df170b47474",
+      "comment": "",
+      "command": "click",
+      "target": "css=#postaviRecept > span",
+      "targets": [
+        ["css=#postaviRecept > span", "css:finder"],
+        ["xpath=//a[@id='postaviRecept']/span", "xpath:idRelative"],
+        ["xpath=//li[3]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Objavite recept')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0e5987ac-fbd3-4d0b-9faf-5f99f0b7b7e8",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-12 > .w-100",
+      "targets": [
+        ["css=.col-12 > .w-100", "css:finder"],
+        ["xpath=//input[@value='Postavi recept']", "xpath:attributes"],
+        ["xpath=//div[25]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "395cd36c-3b3d-4b0e-b048-d12f6ea675f7",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=porukaDiv",
+      "targets": [
+        ["id=porukaDiv", "id"],
+        ["css=#porukaDiv", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']", "xpath:attributes"],
+        ["xpath=//div[24]/div", "xpath:position"]
+      ],
+      "value": "Niste uneli naziv recepta.\\nNiste uneli opis recepta.\\nNiste uneli nijedan obavezan sastojak."
+    }, {
+      "id": "ac1bd06d-e325-45a8-84c4-576dd03bca88",
+      "comment": "",
+      "command": "click",
+      "target": "name=naziv",
+      "targets": [
+        ["name=naziv", "name"],
+        ["css=.row:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='naziv']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1a7ad3dc-ac6d-44de-9e91-159cffab6727",
+      "comment": "",
+      "command": "type",
+      "target": "name=naziv",
+      "targets": [
+        ["name=naziv", "name"],
+        ["css=.row:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='naziv']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Koktel"
+    }, {
+      "id": "3345b4da-9dc7-4a9d-bf28-2dcd0fe8e8e9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-12 > .w-100",
+      "targets": [
+        ["css=.col-12 > .w-100", "css:finder"],
+        ["xpath=//input[@value='Postavi recept']", "xpath:attributes"],
+        ["xpath=//div[25]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "af9792ef-4409-4ce6-9eb5-a9bb1a0ea7ba",
+      "comment": "",
+      "command": "click",
+      "target": "id=porukaDiv",
+      "targets": [
+        ["id=porukaDiv", "id"],
+        ["css=#porukaDiv", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']", "xpath:attributes"],
+        ["xpath=//div[24]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a3c2a7bb-8c52-4a78-aecb-b42b2434f9c2",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=porukaDiv",
+      "targets": [
+        ["id=porukaDiv", "id"],
+        ["css=#porukaDiv", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']", "xpath:attributes"],
+        ["xpath=//div[24]/div", "xpath:position"]
+      ],
+      "value": "Niste uneli opis recepta.\\nNiste uneli nijedan obavezan sastojak."
+    }, {
+      "id": "15404af6-3149-4094-b857-244ddbc76ec1",
+      "comment": "",
+      "command": "click",
+      "target": "name=opis",
+      "targets": [
+        ["name=opis", "name"],
+        ["css=.rounded", "css:finder"],
+        ["xpath=//textarea[@name='opis']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "20b7b2de-e096-4a7b-8507-445a61b0eac9",
+      "comment": "",
+      "command": "type",
+      "target": "name=opis",
+      "targets": [
+        ["name=opis", "name"],
+        ["css=.rounded", "css:finder"],
+        ["xpath=//textarea[@name='opis']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "Opis"
+    }, {
+      "id": "26a2b4a4-f74f-44d3-9da3-0a9bd6e8b3f0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-12 > .w-100",
+      "targets": [
+        ["css=.col-12 > .w-100", "css:finder"],
+        ["xpath=//input[@value='Postavi recept']", "xpath:attributes"],
+        ["xpath=//div[25]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "249b07a4-5336-474b-97ed-548ed0bf5055",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=porukaDiv",
+      "targets": [
+        ["id=porukaDiv", "id"],
+        ["css=#porukaDiv", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']", "xpath:attributes"],
+        ["xpath=//div[24]/div", "xpath:position"]
+      ],
+      "value": "Niste uneli nijedan obavezan sastojak."
+    }, {
+      "id": "e53d9d1f-baac-4919-a947-eb3631e1fa86",
+      "comment": "",
+      "command": "click",
+      "target": "css=.row:nth-child(1)",
+      "targets": [
+        ["css=.row:nth-child(1)", "css:finder"],
+        ["xpath=//div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "64069015-1dc8-4146-a9b3-aa2023fe1549",
+      "comment": "",
+      "command": "type",
+      "target": "name=naziv",
+      "targets": [
+        ["name=naziv", "name"],
+        ["css=.row:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='naziv']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0c2c6b20-8492-4b74-b482-75f0dde5837b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-12 > .w-100",
+      "targets": [
+        ["css=.col-12 > .w-100", "css:finder"],
+        ["xpath=//input[@value='Postavi recept']", "xpath:attributes"],
+        ["xpath=//div[25]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4755f26a-4d64-48f3-8b31-266bf21df7f1",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.col-12 > .w-100",
+      "targets": [
+        ["css=.col-12 > .w-100", "css:finder"],
+        ["xpath=//input[@value='Postavi recept']", "xpath:attributes"],
+        ["xpath=//div[25]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "894bee9a-1815-4eb1-b644-8a0a539a0d2e",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.col-12 > .w-100",
+      "targets": [
+        ["css=.col-12 > .w-100", "css:finder"],
+        ["xpath=//input[@value='Postavi recept']", "xpath:attributes"],
+        ["xpath=//div[25]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d3dbb8e2-f0b6-4a60-b88f-cca6152eaaca",
+      "comment": "",
+      "command": "click",
+      "target": "id=porukaDiv",
+      "targets": [
+        ["id=porukaDiv", "id"],
+        ["css=#porukaDiv", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']", "xpath:attributes"],
+        ["xpath=//div[24]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b4e1ddac-3ab4-49dc-95f3-6b18e193dc4b",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=porukaDiv",
+      "targets": [
+        ["id=porukaDiv", "id"],
+        ["css=#porukaDiv", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']", "xpath:attributes"],
+        ["xpath=//div[24]/div", "xpath:position"]
+      ],
+      "value": "Niste uneli naziv recepta.\\nNiste uneli nijedan obavezan sastojak."
+    }, {
+      "id": "8a0a177d-54c8-4a65-9c9e-8b5dfcb51f31",
+      "comment": "",
+      "command": "click",
+      "target": "name=naziv",
+      "targets": [
+        ["name=naziv", "name"],
+        ["css=.row:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='naziv']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "27143772-6d82-4b82-89c2-921ffb572e85",
+      "comment": "",
+      "command": "type",
+      "target": "name=naziv",
+      "targets": [
+        ["name=naziv", "name"],
+        ["css=.row:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@name='naziv']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "Koktel"
+    }, {
+      "id": "1fa837d6-d77a-4aa4-a368-5bac38004e50",
+      "comment": "",
+      "command": "click",
+      "target": "css=.ml-2:nth-child(1) input",
+      "targets": [
+        ["css=.ml-2:nth-child(1) input", "css:finder"],
+        ["xpath=//input[@value='coca-cola']", "xpath:attributes"],
+        ["xpath=//label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c78537b4-d840-4faa-a83e-c1e2639b8191",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-12 > .w-100",
+      "targets": [
+        ["css=.col-12 > .w-100", "css:finder"],
+        ["xpath=//input[@value='Postavi recept']", "xpath:attributes"],
+        ["xpath=//div[25]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "34d859aa-c1d5-4840-99d2-e26a50aa22da",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=porukaDiv",
+      "targets": [
+        ["id=porukaDiv", "id"],
+        ["css=#porukaDiv", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']", "xpath:attributes"],
+        ["xpath=//div[24]/div", "xpath:position"]
+      ],
+      "value": "Niste uneli nijedan obavezan sastojak."
+    }, {
+      "id": "70ddb85d-a488-4113-86d2-358a6fdb3436",
+      "comment": "",
+      "command": "click",
+      "target": "name=kolicine[coca-cola]",
+      "targets": [
+        ["name=kolicine[coca-cola]", "name"],
+        ["css=#coca-cola > .col-xs-12 > input", "css:finder"],
+        ["xpath=//input[@name='kolicine[coca-cola]']", "xpath:attributes"],
+        ["xpath=//div[@id='coca-cola']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f280dd71-c989-400f-a965-f631e4ef8fc1",
+      "comment": "",
+      "command": "type",
+      "target": "name=kolicine[coca-cola]",
+      "targets": [
+        ["name=kolicine[coca-cola]", "name"],
+        ["css=#coca-cola > .col-xs-12 > input", "css:finder"],
+        ["xpath=//input[@name='kolicine[coca-cola]']", "xpath:attributes"],
+        ["xpath=//div[@id='coca-cola']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div[2]/input", "xpath:position"]
+      ],
+      "value": "100"
+    }, {
+      "id": "42c4d75a-ea13-43b9-87c1-f62fdcb969af",
+      "comment": "",
+      "command": "click",
+      "target": "name=neobavezni[]",
+      "targets": [
+        ["name=neobavezni[]", "name"],
+        ["css=#coca-cola label > input", "css:finder"],
+        ["xpath=//input[@name='neobavezni[]']", "xpath:attributes"],
+        ["xpath=//div[@id='coca-cola']/div[3]/label/input", "xpath:idRelative"],
+        ["xpath=//div[3]/label/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "23ee7206-d8ea-4b58-901c-847aad0e3f48",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-12 > .w-100",
+      "targets": [
+        ["css=.col-12 > .w-100", "css:finder"],
+        ["xpath=//input[@value='Postavi recept']", "xpath:attributes"],
+        ["xpath=//div[25]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "da547af7-2aa2-4ae7-81e2-c6f8f22a26de",
+      "comment": "",
+      "command": "assertText",
+      "target": "id=porukaDiv",
+      "targets": [
+        ["id=porukaDiv", "id"],
+        ["css=#porukaDiv", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']", "xpath:attributes"],
+        ["xpath=//div[24]/div", "xpath:position"]
+      ],
+      "value": "Niste uneli nijedan obavezan sastojak."
+    }, {
+      "id": "a04e745d-3e50-4fc0-9b88-95a4b77928d9",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Odjavite se",
+      "targets": [
+        ["linkText=Odjavite se", "linkText"],
+        ["css=.nav-item:nth-child(5) > .nav-link", "css:finder"],
+        ["xpath=//div[@id='navbarNavDropdown4']/ul/li[5]/a", "xpath:idRelative"],
+        ["xpath=//a[@href='http://localhost:8080/index.php/Nalog/logOut']", "xpath:href"],
+        ["xpath=//li[5]/a", "xpath:position"],
+        ["xpath=//a[contains(.,' Odjavite se')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "25c1acc1-2f1e-49d3-ae1c-b7ac30b15478",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "6625cb88-951b-4f2a-a934-9214b4d623ea",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["01baca38-b041-4343-9fa9-e8048b661e91"]
+  }],
+  "urls": ["http://localhost:8080/index.php/Pretraga"],
+  "plugins": []
+}

@@ -1,0 +1,7 @@
+Marko Stanković testirao SSU-ove Stefana Radenkovića.
+
+Nisu primećeni nikakvi bagovi u samoj aplikaciji.
+Postojala je mala nesaglasnost sa SSU-ovima, ali je to brzo ispravljeno prepravkom SSU-ova.
+
+Sve ostale klase ekvivalencije testirane su ručno zbog određenih nedostataka alata Selenium IDE.
+

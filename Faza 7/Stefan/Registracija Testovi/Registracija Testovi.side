@@ -1,0 +1,1091 @@
+{
+  "id": "e7823c29-4721-4892-b38b-dfc38b8519a9",
+  "version": "2.0",
+  "name": "Registracija Testovi",
+  "url": "http://localhost:8080/index.php/Pretraga/index",
+  "tests": [{
+    "id": "64eb5e3a-dcb8-450e-95e1-9e7ba571d796",
+    "name": "Registracija Test 1",
+    "commands": [{
+      "id": "43d0d2e1-7925-42ee-895f-f8b57dd6f839",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/index.php/Pretraga/index",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "70c66e3e-15a7-4e76-a261-4b2d0cab4519",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1453x920",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "08cf400a-8e9a-4f9b-baf5-1928fb92ee76",
+      "comment": "",
+      "command": "click",
+      "target": "id=register",
+      "targets": [
+        ["id=register", "id"],
+        ["linkText=Registrujte se", "linkText"],
+        ["css=#register", "css:finder"],
+        ["xpath=//a[@id='register']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarNavDropdown4']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[@href='http://localhost:8080/index.php/Nalog/register']", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,' Registrujte se')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f01e6355-eed6-4b51-a2a8-dd410e233c48",
+      "comment": "",
+      "command": "click",
+      "target": "id=kor_ime",
+      "targets": [
+        ["id=kor_ime", "id"],
+        ["name=korime", "name"],
+        ["css=#kor_ime", "css:finder"],
+        ["xpath=//input[@id='kor_ime']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "87359967-c3f2-4cec-9235-3a68080952c3",
+      "comment": "",
+      "command": "type",
+      "target": "id=kor_ime",
+      "targets": [
+        ["id=kor_ime", "id"],
+        ["name=korime", "name"],
+        ["css=#kor_ime", "css:finder"],
+        ["xpath=//input[@id='kor_ime']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "stefan"
+    }, {
+      "id": "466c14f7-d197-4710-b373-897e4d8ba2e6",
+      "comment": "",
+      "command": "click",
+      "target": "id=mejl",
+      "targets": [
+        ["id=mejl", "id"],
+        ["name=email", "name"],
+        ["css=#mejl", "css:finder"],
+        ["xpath=//input[@id='mejl']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "07cfe6c5-490b-4631-9fe9-bfe725dec9ba",
+      "comment": "",
+      "command": "type",
+      "target": "id=mejl",
+      "targets": [
+        ["id=mejl", "id"],
+        ["name=email", "name"],
+        ["css=#mejl", "css:finder"],
+        ["xpath=//input[@id='mejl']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "stefan@gmail.com"
+    }, {
+      "id": "f556d4fb-3a02-4147-993b-96f9106167d3",
+      "comment": "",
+      "command": "type",
+      "target": "name=lozinka",
+      "targets": [
+        ["name=lozinka", "name"],
+        ["css=.input-div:nth-child(6) .input", "css:finder"],
+        ["xpath=//input[@name='lozinka']", "xpath:attributes"],
+        ["xpath=//div[4]/div[2]/input", "xpath:position"]
+      ],
+      "value": "5279"
+    }, {
+      "id": "5bddcc0d-ff87-4e93-afd9-4cef91851bc6",
+      "comment": "",
+      "command": "click",
+      "target": "name=ponovljenaLozinka",
+      "targets": [
+        ["name=ponovljenaLozinka", "name"],
+        ["css=.input-div:nth-child(7) .input", "css:finder"],
+        ["xpath=//input[@name='ponovljenaLozinka']", "xpath:attributes"],
+        ["xpath=//div[5]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9a24a43d-c804-4ff0-b552-4b552306afd0",
+      "comment": "",
+      "command": "type",
+      "target": "name=ponovljenaLozinka",
+      "targets": [
+        ["name=ponovljenaLozinka", "name"],
+        ["css=.input-div:nth-child(7) .input", "css:finder"],
+        ["xpath=//input[@name='ponovljenaLozinka']", "xpath:attributes"],
+        ["xpath=//div[5]/div[2]/input", "xpath:position"]
+      ],
+      "value": "5279"
+    }, {
+      "id": "b57195a0-bd21-406c-9d4f-bb4e26458079",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Registrujte se']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bcbf6235-da0d-4ea6-8b53-d9f4f1b5e3e1",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=#mojiRecepti > span",
+      "targets": [
+        ["css=#mojiRecepti > span", "css:finder"],
+        ["xpath=//a[@id='mojiRecepti']/span", "xpath:idRelative"],
+        ["xpath=//li[2]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Moji recepti')]", "xpath:innerText"]
+      ],
+      "value": "Moji recepti"
+    }, {
+      "id": "074261d0-167a-4868-95e0-c9e60f1dcb15",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=#postaviRecept > span",
+      "targets": [
+        ["css=#postaviRecept > span", "css:finder"],
+        ["xpath=//a[@id='postaviRecept']/span", "xpath:idRelative"],
+        ["xpath=//li[3]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Objavite recept')]", "xpath:innerText"]
+      ],
+      "value": "Objavite recept"
+    }, {
+      "id": "5edc3ff3-7262-4dac-b7cd-d1d520bc0d95",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.nav-item:nth-child(4) span",
+      "targets": [
+        ["css=.nav-item:nth-child(4) span", "css:finder"],
+        ["xpath=//div[@id='navbarNavDropdown4']/ul/li[4]/a/span", "xpath:idRelative"],
+        ["xpath=//li[4]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Odjavite se')]", "xpath:innerText"]
+      ],
+      "value": "Odjavite se"
+    }, {
+      "id": "dce67f1f-dcfe-4f68-a308-b68db9f8aa7e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.nav-item:nth-child(4) span",
+      "targets": [
+        ["css=.nav-item:nth-child(4) span", "css:finder"],
+        ["xpath=//div[@id='navbarNavDropdown4']/ul/li[4]/a/span", "xpath:idRelative"],
+        ["xpath=//li[4]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Odjavite se')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dfb7be41-0ae3-4067-89f3-6642100c9e84",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "3160f338-fd06-4e41-a24e-d287ac35ad64",
+    "name": "Registracija Test 2",
+    "commands": [{
+      "id": "94d4dcaf-fcf5-4e02-a794-919c3a81412b",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/index.php/Pretraga/index",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0380b2d5-ad76-4f7b-9a08-2a63c91ffd76",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1453x920",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "45eb9ec1-b5d3-4e88-8087-9649f7faeea7",
+      "comment": "",
+      "command": "click",
+      "target": "css=#register > span",
+      "targets": [
+        ["css=#register > span", "css:finder"],
+        ["xpath=//a[@id='register']/span", "xpath:idRelative"],
+        ["xpath=//li[3]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Registrujte se')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "2e554d7c-0e82-46f5-94e0-926973083296",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Registrujte se']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3c2b971d-8ad5-45ef-9248-1cc005a405cf",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.text-danger:nth-child(1)",
+      "targets": [
+        ["css=.text-danger:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']/span", "xpath:idRelative"],
+        ["xpath=//form/div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Unesite korisničko ime!')]", "xpath:innerText"]
+      ],
+      "value": "Unesite korisničko ime!"
+    }, {
+      "id": "39273e82-8973-44be-afc5-8b092c4a6e75",
+      "comment": "",
+      "command": "click",
+      "target": "id=kor_ime",
+      "targets": [
+        ["id=kor_ime", "id"],
+        ["name=korime", "name"],
+        ["css=#kor_ime", "css:finder"],
+        ["xpath=//input[@id='kor_ime']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d5a44f4a-baed-4c22-83f6-e43b2c7ab01d",
+      "comment": "",
+      "command": "type",
+      "target": "id=kor_ime",
+      "targets": [
+        ["id=kor_ime", "id"],
+        ["name=korime", "name"],
+        ["css=#kor_ime", "css:finder"],
+        ["xpath=//input[@id='kor_ime']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "stefan"
+    }, {
+      "id": "afd2d874-609c-488a-b463-51717a59de8b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Registrujte se']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2c38f4dc-354c-49f3-a157-eda78560adc0",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.text-danger:nth-child(1)",
+      "targets": [
+        ["css=.text-danger:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']/span", "xpath:idRelative"],
+        ["xpath=//div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'E-mail nije ispravan!')]", "xpath:innerText"]
+      ],
+      "value": "E-mail nije ispravan!"
+    }, {
+      "id": "fe524a9a-f473-451c-9337-e3fc998d626d",
+      "comment": "",
+      "command": "click",
+      "target": "name=lozinka",
+      "targets": [
+        ["name=lozinka", "name"],
+        ["css=.input-div:nth-child(6) .input", "css:finder"],
+        ["xpath=//input[@name='lozinka']", "xpath:attributes"],
+        ["xpath=//div[4]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ed41808f-efbe-405c-8f14-15c92fc81168",
+      "comment": "",
+      "command": "type",
+      "target": "name=lozinka",
+      "targets": [
+        ["name=lozinka", "name"],
+        ["css=.input-div:nth-child(6) .input", "css:finder"],
+        ["xpath=//input[@name='lozinka']", "xpath:attributes"],
+        ["xpath=//div[4]/div[2]/input", "xpath:position"]
+      ],
+      "value": "5279"
+    }, {
+      "id": "298ff770-02ca-4cc5-ba29-f8d091c94556",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Registrujte se']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "20277637-2bb5-4f09-863a-a866eda3aadc",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.text-danger:nth-child(3)",
+      "targets": [
+        ["css=.text-danger:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']/span[2]", "xpath:idRelative"],
+        ["xpath=//span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Lozinka i potvrda lozinke se ne slažu!')]", "xpath:innerText"]
+      ],
+      "value": "Lozinka i potvrda lozinke se ne slažu!"
+    }, {
+      "id": "25e80f94-9ec3-4d78-9175-4ce63d86227b",
+      "comment": "",
+      "command": "click",
+      "target": "name=ponovljenaLozinka",
+      "targets": [
+        ["name=ponovljenaLozinka", "name"],
+        ["css=.input-div:nth-child(7) .input", "css:finder"],
+        ["xpath=//input[@name='ponovljenaLozinka']", "xpath:attributes"],
+        ["xpath=//div[5]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3cd0505b-e576-4f63-9864-af343a0ae581",
+      "comment": "",
+      "command": "type",
+      "target": "name=ponovljenaLozinka",
+      "targets": [
+        ["name=ponovljenaLozinka", "name"],
+        ["css=.input-div:nth-child(7) .input", "css:finder"],
+        ["xpath=//input[@name='ponovljenaLozinka']", "xpath:attributes"],
+        ["xpath=//div[5]/div[2]/input", "xpath:position"]
+      ],
+      "value": "5279"
+    }, {
+      "id": "169bfa76-df1b-4b5c-b775-3d6af9ffeb1c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Registrujte se']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6e8557c6-8b3b-4aa5-8881-45a6ce5d4447",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.text-danger",
+      "targets": [
+        ["css=.text-danger", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']/span", "xpath:idRelative"],
+        ["xpath=//div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'E-mail nije ispravan!')]", "xpath:innerText"]
+      ],
+      "value": "E-mail nije ispravan!"
+    }, {
+      "id": "7f6b8b2d-e948-45df-9259-bf16302b1415",
+      "comment": "",
+      "command": "click",
+      "target": "id=mejl",
+      "targets": [
+        ["id=mejl", "id"],
+        ["name=email", "name"],
+        ["css=#mejl", "css:finder"],
+        ["xpath=//input[@id='mejl']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "87375ece-ee51-4c96-8f2a-b128ab668a0e",
+      "comment": "",
+      "command": "type",
+      "target": "id=mejl",
+      "targets": [
+        ["id=mejl", "id"],
+        ["name=email", "name"],
+        ["css=#mejl", "css:finder"],
+        ["xpath=//input[@id='mejl']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "stefan@gmail.com"
+    }, {
+      "id": "3c81b3a8-2765-40dd-b3f1-636a4be7ed34",
+      "comment": "",
+      "command": "click",
+      "target": "css=.container",
+      "targets": [
+        ["css=.container", "css:finder"],
+        ["xpath=//main/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "730e9de7-45be-4c6f-a63e-d5848d8b1fa3",
+      "comment": "",
+      "command": "type",
+      "target": "id=kor_ime",
+      "targets": [
+        ["id=kor_ime", "id"],
+        ["name=korime", "name"],
+        ["css=#kor_ime", "css:finder"],
+        ["xpath=//input[@id='kor_ime']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c3f4a5d9-3cc7-499f-9c25-2d950b7d4ca0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Registrujte se']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d2eb25a7-4167-494d-9f4a-933a3c3555cd",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.text-danger",
+      "targets": [
+        ["css=.text-danger", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']/span", "xpath:idRelative"],
+        ["xpath=//div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Unesite korisničko ime!')]", "xpath:innerText"]
+      ],
+      "value": "Unesite korisničko ime!"
+    }, {
+      "id": "bac809ad-e7e1-4dca-8be9-0a07a21f6d14",
+      "comment": "",
+      "command": "click",
+      "target": "css=.container",
+      "targets": [
+        ["css=.container", "css:finder"],
+        ["xpath=//main/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "52554911-97fb-4b5c-88a5-a572c6395314",
+      "comment": "",
+      "command": "type",
+      "target": "name=lozinka",
+      "targets": [
+        ["name=lozinka", "name"],
+        ["css=.input-div:nth-child(6) .input", "css:finder"],
+        ["xpath=//input[@name='lozinka']", "xpath:attributes"],
+        ["xpath=//div[4]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f3517027-f335-40f7-a4b7-b78cbb65cb1c",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Registrujte se']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ef96197e-6b6c-4818-9322-223e470f32e9",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.text-danger:nth-child(3)",
+      "targets": [
+        ["css=.text-danger:nth-child(3)", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']/span[2]", "xpath:idRelative"],
+        ["xpath=//span[2]", "xpath:position"],
+        ["xpath=//span[contains(.,'Lozinka mora imati 3-16 karaktera!')]", "xpath:innerText"]
+      ],
+      "value": "Lozinka mora imati 3-16 karaktera!"
+    }, {
+      "id": "81944f89-5231-45c9-acc7-8a1c8801d6c1",
+      "comment": "",
+      "command": "click",
+      "target": "css=.input-div:nth-child(7)",
+      "targets": [
+        ["css=.input-div:nth-child(7)", "css:finder"],
+        ["xpath=//div[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "01c20707-0836-4ed2-bf16-0de29b79cf26",
+      "comment": "",
+      "command": "type",
+      "target": "name=ponovljenaLozinka",
+      "targets": [
+        ["name=ponovljenaLozinka", "name"],
+        ["css=.input-div:nth-child(7) .input", "css:finder"],
+        ["xpath=//input[@name='ponovljenaLozinka']", "xpath:attributes"],
+        ["xpath=//div[5]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "98ae6498-41ec-4ef9-9361-ab3ab7727f4b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Registrujte se']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ff69c8ef-9615-46d6-b4a0-5d12f6ee8921",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.text-danger:nth-child(1)",
+      "targets": [
+        ["css=.text-danger:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']/span", "xpath:idRelative"],
+        ["xpath=//div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Unesite korisničko ime!')]", "xpath:innerText"]
+      ],
+      "value": "Unesite korisničko ime!"
+    }, {
+      "id": "60800591-dd9d-4ae0-8c37-026e2f87e3a3",
+      "comment": "",
+      "command": "click",
+      "target": "id=kor_ime",
+      "targets": [
+        ["id=kor_ime", "id"],
+        ["name=korime", "name"],
+        ["css=#kor_ime", "css:finder"],
+        ["xpath=//input[@id='kor_ime']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "e6ea07c1-a52f-45cb-93c1-5377305b52cd",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "6bd1fe2d-f1f4-46e5-b9a9-487757b3355e",
+    "name": "Registracija Test 3",
+    "commands": [{
+      "id": "cf657f74-794d-474c-8a8b-61b03b4d7dc3",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/index.php/Pretraga/index",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "526f49ee-0701-470d-bbf2-6f1bd5226f5f",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1453x920",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ef074ed0-e0aa-43bb-bb34-752e862b99e7",
+      "comment": "",
+      "command": "click",
+      "target": "css=#register > span",
+      "targets": [
+        ["css=#register > span", "css:finder"],
+        ["xpath=//a[@id='register']/span", "xpath:idRelative"],
+        ["xpath=//li[3]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Registrujte se')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "73e5f953-9a78-426a-bf3c-5f4bf5bce8ad",
+      "comment": "",
+      "command": "click",
+      "target": "id=kor_ime",
+      "targets": [
+        ["id=kor_ime", "id"],
+        ["name=korime", "name"],
+        ["css=#kor_ime", "css:finder"],
+        ["xpath=//input[@id='kor_ime']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f7f9d625-1195-47a9-b138-2afd521f4666",
+      "comment": "",
+      "command": "type",
+      "target": "id=kor_ime",
+      "targets": [
+        ["id=kor_ime", "id"],
+        ["name=korime", "name"],
+        ["css=#kor_ime", "css:finder"],
+        ["xpath=//input[@id='kor_ime']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "stefan"
+    }, {
+      "id": "4767d2f6-f666-4cf9-962c-74440bd053be",
+      "comment": "",
+      "command": "click",
+      "target": "id=mejl",
+      "targets": [
+        ["id=mejl", "id"],
+        ["name=email", "name"],
+        ["css=#mejl", "css:finder"],
+        ["xpath=//input[@id='mejl']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9aa60511-ba85-49a3-be59-ebf9b643589b",
+      "comment": "",
+      "command": "type",
+      "target": "id=mejl",
+      "targets": [
+        ["id=mejl", "id"],
+        ["name=email", "name"],
+        ["css=#mejl", "css:finder"],
+        ["xpath=//input[@id='mejl']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "admin@gmail.com"
+    }, {
+      "id": "7cc76100-69cd-400f-beeb-541e32bcc1b2",
+      "comment": "",
+      "command": "type",
+      "target": "name=lozinka",
+      "targets": [
+        ["name=lozinka", "name"],
+        ["css=.input-div:nth-child(6) .input", "css:finder"],
+        ["xpath=//input[@name='lozinka']", "xpath:attributes"],
+        ["xpath=//div[4]/div[2]/input", "xpath:position"]
+      ],
+      "value": "5279"
+    }, {
+      "id": "5190d092-162d-4837-843a-17490bd489ab",
+      "comment": "",
+      "command": "type",
+      "target": "name=ponovljenaLozinka",
+      "targets": [
+        ["name=ponovljenaLozinka", "name"],
+        ["css=.input-div:nth-child(7) .input", "css:finder"],
+        ["xpath=//input[@name='ponovljenaLozinka']", "xpath:attributes"],
+        ["xpath=//div[5]/div[2]/input", "xpath:position"]
+      ],
+      "value": "5279"
+    }, {
+      "id": "eb192133-71de-4c60-bf58-17da34657775",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=#email_result > span",
+      "targets": [
+        ["css=#email_result > span", "css:finder"],
+        ["xpath=//h5[@id='email_result']/span", "xpath:idRelative"],
+        ["xpath=//div[3]/div[2]/h5/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Korisnik sa ovim e-mailom već postoji.')]", "xpath:innerText"]
+      ],
+      "value": "Korisnik sa ovim e-mailom već postoji."
+    }, {
+      "id": "49850de5-c9cb-4140-bc73-8d3a0a534c03",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Registrujte se']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f6132aef-5a29-40d7-9839-b3a9487e400f",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.text-danger",
+      "targets": [
+        ["css=.text-danger", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']/span", "xpath:idRelative"],
+        ["xpath=//form/div/span", "xpath:position"]
+      ],
+      "value": "Već postoji registrovani korisnik sa tom e-mail adresom!"
+    }, {
+      "id": "c799d876-4a4a-438c-a01a-d5462debd719",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "e1e7deb8-e82a-4937-9d12-bf179f6181c7",
+    "name": "Registracija Test 4",
+    "commands": [{
+      "id": "f5bb2e96-38cf-47e4-938e-daee6bbba0d8",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/index.php/Pretraga/index",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2aaa746c-a8b8-4b65-a506-9907d40894aa",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1453x920",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d38205fe-fcd8-48bc-9ff5-5c4b14b3f3f4",
+      "comment": "",
+      "command": "click",
+      "target": "id=register",
+      "targets": [
+        ["id=register", "id"],
+        ["linkText=Registrujte se", "linkText"],
+        ["css=#register", "css:finder"],
+        ["xpath=//a[@id='register']", "xpath:attributes"],
+        ["xpath=//div[@id='navbarNavDropdown4']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[@href='http://localhost:8080/index.php/Nalog/register']", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,' Registrujte se')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "762bc524-4b1d-4b36-8b2d-af328ea4bf63",
+      "comment": "",
+      "command": "click",
+      "target": "id=kor_ime",
+      "targets": [
+        ["id=kor_ime", "id"],
+        ["name=korime", "name"],
+        ["css=#kor_ime", "css:finder"],
+        ["xpath=//input[@id='kor_ime']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "950d3259-5aef-4bfb-807b-5fece5e82197",
+      "comment": "",
+      "command": "type",
+      "target": "id=kor_ime",
+      "targets": [
+        ["id=kor_ime", "id"],
+        ["name=korime", "name"],
+        ["css=#kor_ime", "css:finder"],
+        ["xpath=//input[@id='kor_ime']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "stefan"
+    }, {
+      "id": "552564c5-8173-4812-af06-9018f1aae953",
+      "comment": "",
+      "command": "type",
+      "target": "id=mejl",
+      "targets": [
+        ["id=mejl", "id"],
+        ["name=email", "name"],
+        ["css=#mejl", "css:finder"],
+        ["xpath=//input[@id='mejl']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "stefan@gmail.com"
+    }, {
+      "id": "591db408-ccc4-4593-9924-c12eb73374e4",
+      "comment": "",
+      "command": "type",
+      "target": "name=lozinka",
+      "targets": [
+        ["name=lozinka", "name"],
+        ["css=.input-div:nth-child(6) .input", "css:finder"],
+        ["xpath=//input[@name='lozinka']", "xpath:attributes"],
+        ["xpath=//div[4]/div[2]/input", "xpath:position"]
+      ],
+      "value": "52"
+    }, {
+      "id": "eb405e07-d39c-4c08-9cc5-0880d9e85096",
+      "comment": "",
+      "command": "type",
+      "target": "name=ponovljenaLozinka",
+      "targets": [
+        ["name=ponovljenaLozinka", "name"],
+        ["css=.input-div:nth-child(7) .input", "css:finder"],
+        ["xpath=//input[@name='ponovljenaLozinka']", "xpath:attributes"],
+        ["xpath=//div[5]/div[2]/input", "xpath:position"]
+      ],
+      "value": "52"
+    }, {
+      "id": "0654f46b-5be1-43da-9ea3-c821ca7aa514",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Registrujte se']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8d6f5de2-8908-42b1-8f56-587d14a60622",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Registrujte se']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "17a31b73-0bac-4a6b-a1cd-56d2733a8e68",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Registrujte se']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6956620d-b61b-473d-8979-65fb2b095e82",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.text-danger",
+      "targets": [
+        ["css=.text-danger", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']/span", "xpath:idRelative"],
+        ["xpath=//div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Lozinka mora imati 3-16 karaktera!')]", "xpath:innerText"]
+      ],
+      "value": "Lozinka mora imati 3-16 karaktera!"
+    }, {
+      "id": "6f7234d9-4350-4cd0-8380-49894815d50a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.container",
+      "targets": [
+        ["css=.container", "css:finder"],
+        ["xpath=//main/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "334c3bab-cd7b-4e09-b13f-26b596d2a557",
+      "comment": "",
+      "command": "type",
+      "target": "name=lozinka",
+      "targets": [
+        ["name=lozinka", "name"],
+        ["css=.input-div:nth-child(6) .input", "css:finder"],
+        ["xpath=//input[@name='lozinka']", "xpath:attributes"],
+        ["xpath=//div[4]/div[2]/input", "xpath:position"]
+      ],
+      "value": "12345678912345678"
+    }, {
+      "id": "ba396108-7d3a-4155-88e7-3831992de473",
+      "comment": "",
+      "command": "click",
+      "target": "css=.input-div:nth-child(7)",
+      "targets": [
+        ["css=.input-div:nth-child(7)", "css:finder"],
+        ["xpath=//div[5]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "11dbe879-3f41-455c-81f6-e3f046cce476",
+      "comment": "",
+      "command": "type",
+      "target": "name=ponovljenaLozinka",
+      "targets": [
+        ["name=ponovljenaLozinka", "name"],
+        ["css=.input-div:nth-child(7) .input", "css:finder"],
+        ["xpath=//input[@name='ponovljenaLozinka']", "xpath:attributes"],
+        ["xpath=//div[5]/div[2]/input", "xpath:position"]
+      ],
+      "value": "12345678912345678"
+    }, {
+      "id": "a75cf6c9-7881-4ed5-a4d2-d305783c5fa0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Registrujte se']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "acc71997-efa0-4259-bf99-f3cc2bd8e078",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.text-danger",
+      "targets": [
+        ["css=.text-danger", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']/span", "xpath:idRelative"],
+        ["xpath=//div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Lozinka mora imati 3-16 karaktera!')]", "xpath:innerText"]
+      ],
+      "value": "Lozinka mora imati 3-16 karaktera!"
+    }, {
+      "id": "04d45651-3886-45e8-8845-448bab6aefc8",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "d6e8b71b-cf9b-4580-ae73-68015a01d042",
+    "name": "Registracija Test 5",
+    "commands": [{
+      "id": "4556e98c-ca4e-4cbc-a85b-71371e44adbf",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:8080/index.php/Pretraga/index",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7141dbda-912d-442b-8daf-9bd446bb5ef4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1453x920",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c6026929-05cb-416e-bbf2-b01dd9e116f3",
+      "comment": "",
+      "command": "click",
+      "target": "css=#register > span",
+      "targets": [
+        ["css=#register > span", "css:finder"],
+        ["xpath=//a[@id='register']/span", "xpath:idRelative"],
+        ["xpath=//li[3]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Registrujte se')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3078965f-68fa-440b-958c-b4b9c97c62d0",
+      "comment": "",
+      "command": "click",
+      "target": "id=kor_ime",
+      "targets": [
+        ["id=kor_ime", "id"],
+        ["name=korime", "name"],
+        ["css=#kor_ime", "css:finder"],
+        ["xpath=//input[@id='kor_ime']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "75337504-bbcf-45ae-9670-193635b79db0",
+      "comment": "",
+      "command": "type",
+      "target": "id=kor_ime",
+      "targets": [
+        ["id=kor_ime", "id"],
+        ["name=korime", "name"],
+        ["css=#kor_ime", "css:finder"],
+        ["xpath=//input[@id='kor_ime']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "stefan"
+    }, {
+      "id": "d942171e-5e8d-46a1-8295-874d668a2d48",
+      "comment": "",
+      "command": "type",
+      "target": "id=mejl",
+      "targets": [
+        ["id=mejl", "id"],
+        ["name=email", "name"],
+        ["css=#mejl", "css:finder"],
+        ["xpath=//input[@id='mejl']", "xpath:attributes"],
+        ["xpath=//div[3]/div[2]/input", "xpath:position"]
+      ],
+      "value": "stefan@gmail.com"
+    }, {
+      "id": "47d2d6d6-afd9-4894-9731-eb699ce255ae",
+      "comment": "",
+      "command": "type",
+      "target": "name=lozinka",
+      "targets": [
+        ["name=lozinka", "name"],
+        ["css=.input-div:nth-child(6) .input", "css:finder"],
+        ["xpath=//input[@name='lozinka']", "xpath:attributes"],
+        ["xpath=//div[4]/div[2]/input", "xpath:position"]
+      ],
+      "value": "5279"
+    }, {
+      "id": "6970684d-ffdc-40f6-aa25-b06404ab38e8",
+      "comment": "",
+      "command": "type",
+      "target": "name=ponovljenaLozinka",
+      "targets": [
+        ["name=ponovljenaLozinka", "name"],
+        ["css=.input-div:nth-child(7) .input", "css:finder"],
+        ["xpath=//input[@name='ponovljenaLozinka']", "xpath:attributes"],
+        ["xpath=//div[5]/div[2]/input", "xpath:position"]
+      ],
+      "value": "5278"
+    }, {
+      "id": "022914c7-960e-455a-8a71-6430d76fe025",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Registrujte se']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "38499c3f-1c6c-4a20-bee3-eaccc0776a98",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Registrujte se']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "051b7c2d-e624-4746-a134-9f86d2a3d063",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//input[@value='Registrujte se']", "xpath:attributes"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dd044aa8-f179-457c-8526-6c495bcfd5c2",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.text-danger",
+      "targets": [
+        ["css=.text-danger", "css:finder"],
+        ["xpath=//div[@id='porukaDiv']/span", "xpath:idRelative"],
+        ["xpath=//div/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Lozinka i potvrda lozinke se ne slažu!')]", "xpath:innerText"]
+      ],
+      "value": "Lozinka i potvrda lozinke se ne slažu!"
+    }, {
+      "id": "258b95be-cc0e-4088-9984-0acb91635a7a",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "f8f7c194-4822-4d18-98c6-bc8bd4e06cac",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["64eb5e3a-dcb8-450e-95e1-9e7ba571d796"]
+  }],
+  "urls": ["http://localhost:8080/index.php/Pretraga/index"],
+  "plugins": []
+}
