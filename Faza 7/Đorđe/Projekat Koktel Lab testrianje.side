@@ -11,88 +11,41 @@
     "id": "458e6404-ba3b-4ca5-81d0-5f07e8b4c980",
     "name": "testiranje komponente 'logout'",
     "commands": [{
-      "id": "b61c6053-c7d3-454b-9368-6207956f6bdf",
+      "id": "63c5f1dd-2bcd-4e07-bd4b-7800eeba5644",
       "comment": "",
       "command": "open",
-      "target": "/index.php/Pretraga",
+      "target": "http://localhost:8080/pretraga",
       "targets": [],
       "value": ""
     }, {
-      "id": "42f78367-0a84-4c83-8587-db8f5c8dd50f",
+      "id": "897ec5fb-38b5-41ba-997b-2c438017c1e4",
       "comment": "",
       "command": "setWindowSize",
       "target": "1552x840",
       "targets": [],
       "value": ""
     }, {
-      "id": "e981748a-72be-4bdf-88de-7895c95a1680",
+      "id": "4628033f-8b07-4fc7-bd80-814339d8e74c",
       "comment": "",
-      "command": "click",
-      "target": "id=login",
+      "command": "assertText",
+      "target": "css=.nav-item:nth-child(4) span",
       "targets": [
-        ["id=login", "id"],
-        ["linkText=Ulogujte se", "linkText"],
-        ["css=#login", "css:finder"],
-        ["xpath=//a[@id='login']", "xpath:attributes"],
-        ["xpath=//div[@id='navbarNavDropdown4']/ul/li[2]/a", "xpath:idRelative"],
-        ["xpath=//a[@href='http://localhost:8080/index.php/Nalog/login']", "xpath:href"],
-        ["xpath=//li[2]/a", "xpath:position"],
-        ["xpath=//a[contains(.,' Ulogujte se')]", "xpath:innerText"]
+        ["css=.nav-item:nth-child(4) span", "css:finder"],
+        ["xpath=//div[@id='navbarNavDropdown4']/ul/li[4]/a/span", "xpath:idRelative"],
+        ["xpath=//li[4]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Odjavite se')]", "xpath:innerText"]
       ],
-      "value": ""
+      "value": "Odjavite se"
     }, {
-      "id": "ea43eacc-b142-464a-9a90-7bfc2ce64eb2",
+      "id": "e03657fd-8c39-4aeb-a38e-678b30977557",
       "comment": "",
       "command": "click",
-      "target": "css=.container",
+      "target": "css=.nav-item:nth-child(4) span",
       "targets": [
-        ["css=.container", "css:finder"],
-        ["xpath=//main/div", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "5bcf655a-2182-48e0-a827-d9d7d4be7f27",
-      "comment": "",
-      "command": "click",
-      "target": "css=main",
-      "targets": [
-        ["css=main", "css:finder"],
-        ["xpath=//main", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "a866316a-6d5a-4bb7-966e-011b04d7c7aa",
-      "comment": "",
-      "command": "click",
-      "target": "css=.pass",
-      "targets": [
-        ["css=.pass", "css:finder"],
-        ["xpath=//div[3]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "b4e8ac87-692a-48b4-9a44-228a2f9f9f29",
-      "comment": "",
-      "command": "click",
-      "target": "css=.btn",
-      "targets": [
-        ["css=.btn", "css:finder"],
-        ["xpath=//input[@value='Prijavite se']", "xpath:attributes"],
-        ["xpath=//form/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "46faa801-9226-4268-9764-73108f80d35f",
-      "comment": "",
-      "command": "click",
-      "target": "linkText=Odjavite se",
-      "targets": [
-        ["linkText=Odjavite se", "linkText"],
-        ["css=.nav-item:nth-child(4) > .nav-link", "css:finder"],
-        ["xpath=//div[@id='navbarNavDropdown4']/ul/li[4]/a", "xpath:idRelative"],
-        ["xpath=//a[@href='http://localhost:8080/index.php/Nalog/logOut']", "xpath:href"],
-        ["xpath=//li[4]/a", "xpath:position"],
-        ["xpath=//a[contains(.,' Odjavite se')]", "xpath:innerText"]
+        ["css=.nav-item:nth-child(4) span", "css:finder"],
+        ["xpath=//div[@id='navbarNavDropdown4']/ul/li[4]/a/span", "xpath:idRelative"],
+        ["xpath=//li[4]/a/span", "xpath:position"],
+        ["xpath=//span[contains(.,'Odjavite se')]", "xpath:innerText"]
       ],
       "value": ""
     }]
